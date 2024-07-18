@@ -1,14 +1,17 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { HomeModernComponent } from './home-modern.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '' },
+  {
+    path: '',
+    component: HomeModernComponent,
+  }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 
-export class ModernRoutingModule {}
+export class HomeModernRoutingModule {}

@@ -1,15 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MinimalistRoutingModule } from './minimalist.routing';
-import { HomeComponent } from './pages/home/home.component';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { MinimalistRoutingModule } from './minimalist.routing.module';
+import { LayoutMinimalistModule } from './pages/layout-minimalist/layout-minimalist.module';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    LayoutComponent
-  ],
-  imports: [CommonModule, MinimalistRoutingModule],
+  declarations: [],
+  imports: [CommonModule, MinimalistRoutingModule, LayoutMinimalistModule],
 })
 
 export class MinimalistModule {}

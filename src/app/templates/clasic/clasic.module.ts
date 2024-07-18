@@ -1,15 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ClasicRoutingModule } from './clasic.routing';
-import { HomeComponent } from './pages/home/home.component';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { ClasicRoutingModule } from './clasic.routing.module';
+import { LayoutClasicModule } from './pages/layout-clasic/layout-clasic.module';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    LayoutComponent
-  ],
-  imports: [CommonModule, ClasicRoutingModule],
+  declarations: [],
+  imports: [CommonModule, ClasicRoutingModule, LayoutClasicModule],
 })
 
 export class ClasicModule {}
