@@ -4,9 +4,7 @@ import { HomeModernRoutingModule } from './home-modern.routing.module';
 import { HomeModernComponent } from './home-modern.component';
 
 @NgModule({
-  declarations: [
-    HomeModernComponent,
-  ],
+  declarations: [HomeModernComponent],
   imports: [CommonModule, HomeModernRoutingModule],
 })
 
