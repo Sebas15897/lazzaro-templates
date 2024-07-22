@@ -1,0 +1,59 @@
+.row-gap-custom{
+  row-gap: 30px;
+}
+
+.column-gap-custom{
+  column-gap: 20px;
+}
+
+.footer-container {
+  width: 100vw;
+  background-color: #2C3E50;
+  padding: 60px;
+}
+
+.firstPart{
+  max-width: 1000px;
+  margin: auto;
+  column-gap: 40px;
+}
+
+.firstPart img{
+  width: 60px;
+  height: 60px;
+  margin-top: 70px;
+}
+
+.containerOptions{
+  width: calc(90% - 60px);
+}
+
+.optionList{
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.optionList a{
+  color: #FFFFFF;
+}
+
+.fs-custom{
+  font-size: 20px;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.hr-custom{
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  height: 2px;
+}
+
+
+
+.socialMedia img{
+  width: 24px;
+  height: 24px;
+}

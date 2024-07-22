@@ -1,0 +1,69 @@
+.generalShadow {
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.borderRadius {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.margin-bottom-0{
+    margin-bottom: 0 !important;
+}
+
+.row-gap-custom{
+    row-gap: 30px;
+}
+
+.column-gap-custom{
+    column-gap: 20px;
+}
+
+.color-text{
+    color: #2C3E50;
+}
+
+.containerOurSevices{
+    width: 100vw;
+    padding: 40px 5%;
+    background-color: #FFFFFF;
+}
+
+.cardServices{
+    background-color: #FFFFFF;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+}
+
+
+.cardServices img{
+    width: 48px;
+}
+
+.titleCard{
+    color: #2C3E50;
+    font-size: 18px;
+    text-align: center;
+}
+
+.descriptionCard{
+    min-height: 100px;
+    color: #2C3E50;
+    text-align: center;
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #FF7456;
+    margin: auto;
+}

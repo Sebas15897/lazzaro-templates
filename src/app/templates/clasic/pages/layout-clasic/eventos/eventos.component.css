@@ -1,0 +1,63 @@
+.generalShadow {
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.borderRadius {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.margin-bottom-0{
+    margin-bottom: 0 !important;
+}
+
+.row-gap-custom{
+    row-gap: 30px;
+}
+
+.column-gap-custom{
+    column-gap: 20px;
+}
+
+
+.diagonal{
+    clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 100%);
+    background-color: #EFF2FE;
+    padding: 80px 0;
+    margin-top: 40px;
+}
+
+.containerEvents{
+    width: 100vw;
+    padding: 40px 5%;
+}
+
+.cardsEventos{
+    max-width: 1200px;
+}
+
+.cardSpecific{
+    width: 90%;
+    max-width: 300px;
+    background-color: #FFFFFF;
+}
+
+.cardSpecific img{
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+}
+
+.infoCard{
+    padding: 15px;
+}
+
+.optionsCard{
+    padding: 0 15px 15px;
+}
+
+a{
+    text-decoration: none;
+}
