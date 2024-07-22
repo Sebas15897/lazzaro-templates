@@ -24,7 +24,7 @@
 
 
 .diagonal{
-    clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 calc(100% - 70px));
     background-color: #EFF2FE;
     padding: 80px 0;
     margin-top: 40px;
