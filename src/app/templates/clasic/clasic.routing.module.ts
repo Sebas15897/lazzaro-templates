@@ -7,7 +7,7 @@ export const routes: Routes = [
     path: '',
     component: LayoutClasicComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      
       {
         path: 'home',
         loadChildren: () =>
