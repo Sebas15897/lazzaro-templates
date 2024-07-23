@@ -43,6 +43,20 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'product',
+        loadChildren: () =>
+          import('./pages/product-clasic/product-clasic.module').then(
+            (module) => module.ProductClasicModule
+          ),
+      },
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('./pages//contact-clasic/contact-clasic.module').then(
+            (module) => module.ContactClasicModule
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full',
