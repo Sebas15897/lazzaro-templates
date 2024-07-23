@@ -1,28 +1,35 @@
-<!-- app.component.html -->
 <nav class="modern-header w-100 d-flex justify-content-center">
-  <div class="modern-header-items d-flex justify-content-between align-items-center">
-    <img class="logo" src="assets/images/logo.png" alt="logo">
-    <ul class="nav-items d-flex gap-4" >
+  <div
+    class="modern-header-items d-flex justify-content-between align-items-center"
+  >
+    <img class="logo" src="assets/images/logo.png" alt="logo" />
+    <ul class="nav-items d-flex gap-4">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" routerLink="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Servicios</a>
+        <a class="nav-link" routerLink="/minimalist/" fragment="services"
+          >Servicios</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Portafolio</a>
+        <a class="nav-link" routerLink="/minimalist/" fragment="portafolio"
+          >Portafolio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Eventos</a>
+        <a class="nav-link" routerLink="/minimalist/" fragment="eventos"
+          >Eventos</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Blog</a>
+        <a class="nav-link" routerLink="/minimalist/blog">Blog</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tienda</a>
+        <a class="nav-link" routerLink="/minimalist/store">Tienda</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacto</a>
+        <a class="nav-link" routerLink="/">Contacto</a>
       </li>
     </ul>
   </div>

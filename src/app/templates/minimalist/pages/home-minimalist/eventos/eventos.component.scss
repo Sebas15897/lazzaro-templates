@@ -1,0 +1,68 @@
+.generalShadow {
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.borderRadius {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+.row-gap-custom {
+  row-gap: 30px;
+}
+
+.column-gap-custom {
+  column-gap: 20px;
+}
+
+.color-text {
+  color: #2c3e50;
+}
+
+#eventos {
+  background-color: #ffffff;
+}
+
+.cardsEventos {
+  max-width: 1200px;
+}
+
+.cardSpecific {
+  width: 90%;
+  max-width: 300px;
+  background-color: #ffffff;
+}
+
+.cardSpecific img {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+}
+
+.infoCard {
+  padding: 15px;
+  min-height: 200px;
+}
+
+.optionsCard {
+  padding: 0 15px 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.date {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.date img {
+  width: 24px;
+}
