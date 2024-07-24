@@ -50,3 +50,10 @@
 a {
   text-decoration: none;
 }
+
+@media (max-width: 900px) {
+  .diagonal{
+    clip-path: initial;
+    padding: 40px 0;
+  }
+}

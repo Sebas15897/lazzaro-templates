@@ -39,3 +39,9 @@
     line-height: 46.88px;
   }
 }
+
+@media (max-width: 600px) {
+  .carousel-caption {
+    transform: translateY(-25%);
+  }
+}

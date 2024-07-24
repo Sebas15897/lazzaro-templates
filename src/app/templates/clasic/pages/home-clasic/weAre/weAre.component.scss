@@ -30,6 +30,10 @@
   width: 45%;
 }
 
+.container{
+  max-width: 90% !important;
+}
+
 .contentRight .imgRight {
   width: 100%;
   height: calc(100% - 65px);
@@ -71,4 +75,71 @@
 
 .fs-customList-option {
   font-size: 40px;
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+  .cardweAre {
+    flex-direction: column;
+  }
+
+  .infoCard{
+    max-width: 100%;
+    width: 95%;
+    text-align: center;
+    row-gap: 5px;
+  }
+
+  .imgCard{
+    width: 60%;
+    max-width: auto;
+  }
+
+  .titleCard {
+    width: 100%;
+  }
+
+  .description{
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column !important;
+    row-gap: 25px;
+  }
+
+  .contentLeft {
+    width: 100%;
+  }
+
+  .contentRight{
+    width: 70%;
+    min-height: 70vw;
+    margin: auto;
+  }
+
+  .buttonSeeMore {
+    margin: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .containerCardsWeAre {
+    flex-direction: column;
+  }
+
+  .cardweAre {
+    width: 100%;
+    min-height: 110px;
+  }
+
+  .contentRight{
+    width: 100%;
+    min-height: 90vw;
+  }
+
+  .buttonSeeMore {
+    margin: 0;
+  }
 }

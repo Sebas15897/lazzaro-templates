@@ -51,3 +51,10 @@
 .descriptionCard {
   min-height: 100px;
 }
+
+@media (max-width: 900px) {
+  .diagonal{
+    clip-path: initial;
+    padding: 40px 0;
+  }
+}
