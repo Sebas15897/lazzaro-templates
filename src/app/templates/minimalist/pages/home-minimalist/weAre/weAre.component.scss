@@ -80,3 +80,38 @@
 .fs-customList-option {
     font-size: 40px;
 }
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column !important;
+        row-gap: 25px;
+    }
+    .contentLeft {
+        width: 100%;
+    }
+    .contentRight{
+        width: 70%;
+        min-height: 70vw;
+        margin: auto;
+    }
+    .buttonSeeMore {
+        margin: auto;
+    }
+}
+@media (max-width: 600px) {
+    .containerCardsWeAre {
+        flex-direction: column;
+    }
+
+    .cardweAre {
+        width: 100%;
+        min-height: 110px;
+    }
+    .contentRight{
+        width: 100%;
+        min-height: 90vw;
+    }
+    .buttonSeeMore {
+        margin: 0;
+    }
+}

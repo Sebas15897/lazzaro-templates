@@ -61,3 +61,27 @@
   color: #ffffff;
   font-size: 20px;
 }
+
+@media (max-width: 700px) {
+  .contentMetric{
+    width: 50%;
+  }
+
+  .contentMetricsInfo{
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .contentMetric{
+    width: 100%;
+  }
+
+  .contentMetricsInfo {
+    row-gap: 50px;
+  }
+
+  .containerStatistics{
+    padding: 35px 0;
+  }
+}

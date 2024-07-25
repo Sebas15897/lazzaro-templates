@@ -3,10 +3,6 @@
 }
 
 .carousel-caption {
-/*   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: left; */
   display: flex !important;
   justify-content: center;
   transform: translateY(-50%);
@@ -38,9 +34,14 @@
   text-align: center;
   color: rgb(10, 19, 41);
   h1 {
-    //styleName: H1 Bold;
     font-size: 40px;
     font-weight: 700;
     line-height: 46.88px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-caption {
+    transform: translateY(-25%);
   }
 }
