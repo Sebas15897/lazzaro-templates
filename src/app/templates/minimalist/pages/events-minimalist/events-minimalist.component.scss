@@ -96,3 +96,31 @@
     color: #2C3E50;
     border: 2px solid #2C3E50;
 }
+
+@media (max-width: 800px) {
+    .containerSection {
+        flex-direction: column;
+    }
+    .carrusel{
+        width: 100%;
+    }
+
+    .containerImages img{
+        height: 330px;
+    }
+
+    .infoSection {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .containerButtonSection {
+        justify-content: space-around !important;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    .containerSection {
+        margin: 80px auto 30px; 
+    }
+}

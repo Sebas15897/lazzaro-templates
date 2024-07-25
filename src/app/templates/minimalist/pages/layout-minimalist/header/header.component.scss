@@ -1,10 +1,14 @@
 .modern-header {
-  background-color: rgb(40, 91, 108);
+  // background-color: rgb(40, 91, 108);
   height: 55px;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
 }
 
 .modern-header-items {
   width: 938px;
+  max-width: 90%;
 }
 
 .logo {
@@ -23,5 +27,31 @@ a {
   font-weight: 600;
   line-height: 17.58px;
   text-align: center;
-  color: white;
+  color: rgb(40, 91, 108);
+}
+
+.menuHeader{
+  display: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 800px) {
+  .itemsPc{
+    display: none !important;
+    position: fixed;
+    top: 60px;
+    z-index: 100;
+    background-color: rgb(40, 91, 108);
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    row-gap: 28px;
+  }
+
+  .menuHeader{
+    display: flex;
+  }
 }

@@ -73,3 +73,18 @@
   height: 32px;
   border-radius: 6px;
 }
+
+@media (max-width: 700px) {
+  .cardImage{
+    width: 50%;
+    height: 40vw;
+  }
+
+  .hoverContent p {
+    font-size: 15px;
+  }
+
+  .hoverContent img {
+    width: 24px;
+  }
+}
