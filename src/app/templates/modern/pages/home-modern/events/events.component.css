@@ -38,7 +38,7 @@ row-gap: 30px;
 } 
 
 .containerSection{
-    padding: 80px;
+    padding: 40px 0;
     margin: 60px auto;
     background-image: url("../../../../../../assets/images/hero.jpeg");
     background-size: cover;
@@ -48,7 +48,7 @@ row-gap: 30px;
 }
 
 .contentInfo{
-    padding: 60px 0;
+    padding: 60px 10px;
     width: 90%;
     max-width: 800px;
     margin: auto;
@@ -71,17 +71,6 @@ row-gap: 30px;
 
 /* eventos */
 
-.row-gap-custom {
-    row-gap: 30px;
-}
-
-.column-gap-custom {
-    column-gap: 20px;
-}
-
-.color-text {
-    color: #2c3e50;
-}
 
 #eventos {
     background-color: #ffffff;
