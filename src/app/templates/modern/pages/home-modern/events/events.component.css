@@ -1,0 +1,116 @@
+.generalShadow {
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.borderRadius {
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
+.row-gap-custom {
+row-gap: 30px;
+}
+
+.column-gap-custom {
+    column-gap: 20px;
+}
+
+.color-text{
+    color: #FFFFFF;
+}
+
+.containerSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(255, 116, 86, 0.5);
+    pointer-events: none;
+} 
+
+.containerSection{
+    padding: 40px 0;
+    margin: 60px auto;
+    background-image: url("../../../../../../assets/images/hero.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    position: relative;
+}
+
+.contentInfo{
+    padding: 60px 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    background-color: #FF7456;
+    border-radius: 0px 0px 100px 100px;
+    position: relative;
+}
+
+.buttonSeeMore {
+    border: 2px solid  #FFFFFF;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    width: max-content;
+    text-decoration: none;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+}
+
+
+/* eventos */
+
+
+#eventos {
+    background-color: #ffffff;
+}
+
+.cardsEventos {
+    max-width: 1200px;
+}
+
+.cardSpecific {
+    width: 90%;
+    max-width: 220px;
+    /* background-color: #ffffff; */
+}
+
+.imgCardSpecif{
+    width: 100%;
+    height: 300px;
+    border-radius: 0 0 45px 0;
+    object-fit: cover;
+}
+
+.infoCard {
+    padding: 15px 0;
+    min-height: 150px;
+}
+
+.optionsCard {
+    padding: 0 15px 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.date {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+.date img {
+    width: 24px;
+    }

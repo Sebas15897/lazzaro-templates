@@ -1,10 +1,163 @@
-.footer-container {
-  width: 100%;
-  height: 412px;
-  padding: 60px 70px 60px 70px;
-  gap: 40px;
-  border-radius: 100px 0px 0px 0px;
-  opacity: 0px;
-  background-color: rgb(110, 147, 175);
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
+.row-gap-custom {
+  row-gap: 30px;
+}
+
+.column-gap-custom {
+  column-gap: 20px;
+}
+
+.footer-container {
+  background-color: #FF7456;
+  padding: 50px;
+  border-radius: 100px 0px 0px 0px;
+  position: relative;
+}
+
+.firstPart {
+  max-width: 1000px;
+  margin: auto;
+  column-gap: 40px;
+}
+
+.firstPart img {
+  width: 60px;
+  height: 60px;
+}
+
+.containerOptions {
+  width: 100%;
+}
+
+.optionList {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.optionList a {
+  color: #ffffff;
+}
+
+.border-bottom-custom{
+  border-bottom: 3px solid #FFFFFF;
+}
+
+.fs-custom {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.hr-custom {
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 2px;
+}
+
+.socialMedia img {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+
+.policy{
+  margin: auto;
+}
+
+.policyMobile{
+  display: none;
+}
+
+@media (max-width: 1300px) {
+
+  .firstPart {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .socialMedia{
+    position: absolute;
+    display: flex !important;
+    flex-direction: column !important;
+    right: 5%;
+    left: auto;
+    top: 5%;
+    row-gap: 10px;
+  }
+
+}
+
+@media (max-width: 690px) {
+    .firstPart {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 30px;
+      padding-top: 0px;
+      padding-bottom: 0;
+      width: 100%;
+    }
+
+    .footer-container{
+      border-radius: 0;
+    }
+    .containerOptions{
+      width: 100%;
+    }
+    
+    .footer-container{
+      padding: 30px;
+    }
+
+    .firstPart img{
+      margin-top: 0;
+    }
+
+    .socialMedia {
+      margin: auto;
+    }
+
+    .policy {
+      display: none !important;
+    }
+
+    .policyMobile{
+      display: flex !important;
+      flex-direction: column;
+      margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+  .containerOptions {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .firstPart{
+    width: 80%;
+    align-items: start;
+  }
+
+  .firstPart img{
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 20px;
+    margin-left: 5%;
+  }
+
+  .firstPart img{
+    margin-left: 5%;
+  }
 }
