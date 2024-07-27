@@ -1,30 +1,33 @@
-<div class="d-flex flex-column justify-content-center align-items-center row-gap-custom">
-  <p class="text-black fw-bold fs-6 margin-bottom-0">NUESTRO QUIPO</p>
-  <h2 class="fw-bold text-black margin-bottom-0">Lorem Ipsum</h2>
+<div
+  *ngIf="teamData?.enabled"
+  class="d-flex flex-column justify-content-center align-items-center row-gap-custom p-4"
+  [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }"
+>
+  <p
+    class="fw-bold fs-6 margin-bottom-0"
+    [ngStyle]="{ color: teamData?.titleColor }"
+  >
+    {{ teamData?.title }}
+  </p>
+  <h2
+    class="fw-bold margin-bottom-0"
+    [ngStyle]="{ color: teamData?.subtitleColor }"
+  >
+    {{ teamData?.subTitle }}
+  </h2>
 
-  <div class="contentCards  d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom">
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
+  <div
+    class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
+  >
+    <div
+      class="cardSpecific borderRadius generalShadow"
+      *ngFor="let member of teamData?.members"
+    >
+      <img [src]="member.picture" [alt]="member.name" />
       <div class="infoCard">
-        <img src="/assets/images/icons8-linkedin.svg" alt="">
-        <p class="titleCard fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <img src="/assets/images/icons8-linkedin.svg" alt="">
-        <p class="titleCard fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <img src="/assets/images/icons8-linkedin.svg" alt="">
-        <p class="titleCard fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
+        <p class="titleCard fw-bold">{{ member.name }}</p>
+        <p class="description">{{ member.position }}</p>
       </div>
     </div>
   </div>

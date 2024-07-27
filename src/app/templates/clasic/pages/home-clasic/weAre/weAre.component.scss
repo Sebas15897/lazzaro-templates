@@ -130,7 +130,7 @@
   }
 
   .cardweAre {
-    width: 100%;
+    width: 100% !important;
     min-height: 110px;
   }
 
@@ -142,4 +142,50 @@
   .buttonSeeMore {
     margin: 0;
   }
+}
+
+.row-gap-custom {
+  row-gap: 20px;
+}
+
+.column-gap-custom {
+  column-gap: 20px;
+}
+
+.generalShadow {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.borderRadius {
+  border-radius: 8px;
+}
+
+.imgCard {
+  width: 100%;
+  height: auto;
+}
+
+.infoCard {
+  padding: 10px;
+}
+
+.cardweAre {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.buttonSeeMore {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.listOptions li {
+  margin-bottom: 15px;
+}
+
+.fs-customList-option {
+  font-size: 1.5rem;
 }

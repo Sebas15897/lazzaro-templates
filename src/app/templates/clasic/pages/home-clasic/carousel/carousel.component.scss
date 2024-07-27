@@ -1,11 +1,11 @@
 .carousel {
-  height: 525px !important;
+  min-height: 70vh;
 }
 
 .carousel-caption {
   display: flex !important;
   justify-content: center;
-  transform: translateY(-50%);
+  transform: translateY(-88%);
 }
 
 .carousel-caption h5 {
@@ -26,7 +26,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: darken;
-  min-height: 526px;
+  min-height: 70vh;
 }
 
 .hero-text {

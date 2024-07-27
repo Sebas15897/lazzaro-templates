@@ -27,13 +27,43 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <div class="hero-img"></div>
-      <div class="carousel-caption d-none d-md-block">
-        <div class="hero-text">
-          <h1>BUCEA CON NOSOTROS Y EXPLORA MUCHO</h1>
-          <p>Explora el gran azul y su abanico de posibilidades</p>
-          <button class="btn btn-primary" href="#" role="button">Compra</button>
-          <button class="btn btn-primary" href="#" role="button">Reserva</button>
+      <div
+        class="hero-img"
+        [ngStyle]="{ 'background-image': 'url(' + homePage?.mainImage + ')' }"
+      ></div>
+      <div
+        class="carousel-caption d-none d-md-block"
+        [ngStyle]="{ 'justify-content': homePage?.design.layout }"
+      >
+        <div
+          class="hero-text"
+          [ngStyle]="{ 'text-align': homePage?.design.layout }"
+        >
+          <h1 [ngStyle]="{ color: homePage?.titleColor }">
+            {{ homePage?.title }}
+          </h1>
+          <p [ngStyle]="{ color: homePage?.subTitleColor }">
+            {{ homePage?.subTitle }}
+          </p>
+          <a
+            class="btn btn-primary"
+            [href]="homePage?.firstButtonLink"
+            role="button"
+            [ngStyle]="{
+              'background-color': homePage?.firstButtonColor,
+              'border-color': homePage?.firstButtonColor
+            }"
+          >
+            {{ homePage?.firstButtonText }}
+          </a>
+          <a
+            class="btn btn-primary"
+            [href]="homePage?.secondButtonLink"
+            role="button"
+            [ngStyle]="{ 'background-color': homePage?.secondButtonColor }"
+          >
+            {{ homePage?.secondButtonText }}
+          </a>
         </div>
       </div>
     </div>

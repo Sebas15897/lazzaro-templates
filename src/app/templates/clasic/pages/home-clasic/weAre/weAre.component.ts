@@ -1,15 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Subject, Observable, takeUntil } from 'rxjs';
+import { IAboutUs, IWhyChooseUs } from '../../../../../core/interfaces/web.interface';
+import { WebState } from '../../../../../core/store/web/web.state';
 
 @Component({
   selector: 'app-weAre',
   templateUrl: './weAre.component.html',
-  styleUrls: ['./weAre.component.scss']
+  styleUrls: ['./weAre.component.scss'],
 })
-export class WeAreComponent implements OnInit {
 
-  constructor() { }
+export class WeAreComponent implements OnInit, OnDestroy {
+  private destroy: Subject<boolean> = new Subject<boolean>();
+  aboutUs$: Observable<IAboutUs> = new Observable();
+  whyChooseUsData$: Observable<IWhyChooseUs> = new Observable();
 
-  ngOnInit() {
+  aboutUs: IAboutUs;
+  whyChooseUsData: IWhyChooseUs;
+
+  constructor(private store: Store) {
+    this.aboutUs$ = this.store.select(WebState.aboutUsData);
+    this.whyChooseUsData$ = this.store.select(WebState.whyChooseUsData);
   }
 
+  ngOnInit() {
+    this.subscribeState();
+  }
+
+  subscribeState() {
+    this.aboutUs$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      this.aboutUs = resp;
+    });
+
+    this.whyChooseUsData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      this.whyChooseUsData = resp;
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
+  }
 }

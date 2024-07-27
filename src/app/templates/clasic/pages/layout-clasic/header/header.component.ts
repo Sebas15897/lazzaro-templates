@@ -1,6 +1,10 @@
 import { ViewportScroller } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subject, Observable, takeUntil } from 'rxjs';
+import { IStyle } from '../../../../../core/interfaces/web.interface';
+import { Store } from '@ngxs/store';
+import { WebState } from '../../../../../core/store/web/web.state';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +12,16 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  private destroy: Subject<boolean> = new Subject<boolean>();
+  styles$: Observable<IStyle> = new Observable();
+
+  styles: IStyle;
+
   constructor(
     private viewportScroller: ViewportScroller,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -21,5 +31,22 @@ export class HeaderComponent {
         }
       }
     });
+
+    this.styles$ = this.store.select(WebState.styleData);
+  }
+
+  ngOnInit() {
+    this.subscribeState();
+  }
+
+  subscribeState() {
+    this.styles$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      this.styles = resp;
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
   }
 }

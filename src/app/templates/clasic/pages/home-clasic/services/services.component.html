@@ -1,59 +1,37 @@
-<div class="diagonal" id="servicios">
+<div
+  class="diagonal"
+  id="servicios"
+  [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
+>
   <div
     class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
-    <p class="text-black fw-bold fs-6 margin-bottom-0">NUESTROS SERVICIOS</p>
-    <h2 class="fw-bold text-black margin-bottom-0">Lorem Ipsum</h2>
+    <p
+      class="fw-bold fs-6 margin-bottom-0"
+      [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
+    >
+      {{ sectionServices?.properties?.title }}
+    </p>
+    <h2
+      class="fw-bold margin-bottom-0"
+      [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }"
+    >
+      {{ sectionServices?.properties?.subtitle }}
+    </h2>
 
     <div
-      class="d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
+      class="d-flex card-container justify-content-between align-items-center flex-wrap row-gap-custom column-gap-custom"
     >
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">Compensación de emisiones</div>
-        <div class="descriptionCard">
-          Contrarrestar emisiones invitiendo en proyectos que reduzcan gases
-          contaminantes equivalentes.
-        </div>
-      </div>
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">Reciclaje de residuos</div>
-        <div class="descriptionCard">
-          Reutilización de materiales desechados para reducir la contaminación
-          ambiental y recursos.
-        </div>
-      </div>
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">conservación del agua</div>
-        <div class="descriptionCard">
-          Prácticas para gestionar el agua, evitando desperdicion y garantizando
-          la sostenibilidad de este recurso vital.
-        </div>
-      </div>
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">Bosques comunitario</div>
-        <div class="descriptionCard">
-          Áreas forestales protegidas por comunidades locales para beneficio
-          mutuo y sostenibilidad ambiental.
-        </div>
-      </div>
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">Educación ambiental</div>
-        <div class="descriptionCard">
-          Promover la concienticación y on el objetivo de fomentar la
-          comprensión de prácticas sostenibles.
-        </div>
-      </div>
-      <div class="cardServices generalShadow borderRadius">
-        <img src="assets/images/barco-de-carga.png" alt="" />
-        <div class="titleCard fw-bold">Gestión de la biodiversidad</div>
-        <div class="descriptionCard">
-          Preservación y protección de hábitats y especies diversas en riesgo.
-        </div>
+      <div
+        class="cardServices generalShadow borderRadius"
+        *ngFor="let service of listServices"
+        [ngStyle]="{
+          'background-color': sectionServices?.properties?.cardsBackground
+        }"
+      >
+        <img [src]="service.image_url" [alt]="service.service_name" />
+        <div class="titleCard fw-bold">{{ service.service_name }}</div>
+        <div class="descriptionCard" [innerHTML]="service.description"></div>
       </div>
     </div>
   </div>
