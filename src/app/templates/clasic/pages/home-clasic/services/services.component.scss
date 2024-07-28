@@ -36,7 +36,11 @@
 }
 
 .descriptionCard {
-  flex-grow: 1; /* Permite que la descripción ocupe el espacio restante */
+  flex-grow: 1;
+  min-height: 58px;
+  max-height: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .generalShadow {

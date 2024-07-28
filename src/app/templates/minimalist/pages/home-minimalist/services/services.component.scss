@@ -26,12 +26,8 @@
     color: #2C3E50;
 }
 
-.containerOurSevices{
-    background-color: #FFFFFF;
-}
 
 .cardServices{
-    background-color: #FFFFFF;
     width: 90%;
     max-width: 350px;
     padding: 20px;
@@ -56,6 +52,9 @@
     min-height: 100px;
     color: #2C3E50;
     text-align: center;
+    max-height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .circle{

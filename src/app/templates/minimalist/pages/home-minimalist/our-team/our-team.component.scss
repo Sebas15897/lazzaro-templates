@@ -39,6 +39,9 @@
 .cardSpecific img {
   width: 100%;
   border-radius: 6px 6px 0 0;
+  height: 330px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .infoCard {
