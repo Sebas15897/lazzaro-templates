@@ -31,7 +31,11 @@
       >
         <img [src]="service.image_url" [alt]="service.service_name" />
         <div class="titleCard fw-bold">{{ service.service_name }}</div>
-        <div class="descriptionCard" [innerHTML]="service.description"></div>
+        <div
+          class="descriptionCard"
+          *ngIf="service.description"
+          [innerHTML]="service.description"
+        ></div>
       </div>
     </div>
   </div>
