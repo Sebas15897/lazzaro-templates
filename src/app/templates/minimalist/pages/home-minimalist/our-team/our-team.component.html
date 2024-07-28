@@ -1,44 +1,34 @@
-<div class="container d-flex flex-column justify-content-center align-items-center row-gap-custom">
-  <h2 class="color-text fw-bold fs-3 margin-bottom-0">NUESTRO QUIPO</h2>
-  <p class="fw-bold color-text margin-bottom-0">Lorem Ipsum</p>
+<div
+  *ngIf="teamData?.enabled"
+  class="p-4 d-flex flex-column justify-content-center align-items-center row-gap-custom"
+  [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }"
+>
+  <h2
+    class="fw-bold fs-3 margin-bottom-0"
+    [ngStyle]="{ color: teamData?.titleColor }"
+  >
+    {{ teamData?.title }}
+  </h2>
+  <p class="fw-bold color-text margin-bottom-0">{{ teamData?.subTitle }}</p>
 
-  <div class="contentCards  d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom">
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
+  <div
+    class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
+  >
+    <div
+      class="cardSpecific borderRadius generalShadow"
+      *ngFor="let member of teamData?.members"
+    >
+      <img [src]="member.picture" [alt]="member.name" />
       <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="titleCard color-text fw-bold fw-bold">{{ member.name }}</p>
+        <p class="description color-text">
+          {{ member.position }}
+        </p>
         <div class="socialMedia">
-          <img src="assets/images/icons8-instagram.svg" alt="">
-          <img src="assets/images/icons8-tik-tok.svg" alt="">
-          <img src="assets/images/icons8-twitterx.svg" alt="">
-          <img src="assets/images/icons8-linkedin1.svg" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="socialMedia">
-          <img src="assets/images/icons8-instagram.svg" alt="">
-          <img src="assets/images/icons8-tik-tok.svg" alt="">
-          <img src="assets/images/icons8-twitterx.svg" alt="">
-          <img src="assets/images/icons8-linkedin1.svg" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="socialMedia">
-          <img src="assets/images/icons8-instagram.svg" alt="">
-          <img src="assets/images/icons8-tik-tok.svg" alt="">
-          <img src="assets/images/icons8-twitterx.svg" alt="">
-          <img src="assets/images/icons8-linkedin1.svg" alt="">
+          <img src="assets/images/icons8-instagram.svg" alt="" />
+          <img src="assets/images/icons8-tik-tok.svg" alt="" />
+          <img src="assets/images/icons8-twitterx.svg" alt="" />
+          <img src="assets/images/icons8-linkedin1.svg" alt="" />
         </div>
       </div>
     </div>
