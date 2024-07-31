@@ -23,7 +23,7 @@
       class="cardSpecific borderRadius generalShadow"
       *ngFor="let member of teamData?.members"
     >
-      <img [src]="member.picture" [alt]="member.name" />
+      <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
       <div class="infoCard">
         <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
         <p class="titleCard fw-bold">{{ member.name }}</p>
