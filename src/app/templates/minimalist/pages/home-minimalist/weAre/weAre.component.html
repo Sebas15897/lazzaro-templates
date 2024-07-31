@@ -1,82 +1,48 @@
-<div class="container d-flex justify-content-between flex-row-reverse">
-  <div class="contentLeft d-flex flex-column row-gap-custom column-gap-custom">
-    <h2 class="color-text fw-bold fs-3 margin-bottom-0">SOBRE NOSOTROS</h2>
+<div>
+  <div class="container d-flex justify-content-between flex-row-reverse">
+    <div class="contentLeft d-flex flex-column row-gap-custom column-gap-custom">
+      <h2 [ngStyle]="{ color: aboutUs?.titleColor }" class=" fw-bold fs-3 margin-bottom-0">{{ aboutUs?.title }}</h2>
 
-    <p class=" color-text margin-bottom-0">Descubre quienes somos y por qué amamos lo que hacemos</p>
+      <p [ngStyle]="{ color: aboutUs?.subTitleColor }" class="margin-bottom-0">{{ aboutUs?.subTitle }}</p>
 
-    <span class="fs-6 color-text">En vialesVip, nos apaciona el turismo y la hospitalidad. Desde 1998, hemos ofrecido experiencias de viaje excepcionales. Nuestra misión es inspirar viajes inolvidables, promoviendo la sostenibilidad y el respeto cultural. Nos guian valores de honestidad, integridad y excelencia. Únete a nosotros para explorar el mundo con autenticidad y calidad.</span>
+      <span class="fs-6 color-text" [innerHTML]="aboutUs?.description"></span>
 
-    <div class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap  row-gap-custom column-gap-custom">
-      <div class="cardweAre ">
-        <img  class="imgCard" src="assets/images/imgCard.jpeg" alt="">
-        <div class="infoCard">
-          <div class="titleCard color-text fw-bold mb">Hospitalidad inigualable</div>
-          <div class="description">Nuestro equipó se esfuerza por brindar un servicio cálido y amable</div>
+      <div class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap  row-gap-custom column-gap-custom">
+        <div class="cardweAre " *ngFor="let icon of aboutUs?.features?.icons">
+          <img  class="imgCard" [src]="icon?.url" [alt]="icon?.title" >
+          <div class="infoCard">
+            <div class="titleCard color-text fw-bold mb">{{ icon?.title }}</div>
+            <div class="description">{{ icon?.description }}</div>
+          </div>
         </div>
       </div>
-
-      <div class="cardweAre ">
-        <img  class="imgCard" src="assets/images/imgCard.jpeg" alt="">
-        <div class="infoCard">
-          <div class="titleCard color-text fw-bold mb">Destinos exclusivos</div>
-          <div class="description">Acceso a destinos únicos y exclusivos en todo el mundo</div>
-        </div>
-      </div>
-
-      <div class="cardweAre ">
-        <img  class="imgCard" src="assets/images/imgCard.jpeg" alt="">
-        <div class="infoCard">
-          <div class="titleCard color-text fw-bold mb">Sostenibilidad Ambiental</div>
-          <div class="description">Nos enorgullece ser una empresa comprometida con la sostenibilidad</div>
-        </div>
-      </div>
-
-      <div class="cardweAre ">
-        <img  class="imgCard" src="assets/images/imgCard.jpeg" alt="">
-        <div class="infoCard">
-          <div class="titleCard color-text fw-bold mb">Pasión por la exploración</div>
-          <div class="description">Creemos que cada viaje es una oportunidad para descubrir nuevas culturas</div>
-        </div>
-      </div>
-
+      <a href="#" class="buttonSeeMore generalShadow">Leer más</a>
     </div>
-
-    <a href="#" class="buttonSeeMore generalShadow">Leer más</a>
-
-  </div>
-  <div class="contentRight " >
-    <img class="imgRight" src="assets/images/hero.jpeg" alt="">
+    <div class="contentRight " >
+      <img class="imgRight" [src]="aboutUs?.imgUrl" alt="">
+    </div>
   </div>
 </div>
 
+<br><br><br><br>
+
 <div class="container d-flex justify-content-between  ">
   <div class="contentLeft d-flex flex-column row-gap-custom column-gap-custom">
-    <h2 class="color-text fw-bold fs-3 margin-bottom-0">¿POR QUÉ ELEGIRNOS?</h2>
+    <h2 [ngStyle]="{ color: whyChooseUsData?.titleColor }" class="fw-bold fs-3 margin-bottom-0">{{ whyChooseUsData?.title }}</h2>
 
-    <p class=" color-text margin-bottom-0">Ofrecemos más que un simple viaje; ofrecemos experiencias inolvidables. Nuestro compromiso con la hospitalidad excepcional, destinos exclusivos y sostenibilidad ambiental nos distingue. Además, nuestra pasión por la exploración nos impulsa a crear viajes únicos que dejarán una marca en tus recuerdos.</p>
+    <p class=" color-text margin-bottom-0" [innerHTML]="whyChooseUsData?.description"></p>
 
     <div class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap  row-gap-custom column-gap-custom">
       <ul class="listOptions ps-0">
-        <li class="d-flex align-items-center column-gap-custom">
-          <span class="fw-bold fs-customList-option " >01.</span>
-          <p>Contamos con años de experiencia en la industria. Hemos perfeccionado la artesanía de brindar experiencias de viaje excepcionales, asegurando que cada detalle sea inolvidable.</p>
-        </li>
-        <li class="d-flex align-items-center column-gap-custom">
-          <span class="fw-bold fs-customList-option " >02.</span>
-          <p>Contamos con años de experiencia en la industria. Hemos perfeccionado la artesanía de brindar experiencias de viaje excepcionales, asegurando que cada detalle sea inolvidable.</p>
-        </li>
-        <li class="d-flex align-items-center column-gap-custom">
-          <span class="fw-bold fs-customList-option " >03.</span>
-          <p>Contamos con años de experiencia en la industria. Hemos perfeccionado la artesanía de brindar experiencias de viaje excepcionales, asegurando que cada detalle sea inolvidable.</p>
-        </li>
-        <li class="d-flex align-items-center column-gap-custom">
-          <span class="fw-bold fs-customList-option " >04.</span>
-          <p>Nos esforzamos por superar tus expectativas, brindando una hospitalidad de primera clase y un servicio excepcional en cada viaje que emprendes con nosotros.</p>
+        <li class="d-flex align-items-center column-gap-custom" *ngFor="let subtitle of whyChooseUsData?.subtitles; let i = index">
+          <span class="fw-bold fs-customList-option " >{{ ("0" + (i + 1)).slice(-2) }}.</span>
+          <p class="margin-bottom-0">{{ subtitle.description }}.</p>
         </li>
       </ul>
     </div>
   </div>
   <div class="contentRight " >
-    <img class="imgRight" src="assets/images/hero.jpeg" alt="">
+    <img
+    class="imgRight" [src]="whyChooseUsData?.imgUrl" [alt]="whyChooseUsData?.imgUrl"/>
   </div>
 </div>

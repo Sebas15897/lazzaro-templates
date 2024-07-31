@@ -1,63 +1,22 @@
-<div
-  class="container containerOurSevices d-flex flex-column justify-content-center align-items-center row-gap-custom"
->
-  <h2 class="color-text fw-bold fs-3 margin-bottom-0">NUESTROS SERVICIOS</h2>
-  <p class="color-text margin-bottom-0">Lorem Ipsum</p>
-
+<div [ngStyle]="{ 'background-color': sectionServices?.properties?.background }" class="p-4">
   <div
-    class="d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
+    class="container containerOurSevices d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">Compensación de emisiones</div>
-      <div class="descriptionCard">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor.
-      </div>
-    </div>
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">Reciclaje de residuos</div>
-      <div class="descriptionCard">
-        Reutilización de materiales desechados para reducir la contaminación
-        ambiental y recursos.
-      </div>
-    </div>
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">conservación del agua</div>
-      <div class="descriptionCard">
-        Prácticas para gestionar el agua, evitando desperdicion y garantizando
-        la sostenibilidad de este recurso vital.
-      </div>
-    </div>
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">Bosques comunitario</div>
-      <div class="descriptionCard">
-        Áreas forestales protegidas por comunidades locales para beneficio mutuo
-        y sostenibilidad ambiental.
-      </div>
-    </div>
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">Educación ambiental</div>
-      <div class="descriptionCard">
-        Promover la concienticación y on el objetivo de fomentar la comprensión
-        de prácticas sostenibles.
-      </div>
-    </div>
-    <div class="cardServices">
-      <div class="circle"></div>
-      <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-      <div class="titleCard fw-bold">Gestión de la biodiversidad</div>
-      <div class="descriptionCard">
-        Preservación y protección de hábitats y especies diversas en riesgo.
+    <h2 [ngStyle]="{ color: sectionServices?.properties?.titleColor }" class=" fw-bold fs-3 margin-bottom-0">{{ sectionServices?.properties?.title }}</h2>
+    <p [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }" class=" margin-bottom-0">{{ sectionServices?.properties?.subtitle }}</p>
+
+    <div
+      class="d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
+    >
+      <div class="cardServices" [ngStyle]="{'background-color': sectionServices?.properties?.cardsBackground}" *ngFor="let service of listServices">
+        <div class="circle"></div>
+        <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
+        <div  class="titleCard fw-bold">{{ service.service_name }}</div>
+        <div class="descriptionCard" 
+          *ngIf="service.description"
+          [innerHTML]="service.description"
+        >
+        </div>
       </div>
     </div>
   </div>
