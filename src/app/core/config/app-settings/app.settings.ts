@@ -15,6 +15,10 @@ export class AppSettings {
     getServices: EndPoints.urlBase('service/member/'),
   }
 
+  public shop = {
+    getProducts: EndPoints.urlBase('product/member/'),
+  }
+
   public app = {
     name: 'Lazzaro Templates',
     version: '0.0.0',

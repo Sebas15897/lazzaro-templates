@@ -43,7 +43,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'product',
+        path: 'product/:productid',
         loadChildren: () =>
           import('./pages/product-clasic/product-clasic.module').then(
             (module) => module.ProductClasicModule
