@@ -42,10 +42,12 @@ a{
     width: 100%;
 }
 
-.cardProduct{
+.cardProduct {
     width: 90%;
     max-width: 300px;
+    padding: 15px;
 }
+
 
 .infoCard{
     padding: 15px;
@@ -59,4 +61,11 @@ a{
     background-color: #2C3E50;
     padding: 7px 20px;
     color: #FFFFFF;
+}
+
+.descriptionCard{
+    min-height: 70px;
+    max-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

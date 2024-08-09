@@ -6,7 +6,7 @@
     <p [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }" class=" margin-bottom-0">{{ sectionServices?.properties?.subtitle }}</p>
 
     <div
-      class="d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
+      class="containerSectionServices d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
     >
       <div class="cardServices" [ngStyle]="{'background-color': sectionServices?.properties?.cardsBackground}" *ngFor="let service of listServices">
         <div class="circle"></div>
