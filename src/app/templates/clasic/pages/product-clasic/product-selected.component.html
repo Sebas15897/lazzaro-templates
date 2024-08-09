@@ -1,7 +1,11 @@
 <div class="containerSection d-flex justify-content-between">
   <div class="carrusel">
     <div class="containerImages">
-      <img class="borderRadius" src="/assets/images/portafolio1.jpeg" alt="" />
+      <img
+        class="borderRadius"
+        [src]="product?.default_img"
+        [alt]="product?.title"
+      />
     </div>
     <div class="buttons">
       <div class="buttonOptions active" id="button1"></div>
@@ -11,28 +15,27 @@
     </div>
   </div>
   <div class="infoSection row-gap-custom d-flex flex-column">
-    <h2 class="fw-bold fs-3 margin-bottom-0">LOREM IPSUM</h2>
-    <p class="margin-bottom-0">50€</p>
-    <p class="margin-bottom-0">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam
-      assumenda porro aliquam reprehenderit iure rerum! Iure obcaecati fuga
-      quaerat quo temporibus vel exercitationem earum consectetur cupiditate,
-      rerum nobis porro eaque ratione repellendus asperiores ducimus! Cum
-      veritatis quam voluptatem, optio cumque
+    <h2 class="fw-bold fs-3 margin-bottom-0">{{ product?.title }}</h2>
+    <p class="margin-bottom-0">{{ product?.price }}€</p>
+    <p class="margin-bottom-0" [innerHTML]="product?.description"></p>
+    <p class="fw-bold fs-5 margin-bottom-0">Stock: {{ product?.stock }}</p>
+    <p class="fw-bold fs-5 margin-bottom-0">
+      Discount: {{ product?.discount }}%
     </p>
-
-    <p class="fw-bold fs-5 margin-bottom-0">Stock: 35</p>
-
+    <p class="fw-bold fs-5 margin-bottom-0">
+      Delivery Time: {{ product?.delivery_time }}
+    </p>
     <div class="containerButtonSection d-flex justify-content-start">
-      <div class="buttonsSection generalShadow">Comprar</div>
+      <button class="btn btn-primary" (click)="buy()">
+        Comprar
+      </button>
     </div>
-
     <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>
     <div class="socialMedia d-flex align-items-center column-gap-custom">
-      <img src="assets/images/icons8-instagramWhite.svg" alt="" />
-      <img src="assets/images/icons8-linkedinWhite.svg" alt="" />
-      <img src="assets/images/icons8-twitterxWhite.svg" alt="" />
-      <img src="assets/images/icons8-whatsappWhite.svg" alt="" />
+      <img src="assets/images/icons8-instagramWhite.svg" alt="Instagram" />
+      <img src="assets/images/icons8-linkedinWhite.svg" alt="LinkedIn" />
+      <img src="assets/images/icons8-twitterxWhite.svg" alt="Twitter" />
+      <img src="assets/images/icons8-whatsappWhite.svg" alt="WhatsApp" />
     </div>
   </div>
 </div>

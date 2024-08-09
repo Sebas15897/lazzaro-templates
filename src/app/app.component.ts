@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { GetWebConfigction, GetWebDataAction } from './core/store/web/web.actions';
+import { GetWebConfigction } from './core/store/web/web.actions';
 
 @Component({
   selector: 'app-root',
