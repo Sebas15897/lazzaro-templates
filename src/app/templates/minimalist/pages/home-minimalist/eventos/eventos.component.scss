@@ -66,3 +66,10 @@ a {
 .date img {
   width: 24px;
 }
+
+.description{
+  min-height: 120px;
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

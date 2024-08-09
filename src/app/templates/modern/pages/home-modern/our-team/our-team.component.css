@@ -67,3 +67,10 @@
     width: 24px;
     height: 24px;
 }
+
+.description{
+    min-height: 70px;
+    max-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

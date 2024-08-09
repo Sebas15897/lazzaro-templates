@@ -52,3 +52,10 @@ a {
   padding: 7px 15px;
   color: #ffffff;
 }
+
+.descriptionCard{
+  min-height: 103px;
+  max-height: 103px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

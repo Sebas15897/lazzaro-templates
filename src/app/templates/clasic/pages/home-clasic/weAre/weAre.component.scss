@@ -18,6 +18,10 @@
   row-gap: 30px;
 }
 
+.row-gap-custom2 {
+  row-gap: 50px;
+}
+
 .column-gap-custom {
   column-gap: 20px;
 }
@@ -36,7 +40,7 @@
 
 .contentRight .imgRight {
   width: 100%;
-  height: calc(100% - 65px);
+  height: 100%;
   object-fit: cover;
 }
 
@@ -171,7 +175,6 @@
 
 .cardweAre {
   width: 45%;
-  margin-bottom: 20px;
 }
 
 .buttonSeeMore {
