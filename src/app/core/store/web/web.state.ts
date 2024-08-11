@@ -19,6 +19,8 @@ import {
   GetServicesSectionAction,
 } from '../services/services.actions';
 import { GetShopSection, getAllProducts } from '../shop/shop.actions';
+import { GetAllEvents, GetEventsSectionAction } from '../events/events.actions';
+import { GetAllProjects, GetProjectsSectionAction } from '../portfolio/portfolio.actions';
 
 export interface WebStateModel {
   webProps: IWebSite;
@@ -32,6 +34,7 @@ export interface WebStateModel {
     webConfig: null,
   },
 })
+
 @Injectable()
 export class WebState {
   @Selector() static webIsActive(state: WebStateModel): boolean {
@@ -104,6 +107,10 @@ export class WebState {
             ctx.dispatch(new GetAllServices(resp.id));
             ctx.dispatch(new GetShopSection(resp.websiteId));
             ctx.dispatch(new getAllProducts(resp.id));
+            ctx.dispatch(new GetEventsSectionAction(resp.websiteId));
+            ctx.dispatch(new GetAllEvents(resp.id));
+            ctx.dispatch(new GetProjectsSectionAction(resp.websiteId));
+            ctx.dispatch(new GetAllProjects(resp.id));
           }
         },
       })

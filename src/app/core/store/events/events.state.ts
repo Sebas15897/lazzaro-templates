@@ -20,7 +20,7 @@ export interface EventsStateModel {
 
 @Injectable()
 export class EventsState {
-  @Selector() static EventsAction(state: EventsStateModel): IEventsSection {
+  @Selector() static EventsSection(state: EventsStateModel): IEventsSection {
     return state?.eventsSection ?? null;
   }
 

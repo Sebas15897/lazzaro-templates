@@ -51,15 +51,14 @@ a {
   text-decoration: none;
 }
 
-.description{
-  min-height: 120px;
+.description {
   max-height: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 @media (max-width: 900px) {
-  .diagonal{
+  .diagonal {
     clip-path: initial;
     padding: 40px 0;
   }

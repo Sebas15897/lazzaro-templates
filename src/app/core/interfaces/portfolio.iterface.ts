@@ -1,4 +1,4 @@
-export interface IPortfolio {
+export interface IPortfolioSection {
   id: string;
   websiteId: string;
   type: string;

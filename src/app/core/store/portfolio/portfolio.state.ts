@@ -3,10 +3,13 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { GetAllProjects, GetProjectsSectionAction } from './portfolio.actions';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
-import { IPortfolio, IProject } from '../../interfaces/portfolio.iterface';
+import {
+  IPortfolioSection,
+  IProject,
+} from '../../interfaces/portfolio.iterface';
 
 export interface PortfolioStateModel {
-  portfolioSection: IPortfolio;
+  portfolioSection: IPortfolioSection;
   portfolio: IProject[];
 }
 
@@ -20,11 +23,13 @@ export interface PortfolioStateModel {
 
 @Injectable()
 export class PortfolioState {
-  @Selector() static PortfolioAction(state: PortfolioStateModel): IPortfolio {
+  @Selector() static PortfolioSection(
+    state: PortfolioStateModel
+  ): IPortfolioSection {
     return state?.portfolioSection ?? null;
   }
 
-  @Selector() static ListAllEvents(state: PortfolioStateModel): IProject[] {
+  @Selector() static ListAllProjects(state: PortfolioStateModel): IProject[] {
     return state?.portfolio ?? [];
   }
 
