@@ -3,21 +3,28 @@ import { EndPoints } from '../end-points/end-points';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AppSettings {
   public webConfig = {
     base: EndPoints.urlBase(''),
     members: EndPoints.urlBase('members/url/'),
-    websites: EndPoints.urlBase('websites/')
+    websites: EndPoints.urlBase('websites/'),
   };
 
   public services = {
     getServices: EndPoints.urlBase('service/member/'),
-  }
+  };
+
+  public events = {
+    getEvents: EndPoints.urlBase('events/member/'),
+  };
+
+  public portfolio = {
+    getPortfolio: EndPoints.urlBase('projects/member/'),
+  };
 
   public shop = {
     getProducts: EndPoints.urlBase('product/member/'),
-  }
+  };
 
   public app = {
     name: 'Lazzaro Templates',

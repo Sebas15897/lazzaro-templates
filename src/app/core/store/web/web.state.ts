@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
   IAboutUs,
+  IFooter,
   IHomePage,
   IStyle,
   ITeam,
@@ -55,6 +56,14 @@ export class WebState {
 
   @Selector() static teamData(state: WebStateModel): ITeam {
     return state?.webProps?.properties?.team ?? null;
+  }
+
+  @Selector() static webConfig(state: WebStateModel): ITeam {
+    return state?.webProps?.properties?.team ?? null;
+  }
+
+  @Selector() static footer(state: WebStateModel): IFooter {
+    return state?.webProps?.properties?.footer ?? null;
   }
 
   constructor(

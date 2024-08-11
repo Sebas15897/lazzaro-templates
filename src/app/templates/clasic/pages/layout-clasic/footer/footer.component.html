@@ -1,45 +1,181 @@
-<div class="containerAll">
-  <div class="footer-container">
-    <div class="firstPart d-flex">
-      <img src="assets/images/logo.png" alt="" />
-      <div class="containerOptions d-flex justify-content-evenly">
-        <ul class="listOptionsFooter">
-          <li class="optionList fw-bold fs-custom"><a href=""> Contact </a></li>
-          <li class="optionList"><a href=""> Address </a></li>
-          <li class="optionList"><a href=""> City </a></li>
-          <li class="optionList"><a href=""> Zip Cope </a></li>
-          <li class="optionList"><a href=""> Email </a></li>
-          <li class="optionList"><a href=""> Phone </a></li>
-        </ul>
+<div
+  class="footer-container"
+  [style.background-color]="footer?.design?.backgroundColor"
+>
+  <div class="firstPart d-flex">
+    <img [src]="styles?.logo" [alt]="styles?.logo" />
+    <div class="containerOptions d-flex justify-content-evenly">
+      <ul class="listOptionsFooter">
+        <li
+          class="optionList fw-bold fs-custom"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        >
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> Contact </a>
+        </li>
+        <li class="optionList">
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> Address </a>
+        </li>
+        <li class="optionList">
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> City </a>
+        </li>
+        <li class="optionList">
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> Zip Code </a>
+        </li>
+        <li class="optionList">
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> Email </a>
+        </li>
+        <li class="optionList">
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }"> Phone </a>
+        </li>
+      </ul>
 
-        <ul class="listOptionsFooter">
-          <li class="optionList fw-bold fs-custom"><a href=""> Links </a></li>
-          <li class="optionList"><a href=""> Services </a></li>
-          <li class="optionList"><a href=""> Portafolio </a></li>
-          <li class="optionList"><a href=""> Events </a></li>
-          <li class="optionList"><a href=""> Blog </a></li>
-          <li class="optionList"><a href=""> Shop </a></li>
-          <li class="optionList"><a href=""> Contact </a></li>
-        </ul>
-        <ul class="listOptionsFooter d-flex flex-column justify-content-center">
-          <li class="optionList"><a href=""> Contact </a></li>
-          <li class="optionList"><a href=""> Terms and Conditions </a></li>
-        </ul>
-      </div>
+      <ul class="listOptionsFooter">
+        <li
+          class="optionList fw-bold fs-custom"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        >
+          <a [ngStyle]="{ color: styles?.menuTextColor }"> Enlances </a>
+        </li>
+        <li class="optionList">
+          <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/">
+            Inicio
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            href=""
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
+            fragment="services"
+          >
+            Servicios
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            fragment="portafolio"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
+          >
+            Portafolio
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            fragment="eventos"
+          >
+            Eventos
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/clasic/blog"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Blog
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/clasic/store"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Tienda
+          </a>
+        </li>
+      </ul>
+      <ul class="listOptionsFooter d-flex flex-column justify-content-center">
+        <li class="optionList">
+          <a
+            routerLink="/clasic/contact"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Contacto
+          </a>
+        </li>
+        <li class="optionList" *ngIf="footer?.info?.terms">
+          <a
+            routerLink="/clasic/terms"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Terminos y condiciones
+          </a>
+        </li>
+        <li class="optionList" *ngIf="footer?.info?.transparency?.description">
+          <a
+            routerLink="/clasic/transparency"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Transparencia
+          </a>
+        </li>
+      </ul>
     </div>
-    <hr class="hr-custom" />
+  </div>
+  <hr class="hr-custom" />
 
-    <div class="secondPart d-flex justify-content-between align-items-center flex-wrap">
-      <div
-        class="socialMedia d-flex align-items-center column-gap-custom justify-content-center"
-      >
-        <img src="assets/images/icons8-instagram.svg" alt="" />
-        <img src="assets/images/icons8-linkedin1.svg" alt="" />
-        <img src="assets/images/icons8-twitterx.svg" alt="" />
-        <img src="assets/images/icons8-instagram.svg" alt="" />
-        <img src="assets/images/icons8-linkedin1.svg" alt="" />
-        <img src="assets/images/icons8-twitterx.svg" alt="" />
-      </div>
+  <div
+    class="secondPart d-flex justify-content-between align-items-center flex-wrap"
+  >
+    <div
+      class="socialMedia d-flex align-items-center column-gap-custom justify-content-center"
+    >
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.instagram"
+        [href]="footer?.social?.instagram"
+        ><i
+          class="fa-brands fa-instagram"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.linkedIn"
+        [href]="footer?.social?.linkedIn"
+        ><i
+          class="fa-brands fa-linkedin"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.twitter"
+        [href]="footer?.social?.twitter"
+        ><i
+          class="fa-brands fa-x-twitter"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.facebook"
+        [href]="footer?.social?.facebook"
+        ><i
+          class="fa-brands fa-facebook"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.whatsapp"
+        [href]="footer?.social?.whatsapp"
+        ><i
+          class="fa-brands fa-whatsapp"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.secondaryWeb"
+        [href]="footer?.social?.secondaryWeb"
+        ><i
+          class="fa-solid fa-globe"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
     </div>
   </div>
 </div>

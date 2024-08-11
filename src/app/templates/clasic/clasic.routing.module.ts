@@ -1,6 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LayoutClasicComponent } from './pages/layout-clasic/layout-clasic.component';
+import { TermsConditionsComponent } from '../../shared/terms-conditions/terms-conditions.component';
+import { TransparencyComponent } from '../../shared/transparency/transparency.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +57,14 @@ export const routes: Routes = [
           import('./pages//contact-clasic/contact-clasic.module').then(
             (module) => module.ContactClasicModule
           ),
+      },
+      {
+        path: 'terms',
+        component: TermsConditionsComponent,
+      },
+      {
+        path: 'transparency',
+        component: TransparencyComponent,
       },
       {
         path: '**',

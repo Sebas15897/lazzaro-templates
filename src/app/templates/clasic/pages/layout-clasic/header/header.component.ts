@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd) {
         const tree = this.router.parseUrl(this.router.url);
         if (tree.fragment) {
+          console.log(tree.fragment)
           this.viewportScroller.scrollToAnchor(tree.fragment);
         }
       }

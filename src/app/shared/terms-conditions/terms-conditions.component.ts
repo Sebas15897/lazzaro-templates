@@ -1,18 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IFooter, IStyle } from '../../../../../core/interfaces/web.interface';
-import { WebState } from '../../../../../core/store/web/web.state';
-import { ViewportScroller } from '@angular/common';
-import { NavigationEnd, Router } from '@angular/router';
+import { IFooter, IStyle } from '../../core/interfaces/web.interface';
+import { WebState } from '../../core/store/web/web.state';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  selector: 'app-terms-conditions',
+  templateUrl: './terms-conditions.component.html',
+  styleUrls: ['./terms-conditions.component.scss'],
 })
 
-export class FooterComponent implements OnInit, OnDestroy {
+export class TermsConditionsComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   footer$: Observable<IFooter> = new Observable();
   styles$: Observable<IStyle> = new Observable();
@@ -21,22 +19,9 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   styles: IStyle;
 
-  constructor(
-    private store: Store,
-    private viewportScroller: ViewportScroller,
-    private router: Router
-  ) {
+  constructor(private store: Store) {
     this.footer$ = this.store.select(WebState.footer);
     this.styles$ = this.store.select(WebState.styleData);
-
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        const tree = this.router.parseUrl(this.router.url);
-        if (tree.fragment) {
-          this.viewportScroller.scrollToAnchor(tree.fragment);
-        }
-      }
-    });
   }
 
   ngOnInit() {

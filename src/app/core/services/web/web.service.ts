@@ -15,7 +15,7 @@ export class WebDataService {
   getWebConfig(): Observable<IWebConfig> {
     const url = `${
       this.appSettings.webConfig.members
-    }${'mateusinc.web.lazzaro.io'}`;
+    }${'buceaconmigo.web.lazzaro.io'}`;
     return this.http.get<IWebConfig>(url);
   }
 
