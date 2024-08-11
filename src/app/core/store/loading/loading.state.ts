@@ -33,7 +33,6 @@ export class LoadingState {
 
   @Action(LoadingShowAction)
   LoadingShowAction(ctx: StateContext<LoadingStateModel>) {
-    console.log("Loading");
     ctx.patchState({
       show: true,
     });
