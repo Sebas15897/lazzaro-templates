@@ -1,1 +1,12 @@
 <router-outlet></router-outlet>
+<ngx-spinner
+  bdColor="#F4F4F4"
+  size="medium"
+  color="#5C7DF1"
+  type="ball-spin-clockwise"
+  [fullScreen]="true"
+>
+  <h4 class="loading-text">
+    {{ loadingText ?? "Cargando..." }}
+  </h4>
+</ngx-spinner>
