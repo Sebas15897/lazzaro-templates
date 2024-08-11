@@ -1,36 +1,38 @@
-<div
-  class="d-flex flex-column justify-content-center align-items-center row-gap-custom"
->
-  <h2
-    class="color-text fw-bold fs-3 margin-bottom-0 text-center"
-    [ngStyle]="{ color: sectionEvents?.properties?.titleColor }"
-  >
-    {{ sectionEvents?.properties?.title }}
-  </h2>
-  <p
-    class="color-text margin-bottom-0"
-    [ngStyle]="{ color: sectionEvents?.properties?.subtitleColor }"
-  >
-    {{ sectionEvents?.properties?.subtitle }}
-  </p>
-
+<div   [style]="{ 'background-color': sectionEvents?.properties?.background }">
   <div
-    class="cardsEventos d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
+    class="d-flex flex-column justify-content-center align-items-center row-gap-custom p-4"
   >
-    <div class="cardSpecific" *ngFor="let event of listEvents">
-      <img
-        class="imgCardSpecif"
-        [src]="event.images[0]?.url"
-        [alt]="event.name"
-      />
-      <div class="infoCard">
-        <p class="titleCard fw-bold">{{ event.name }}</p>
-        <p class="description" [innerHTML]="event.description"></p>
-        <div class="date">
-          <img src="assets/images/calendar.svg" alt="Calendar Icon" />
-          <p class="date margin-bottom-0">
-            {{ event.dates.event_start | date : "dd/MM/yyyy" }}
-          </p>
+    <h2
+      class="color-text fw-bold fs-3 margin-bottom-0 text-center"
+      [ngStyle]="{ color: sectionEvents?.properties?.titleColor }"
+    >
+      {{ sectionEvents?.properties?.title }}
+    </h2>
+    <p
+      class="color-text margin-bottom-0"
+      [ngStyle]="{ color: sectionEvents?.properties?.subtitleColor }"
+    >
+      {{ sectionEvents?.properties?.subtitle }}
+    </p>
+
+    <div
+      class="cardsEventos d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
+    >
+      <div class="cardSpecific" *ngFor="let event of listEvents">
+        <img
+          class="imgCardSpecif"
+          [src]="event.images[0]?.url"
+          [alt]="event.name"
+        />
+        <div class="infoCard">
+          <p class="titleCard fw-bold">{{ event.name }}</p>
+          <p class="description" [innerHTML]="event.description"></p>
+          <div class="date">
+            <img src="assets/images/calendar.svg" alt="Calendar Icon" />
+            <p class="date margin-bottom-0">
+              {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

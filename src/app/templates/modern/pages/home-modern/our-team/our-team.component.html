@@ -1,44 +1,36 @@
-<div class="containerSection d-flex flex-column justify-content-center align-items-center row-gap-custom">
-  <h2 class="color-text fw-bold fs-3 margin-bottom-0">NUESTRO QUIPO</h2>
-  <p class="fw-bold color-text margin-bottom-0">Lorem Ipsum</p>
+<div [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }">
+  <div
+    class="p-4 d-flex flex-column justify-content-center align-items-center row-gap-custom"
+  >
+    <h2
+      class="color-text fw-bold fs-3 margin-bottom-0"
+      [ngStyle]="{ color: teamData?.titleColor }"
+    >
+      {{ teamData?.title }}
+    </h2>
+    <p
+      class="fw-bold color-text margin-bottom-0"
+      [ngStyle]="{ color: teamData?.subtitleColor }"
+    >
+      {{ teamData?.subTitle }}
+    </p>
 
-  <div class="contentCards  d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom">
-    <div class="cardSpecific">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="socialMedia">
-          <img src="assets/images/icons8-instagramRed.svg" alt="">
-          <img src="assets/images/icons8-tik-tokRed.svg" alt="">
-          <img src="assets/images/icons8-twitterxRed.svg" alt="">
-          <img src="assets/images/icons8-linkedin1Red.svg" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="cardSpecific">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="socialMedia">
-          <img src="assets/images/icons8-instagramRed.svg" alt="">
-          <img src="assets/images/icons8-tik-tokRed.svg" alt="">
-          <img src="assets/images/icons8-twitterxRed.svg" alt="">
-          <img src="assets/images/icons8-linkedin1Red.svg" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="cardSpecific">
-      <a href=""><img src="assets/images/persona.jpg" alt=""></a>
-      <div class="infoCard">
-        <p class="titleCard color-text fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description color-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="socialMedia">
-          <img src="assets/images/icons8-instagramRed.svg" alt="">
-          <img src="assets/images/icons8-tik-tokRed.svg" alt="">
-          <img src="assets/images/icons8-twitterxRed.svg" alt="">
-          <img src="assets/images/icons8-linkedin1Red.svg" alt="">
+    <div
+      class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
+    >
+      <div class="cardSpecific" *ngFor="let member of teamData?.members">
+        <a [href]="member.linkedin" target="_blank">
+          <img [src]="member.picture" [alt]="member.name" />
+        </a>
+        <div class="infoCard p-2">
+          <p class="titleCard color-text fw-bold">{{ member.name }}</p>
+          <p class="description color-text">{{ member.position }}</p>
+          <div class="socialMedia">
+            <a *ngIf="member.linkedin" [href]="member.linkedin" target="_blank">
+              <img src="assets/images/icons8-linkedin1Red.svg" alt="LinkedIn" />
+            </a>
+            <!-- Añade aquí enlaces a otras redes sociales si tienes las URLs -->
+          </div>
         </div>
       </div>
     </div>
