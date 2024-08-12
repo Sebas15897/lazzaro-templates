@@ -1,5 +1,5 @@
 <div [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }">
-  <div class="container d-flex justify-content-between py-4">
+  <div class="container containerSectionWeAre d-flex justify-content-between ">
     <div
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"
     >
@@ -42,6 +42,7 @@
     </div>
     <div class="contentRight">
       <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" />
+      <div class="overlay"></div>
     </div>
   </div>
 </div>
@@ -50,7 +51,7 @@
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
 >
   <div
-    class="container d-flex justify-content-between flex-row-reverse"
+    class="container containerSectionWeAre pt-0 d-flex justify-content-between flex-row-reverse"
     [ngClass]="{
       'flex-row-reverse': whyChooseUsData?.design?.layout === 'right'
     }"
@@ -80,7 +81,7 @@
             *ngFor="let subtitle of whyChooseUsData?.subtitles; let i = index"
           >
             <ng-container *ngIf="subtitle.description">
-              <span class="fw-bold fs-customList-option"
+              <span class="fw-bold fs-customList-option color-text"
                 >{{ ("0" + (i + 1)).slice(-2) }}.</span
               >
               <p class="margin-bottom-0">{{ subtitle.description }}</p>
@@ -95,6 +96,7 @@
         [src]="whyChooseUsData?.imgUrl"
         [alt]="whyChooseUsData?.imgUrl"
       />
+      <div class="overlay2"></div>
     </div>
   </div>
 </div>

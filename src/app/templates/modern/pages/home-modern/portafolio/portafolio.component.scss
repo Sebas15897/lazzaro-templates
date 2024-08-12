@@ -32,12 +32,12 @@
 
 .containerCards {
     width: 100%;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 25px;
+    row-gap: 25px;
 }
 
 .cardImage {
-    width: calc(33% - 20px);
+    width: calc(33% - 25px);
     height: 250px;
     position: relative;
 }
@@ -67,6 +67,7 @@
 .cardImage:hover .hoverContent {
     visibility: visible;
     opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5764705882);
 }
 
 .hoverContent p {
