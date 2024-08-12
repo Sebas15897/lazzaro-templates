@@ -1,0 +1,135 @@
+.borderRadius {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.generalShadow {
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
+.row-gap-custom {
+    row-gap: 20px;
+}
+
+.row-gap-custom1 {
+    row-gap: 40px;
+}
+
+.row-gap-custom2 {
+    row-gap: 30px;
+}
+
+.column-gap-custom {
+    column-gap: 20px;
+}
+.column-gap-custom1 {
+    column-gap: 10px;
+}
+
+.containerSection {
+    margin: 80px auto;
+    // background-color: #;
+    position: relative;
+    background: radial-gradient( at 0% 100%, #FF7456 70%, rgba(0, 255, 0, 0) 50%, #FFF 80%);
+    border-radius: 30px 30px 30px 0;
+    padding: 50px;
+}
+
+
+.contactSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.leftContent{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+}
+
+.titleLeft{
+    color: #FFF;
+    font-weight: bold;
+}
+
+.descriptionLeft{
+    color:#FFF;
+    font-size: 18px;
+}
+
+.rightContent{
+    width: 45%;
+    // position: relative;
+}
+
+.formContact{
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 5%;
+    border-radius: 20px;
+    
+        // position: absolute;
+}
+
+.inputForm{
+    width:100%;
+    border-radius: 5px;
+}
+
+.terms{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.check{
+    width: 24px;
+    height: 24px;
+}
+
+.buttomSubmit{
+    background-color: #FF7456;
+    color: #FFFFFF;
+    border-radius: 30px;
+    padding: 10px 50px;
+    width: max-content;
+
+}
+
+@media (max-width: 750px) {
+    .contactSection{
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    .leftContent{
+        width: 100%;
+    }
+
+    .rightContent{
+        width: 100%;
+    }
+
+    .containerSection{
+        background: #FF7456;
+    }
+}
