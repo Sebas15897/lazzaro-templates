@@ -43,6 +43,13 @@ export const routes: Routes = [
             (module) => module.StoreMinimalistModule
           ),
       },
+      {
+        path: 'product/:productid',
+        loadChildren: () =>
+          import('./pages/product-minimalist/product-minimalist.module').then(
+            (module) => module.ProductMinimalistModule
+          ),
+      },
     ],
   },
 ];

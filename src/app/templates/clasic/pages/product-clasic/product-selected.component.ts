@@ -5,7 +5,7 @@ import { Subject, Observable, takeUntil } from 'rxjs';
 import { IShop } from '../../../../core/interfaces/shop.interface';
 import { ShopState } from '../../../../core/store/shop/shop.store';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuyComponent } from './form-buy/form-buy.component';
+import { FormBuyComponent } from '../../../../shared/form-buy/form-buy.component';
 
 @Component({
   selector: 'app-product-selected',
