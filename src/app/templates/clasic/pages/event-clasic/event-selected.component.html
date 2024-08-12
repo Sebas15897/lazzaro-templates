@@ -1,39 +1,47 @@
 <div class="containerSection d-flex justify-content-between">
   <div class="carrusel">
     <div class="containerImages">
-      <img class="borderRadius" src="/assets/images/portafolio1.jpeg" alt="">
+      <ng-container *ngFor="let image of event?.images; let i = index">
+        <img
+          class="borderRadius"
+          [src]="image?.url"
+          [alt]="image?.url"
+          *ngIf="activeIndex === i"
+        />
+      </ng-container>
     </div>
     <div class="buttons">
-      <div class="buttonOptions active" id="button1"></div>
-      <div class="buttonOptions " id="button2"></div>
-      <div class="buttonOptions " id="button3"></div>
-      <div class="buttonOptions " id="button4"></div>
+      <div
+        class="buttonOptions"
+        *ngFor="let image of event?.images; let i = index"
+        [class.active]="activeIndex === i"
+        (click)="setActiveIndex(i)"
+      ></div>
     </div>
   </div>
   <div class="infoSection row-gap-custom d-flex flex-column">
-    <h2 class="fw-bold fs-3 margin-bottom-0">NUESTRO PORTAFOLIO</h2>
-    <p class=" margin-bottom-0">aa/bb/ccccc</p>
-    <p class=" margin-bottom-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam assumenda porro aliquam reprehenderit iure rerum! Iure obcaecati fuga quaerat quo temporibus vel exercitationem earum consectetur cupiditate, rerum nobis porro eaque ratione repellendus asperiores ducimus! Cum veritatis quam voluptatem, optio cumque
+    <h2 class="fw-bold fs-3 margin-bottom-0">{{ event?.name }}</h2>
+    <p class="margin-bottom-0">
+      {{ event?.dates?.event_start | date }} -
+      {{ event?.dates?.event_end | date }}
+    </p>
+    <div [innerHTML]="event?.description"></div>
+
+    <p class="fw-bold fs-5 margin-bottom-0">
+      Entradas disponibles: {{ event?.tickets?.length }}
     </p>
 
-    <p class="fw-bold fs-5 margin-bottom-0">Entradas disponibles: 35</p>
-
-    <div class="containerButtonSection d-flex  justify-content-start">
-      <div class="buttonsSection generalShadow">
-        Comprar
-      </div>
-      <div class="buttonsSection generalShadow">
-        Ver ubicación
-      </div>
+    <div class="containerButtonSection d-flex justify-content-start">
+      <div class="buttonsSection generalShadow">Comprar</div>
+      <div class="buttonsSection generalShadow">Ver ubicación</div>
     </div>
 
-    <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>
+    <!-- <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>
     <div class="socialMedia d-flex align-items-center column-gap-custom">
-      <img src="assets/images/icons8-instagramWhite.svg" alt="">
-      <img src="assets/images/icons8-linkedinWhite.svg" alt="">
-      <img src="assets/images/icons8-twitterxWhite.svg" alt="">
-      <img src="assets/images/icons8-whatsappWhite.svg" alt="">
-    </div>
+      <img src="assets/images/icons8-instagramWhite.svg" alt="" />
+      <img src="assets/images/icons8-linkedinWhite.svg" alt="" />
+      <img src="assets/images/icons8-twitterxWhite.svg" alt="" />
+      <img src="assets/images/icons8-whatsappWhite.svg" alt="" />
+    </div> -->
   </div>
-  
 </div>

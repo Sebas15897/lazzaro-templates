@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
-import { GetAllProjects, GetProjectsSectionAction } from './portfolio.actions';
+import { GetAllProjects, GetProjectsSectionAction, SelectProjectAction } from './portfolio.actions';
 import { PortfolioService } from '../../services/portfolio/portfolio.service';
 import {
   IPortfolioSection,
@@ -11,6 +11,7 @@ import {
 export interface PortfolioStateModel {
   portfolioSection: IPortfolioSection;
   portfolio: IProject[];
+  selectedProject: IProject;
 }
 
 @State<PortfolioStateModel>({
@@ -18,6 +19,7 @@ export interface PortfolioStateModel {
   defaults: {
     portfolioSection: null,
     portfolio: [],
+    selectedProject: null,
   },
 })
 
@@ -31,6 +33,10 @@ export class PortfolioState {
 
   @Selector() static ListAllProjects(state: PortfolioStateModel): IProject[] {
     return state?.portfolio ?? [];
+  }
+
+  @Selector() static SelectedProject(state: PortfolioStateModel): IProject {
+    return state?.selectedProject ?? null;
   }
 
   constructor(private portfolioDataService: PortfolioService) {}
@@ -69,5 +75,15 @@ export class PortfolioState {
         },
       })
     );
+  }
+
+  @Action(SelectProjectAction)
+  SelectProjectAction(
+    ctx: StateContext<PortfolioStateModel>,
+    { payload }: SelectProjectAction
+  ) {
+    return ctx.patchState({
+      selectedProject: payload,
+    })
   }
 }

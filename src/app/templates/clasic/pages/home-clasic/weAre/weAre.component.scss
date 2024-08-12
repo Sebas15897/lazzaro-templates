@@ -1,3 +1,7 @@
+img {
+  border-radius: 10px;
+}
+
 .generalShadow {
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
   -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
@@ -106,6 +110,11 @@
 }
 
 @media (max-width: 900px) {
+  .contentRight  {
+    width: 100%;
+    margin: 0;
+  }
+
   .container {
     flex-direction: column !important;
     row-gap: 25px;
@@ -115,11 +124,11 @@
     width: 100%;
   }
 
-  .contentRight{
+/*   .contentRight{
     width: 70%;
     min-height: 70vw;
     margin: auto;
-  }
+  } */
 
   .buttonSeeMore {
     margin: auto;

@@ -3,11 +3,16 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { IEvent, IEventsSection } from '../../interfaces/events.interface';
 import { EventsService } from '../../services/events/events.service';
-import { GetAllEvents, GetEventsSectionAction } from './events.actions';
+import {
+  GetAllEvents,
+  GetEventsSectionAction,
+  SelectEventAction,
+} from './events.actions';
 
 export interface EventsStateModel {
   eventsSection: IEventsSection;
   events: IEvent[];
+  selectedEvent: IEvent;
 }
 
 @State<EventsStateModel>({
@@ -15,6 +20,7 @@ export interface EventsStateModel {
   defaults: {
     eventsSection: null,
     events: [],
+    selectedEvent: null,
   },
 })
 
@@ -26,6 +32,10 @@ export class EventsState {
 
   @Selector() static ListAllEvents(state: EventsStateModel): IEvent[] {
     return state?.events ?? [];
+  }
+
+  @Selector() static SelectEvent(state: EventsStateModel): IEvent {
+    return state?.selectedEvent ?? null;
   }
 
   constructor(private eventsDataService: EventsService) {}
@@ -61,5 +71,15 @@ export class EventsState {
         },
       })
     );
+  }
+
+  @Action(SelectEventAction)
+  SelectEventAction(
+    ctx: StateContext<EventsStateModel>,
+    { payload }: SelectEventAction
+  ) {
+    return ctx.patchState({
+      selectedEvent: payload,
+    });
   }
 }

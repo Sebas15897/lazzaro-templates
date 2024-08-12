@@ -6,13 +6,14 @@ import {
   IProject,
 } from '../../../../../core/interfaces/portfolio.iterface';
 import { PortfolioState } from '../../../../../core/store/portfolio/portfolio.state';
+import { Router } from '@angular/router';
+import { SelectProjectAction } from '../../../../../core/store/portfolio/portfolio.actions';
 
 @Component({
   selector: 'app-portafolio',
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.scss'],
 })
-
 export class PortafolioComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listProjects$: Observable<IProject[]> = new Observable();
@@ -21,7 +22,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   listProjects: IProject[];
   sectionProjects: IPortfolioSection;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.listProjects$ = this.store.select(PortfolioState.ListAllProjects);
     this.sectionProjects$ = this.store.select(PortfolioState.PortfolioSection);
   }
@@ -38,6 +39,15 @@ export class PortafolioComponent implements OnInit, OnDestroy {
     this.sectionProjects$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionProjects = resp;
     });
+  }
+
+  onSelectProject(project: IProject) {
+    this.store
+      .dispatch(new SelectProjectAction(project))
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        this.router.navigate(['/clasic/portafolio']);
+      });
   }
 
   ngOnDestroy() {

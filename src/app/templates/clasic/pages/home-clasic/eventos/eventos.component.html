@@ -19,6 +19,7 @@
       <div
         *ngFor="let event of listEvents"
         class="cardSpecific borderRadius generalShadow"
+        (click)="onSelectEvent(event)"
       >
         <img
           [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
