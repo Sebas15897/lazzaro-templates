@@ -40,8 +40,11 @@
   background-color: #ffffff;
 }
 
-.cardSpecific img {
+.imgCardEvents{
   width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
   border-radius: 6px 6px 0 0;
 }
 
