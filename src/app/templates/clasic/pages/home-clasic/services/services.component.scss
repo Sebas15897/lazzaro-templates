@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  
+
   flex-wrap: wrap;
   row-gap: 30px;
   column-gap: 20px;
@@ -80,4 +80,8 @@
 
 .card-container {
   width: 100%;
+}
+
+.cardServices, a {
+  text-decoration: none;
 }

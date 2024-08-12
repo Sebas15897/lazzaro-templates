@@ -1,45 +1,178 @@
-<div class="footer-container">
+<footer
+  class="footer-container"
+  [style.background-color]="styles?.footerColor"
+>
   <div class="firstPart d-flex">
-    <img src="assets/images/logo.png" alt="">
+    <img [src]="styles?.logo" [alt]="styles?.logo || 'Logo'" />
     <div class="containerOptions d-flex justify-content-evenly">
-      <ul>
-        <li class="optionList fw-bold fs-custom"><a href=""> Contact </a></li>
-        <li class="optionList"><a href=""> Address </a></li>
-        <li class="optionList"><a href=""> City </a></li>
-        <li class="optionList"><a href=""> Zip Cope </a></li>
-        <li class="optionList"><a href=""> Email </a></li>
-        <li class="optionList"><a href=""> Phone </a></li>
+      <ul class="listOptionsFooter">
+        <li
+          class="optionList fw-bold fs-custom"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        >
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }">Contact</a>
+        </li>
+        <li class="optionList" >
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }">Address</a>
+        </li>
+        <li class="optionList" >
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }">City</a>
+        </li>
+        <li class="optionList" >
+          <a href="" [ngStyle]="{ color: styles?.menuTextColor }">Zip Code</a>
+        </li>
+        <li class="optionList" >
+          <a  [ngStyle]="{ color: styles?.menuTextColor }">Email</a>
+        </li>
+        <li class="optionList" >
+          <a  [ngStyle]="{ color: styles?.menuTextColor }">Phone</a>
+        </li>
       </ul>
 
-      <ul>
-        <li class="optionList fw-bold fs-custom"><a href=""> Links </a></li>
-        <li class="optionList"><a href=""> Services </a></li>
-        <li class="optionList"><a href=""> Portafolio </a></li>
-        <li class="optionList"><a href=""> Events </a></li>
-        <li class="optionList"><a href=""> Blog </a></li>
-        <li class="optionList"><a href=""> Shop </a></li>
-        <li class="optionList"><a href=""> Contact </a></li>
+      <ul class="listOptionsFooter">
+        <li
+          class="optionList fw-bold fs-custom"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        >
+          <a [ngStyle]="{ color: styles?.menuTextColor }">Enlaces</a>
+        </li>
+        <li class="optionList">
+          <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/">Inicio</a>
+        </li>
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
+            fragment="services"
+          >
+            Servicios
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
+            fragment="portafolio"
+          >
+            Portafolio
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
+            fragment="eventos"
+          >
+            Eventos
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/minimalist/blog"
+          >
+            Blog
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/minimalist/store"
+          >
+            Tienda
+          </a>
+        </li>
       </ul>
-
-    </div>
-    <div class="policyMobile">
-      <a href="" class="optionList"> Política de Privacidad </a>
-      <a href="" class="optionList"> Términos y Condiciones </a>
-      <a href="" class="optionList"> Código de Conducta </a>
+      <ul class="listOptionsFooter d-flex flex-column justify-content-center">
+        <li class="optionList">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/minimalist/contact"
+          >
+            Contacto
+          </a>
+        </li>
+        <li class="optionList" *ngIf="footer?.info?.terms">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/minimalist/terms"
+          >
+            Términos y condiciones
+          </a>
+        </li>
+        <li class="optionList" *ngIf="footer?.info?.transparency?.description">
+          <a
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/minimalist/transparency"
+          >
+            Transparencia
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-  <hr class="hr-custom">
+  <hr class="hr-custom" />
 
-  <div class="secondPart d-flex justify-content-between align-items-center flex-wrap">
-    <div class="socialMedia d-flex align-items-center column-gap-custom">
-      <img src="assets/images/icons8-instagramWhite.svg" alt="">
-      <img src="assets/images/icons8-linkedinWhite.svg" alt="">
-      <img src="assets/images/icons8-twitterxWhite.svg" alt="">
-    </div>
-    <div class="policy d-flex align-items-center column-gap-custom">
-      <a class="text-white " href="">Política de Privacidad</a>
-      <a class="text-white " href="">Términos y Condiciones</a>
-      <a class="text-white " href="">Código de Conducta</a>
+  <div
+    class="secondPart d-flex justify-content-between align-items-center flex-wrap"
+  >
+    <div
+      class="socialMedia d-flex align-items-center column-gap-custom justify-content-center"
+    >
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.instagram"
+        [href]="footer?.social?.instagram"
+        ><i
+          class="fa-brands fa-instagram"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.linkedIn"
+        [href]="footer?.social?.linkedIn"
+        ><i
+          class="fa-brands fa-linkedin"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.twitter"
+        [href]="footer?.social?.twitter"
+        ><i
+          class="fa-brands fa-x-twitter"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.facebook"
+        [href]="footer?.social?.facebook"
+        ><i
+          class="fa-brands fa-facebook"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.whatsapp"
+        [href]="footer?.social?.whatsapp"
+        ><i
+          class="fa-brands fa-whatsapp"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
+      <a
+        target="_blank"
+        *ngIf="footer?.social?.secondaryWeb"
+        [href]="footer?.social?.secondaryWeb"
+        ><i
+          class="fa-solid fa-globe"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+        ></i
+      ></a>
     </div>
   </div>
-</div>
+</footer>

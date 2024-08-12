@@ -42,16 +42,19 @@
     </div>
     <div class="contentRight">
       <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" />
-      <div class="overlay"></div>
     </div>
   </div>
 </div>
+
+<br>
+<br>
+<br>
 
 <div
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
 >
   <div
-    class="container containerSectionWeAre pt-0 d-flex justify-content-between flex-row-reverse"
+    class="container containerSectionWeAre py-4 d-flex justify-content-between flex-row-reverse"
     [ngClass]="{
       'flex-row-reverse': whyChooseUsData?.design?.layout === 'right'
     }"
@@ -96,7 +99,6 @@
         [src]="whyChooseUsData?.imgUrl"
         [alt]="whyChooseUsData?.imgUrl"
       />
-      <div class="overlay2"></div>
     </div>
   </div>
 </div>

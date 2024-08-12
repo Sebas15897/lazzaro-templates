@@ -1,22 +1,40 @@
-<div [ngStyle]="{ 'background-color': sectionServices?.properties?.background }" class="p-4">
+<div
+  [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
+  class="p-4"
+>
   <div
-    class="container containerOurSevices d-flex flex-column justify-content-center align-items-center row-gap-custom"
+    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
-    <h2 [ngStyle]="{ color: sectionServices?.properties?.titleColor }" class=" fw-bold fs-3 margin-bottom-0">{{ sectionServices?.properties?.title }}</h2>
-    <p [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }" class=" margin-bottom-0">{{ sectionServices?.properties?.subtitle }}</p>
+    <h2
+      [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
+      class="fw-bold fs-3 margin-bottom-0"
+    >
+      {{ sectionServices?.properties?.title }}
+    </h2>
+    <p
+      [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }"
+      class="margin-bottom-0"
+    >
+      {{ sectionServices?.properties?.subtitle }}
+    </p>
 
     <div
       class="containerSectionServices d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
     >
-      <div class="cardServices" [ngStyle]="{'background-color': sectionServices?.properties?.cardsBackground}" *ngFor="let service of listServices">
-        <div class="circle"></div>
-        <!-- <img src="assets/images/barco-de-carga.png" alt="" /> -->
-        <div  class="titleCard fw-bold">{{ service.service_name }}</div>
-        <div class="descriptionCard" 
+      <div
+        class="cardServices"
+        [ngStyle]="{
+          'background-color': sectionServices?.properties?.cardsBackground
+        }"
+        *ngFor="let service of listServices"
+      >
+        <img [src]="service.image_url" [alt]="service?.service_name" />
+        <div class="titleCard fw-bold">{{ service.service_name }}</div>
+        <div
+          class="descriptionCard"
           *ngIf="service.description"
           [innerHTML]="service.description"
-        >
-        </div>
+        ></div>
       </div>
     </div>
   </div>

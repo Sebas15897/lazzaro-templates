@@ -1,64 +1,42 @@
-<div
-  class="d-flex flex-column justify-content-center align-items-center row-gap-custom"
->
-  <h2 class="color-text fw-bold fs-3 margin-bottom-0">NUESTROS EVENTOS</h2>
-  <p class="fw-bold color-text fs-6 margin-bottom-0">Lorem Ipsum</p>
-
+<div [style]="{ 'background-color': sectionEvents?.properties?.background }">
   <div
-    class="cardsEventos d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
+    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
-    <div class="cardSpecific borderRadius generalShadow">
-      <img class="imgCardEvents" src="assets/images/portafolio1.jpeg" alt="" />
-      <div class="infoCard">
-        <p class="titleCard fw-bold fw-bold">Lorem ipsum</p>
-        <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quis nisi maxime ipsa rem temporibus sequi corporis itaque. Distinctio, voluptates!
-        </p>
-        <div class="date">
-          <img src="assets/images/calendar.svg" alt="" />
-          <p class="date margin-bottom-0">03/10/2024</p>
-        </div>
-      </div>
-      <div class="optionsCard d-flex justify-content-between flex-wrap">
-        <a class="color-text" href="#">Leer más</a>
+    <h2 class="color-text fw-bold fs-3 margin-bottom-0">
+      {{ sectionEvents?.properties?.title || "NUESTROS EVENTOS" }}
+    </h2>
+    <p class="fw-bold color-text fs-6 margin-bottom-0">
+      {{ sectionEvents?.properties?.subtitle || "Lorem Ipsum" }}
+    </p>
 
-        <a class="color-text fw-bold" href="#">Reservar</a>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <img class="imgCardEvents" src="assets/images/portafolio1.jpeg" alt="" />
-      <div class="infoCard">
-        <p class="titleCard fw-bold">Lorem ipsum</p>
-        <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quis nisi maxime ipsa rem temporibus sequi corporis itaque. Distinctio, voluptates!
-        </p>
-        <div class="date">
-          <img src="assets/images/calendar.svg" alt="" />
-          <p class="date margin-bottom-0">03/10/2024</p>
+    <div
+      class="d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
+    >
+      <div
+        *ngFor="let event of listEvents"
+        class="cardSpecific borderRadius generalShadow"
+        (click)="onSelectEvent(event)"
+        style="cursor: pointer"
+      >
+        <img
+          class="imgCardEvents"
+          [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
+          alt="{{ event.name }}"
+        />
+        <div class="infoCard">
+          <p class="titleCard fw-bold">{{ event.name }}</p>
+          <div [innerHTML]="event?.description"></div>
+          <div class="date">
+            <img src="assets/images/calendar.svg" alt="Calendar icon" />
+            <p class="date margin-bottom-0">
+              {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="optionsCard d-flex justify-content-between flex-wrap">
-        <a class="color-text" href="#">Leer más</a>
-
-        <a class="color-text fw-bold" href="#">Reservar</a>
-      </div>
-    </div>
-    <div class="cardSpecific borderRadius generalShadow">
-      <img class="imgCardEvents" src="assets/images/portafolio1.jpeg" alt="" />
-      <div class="infoCard">
-        <p class="titleCard fw-bold">Lorem ipsum</p>
-        <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quis nisi maxime ipsa rem temporibus sequi corporis itaque. Distinctio, voluptates!
-        </p>
-        <div class="date">
-          <img src="assets/images/calendar.svg" alt="" />
-          <p class="date margin-bottom-0">03/10/2024</p>
+        <div class="optionsCard d-flex justify-content-between flex-wrap">
+          <a class="color-text" [href]="event.url || '#'">Leer más</a>
+          <a class="color-text fw-bold" href="#">Reservar</a>
         </div>
-      </div>
-      <div class="optionsCard d-flex justify-content-between flex-wrap">
-        <a class="color-text" href="#">Leer más</a>
-
-        <a class="color-text fw-bold" href="#">Reservar</a>
       </div>
     </div>
   </div>

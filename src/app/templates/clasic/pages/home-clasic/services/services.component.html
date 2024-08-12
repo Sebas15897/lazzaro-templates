@@ -4,16 +4,16 @@
   [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
 >
   <div
-    class=" d-flex flex-column justify-content-center align-items-center row-gap-custom"
+    class="d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
     <p
-      class="fw-bold fs-6 margin-bottom-0"
+      class="fs-6 margin-bottom-0"
       [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
     >
       {{ sectionServices?.properties?.title }}
     </p>
     <h2
-      class="fw-bold margin-bottom-0"
+      class="margin-bottom-0"
       [ngStyle]="{ color: sectionServices?.properties?.subtitleColor }"
     >
       {{ sectionServices?.properties?.subtitle }}
@@ -29,13 +29,11 @@
           'background-color': sectionServices?.properties?.cardsBackground
         }"
       >
-        <img [src]="service.image_url" [alt]="service.service_name" />
-        <div class="titleCard fw-bold">{{ service.service_name }}</div>
-        <div
-          class="descriptionCard"
-          *ngIf="service.description"
-          [innerHTML]="service.description"
-        ></div>
+        <img [src]="service.image_url" [alt]="service?.service_name" />
+        <div class="titleCard fw-bold">{{ service?.service_name }}</div>
+        <div class="descriptionCard" *ngIf="service?.description">
+          {{ service?.description }}
+        </div>
       </div>
     </div>
   </div>
