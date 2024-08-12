@@ -1,4 +1,4 @@
-<div
+<footer
   class="footer-container"
   [style.background-color]="footer?.design?.backgroundColor"
 >
@@ -34,7 +34,7 @@
           class="optionList fw-bold fs-custom"
           [ngStyle]="{ color: styles?.menuTextColor }"
         >
-          <a [ngStyle]="{ color: styles?.menuTextColor }"> Enlances </a>
+          <a [ngStyle]="{ color: styles?.menuTextColor }"> Enlaces </a>
         </li>
         <li class="optionList">
           <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/">
@@ -43,7 +43,6 @@
         </li>
         <li class="optionList">
           <a
-            href=""
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/"
             fragment="services"
@@ -53,8 +52,8 @@
         </li>
         <li class="optionList">
           <a
-            fragment="portafolio"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            fragment="portafolio"
             routerLink="/"
           >
             Portafolio
@@ -62,8 +61,8 @@
         </li>
         <li class="optionList">
           <a
-            routerLink="/"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/"
             fragment="eventos"
           >
             Eventos
@@ -71,16 +70,16 @@
         </li>
         <li class="optionList">
           <a
-            routerLink="/clasic/blog"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern/blog"
           >
             Blog
           </a>
         </li>
         <li class="optionList">
           <a
-            routerLink="/clasic/store"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern/store"
           >
             Tienda
           </a>
@@ -89,24 +88,24 @@
       <ul class="listOptionsFooter d-flex flex-column justify-content-center">
         <li class="optionList">
           <a
-            routerLink="/clasic/contact"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern/contact"
           >
             Contacto
           </a>
         </li>
         <li class="optionList" *ngIf="footer?.info?.terms">
           <a
-            routerLink="/clasic/terms"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern/terms"
           >
-            Terminos y condiciones
+            Términos y condiciones
           </a>
         </li>
         <li class="optionList" *ngIf="footer?.info?.transparency?.description">
           <a
-            routerLink="/clasic/transparency"
             [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern/transparency"
           >
             Transparencia
           </a>
@@ -178,4 +177,4 @@
       ></a>
     </div>
   </div>
-</div>
+</footer>
