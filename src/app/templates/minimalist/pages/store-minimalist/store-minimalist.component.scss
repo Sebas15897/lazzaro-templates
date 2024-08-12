@@ -45,6 +45,13 @@ a {
   background-color: #dadde6;
 }
 
+.cardProduct img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+}
+
 .infoCard {
   padding: 15px;
 }
