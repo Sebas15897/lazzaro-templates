@@ -1,162 +1,155 @@
 .generalShadow {
-    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
-    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25) !important;
 }
 
 .borderRadius {
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
 
 .margin-bottom-0 {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .row-gap-custom {
-    row-gap: 35px;
+  row-gap: 35px;
 }
 
 .column-gap-custom {
-    column-gap: 20px;
+  column-gap: 20px;
 }
 
-.color-section{
-    color: #FF7456;
+.color-section {
+  color: #ff7456;
 }
 
 .contentLeft {
-    width: 50%;
+  width: 50%;
 }
 
 .contentRight {
-    width: 45%;
-}
-
-
-.container{
-    max-width: 90% !important;
-    width: 1200px;
-    padding-bottom: 4rem;
+  width: 45%;
 }
 
 .contentRight .imgRight {
-    width: 100%;
-    height: calc(100% - 65px);
-    object-fit: cover;
-    border-radius: 0px 0px 100px 0px;
+  width: 100%;
+  height: calc(100% - 65px);
+  object-fit: cover;
+  border-radius: 0px 0px 100px 0px;
 }
 
-.contentRight .imgRight2{
-    width: 100%;
-    height: calc(100%);
-    object-fit: cover;
-    border-radius: 0px 0px 0px 100px;
+.contentRight .imgRight2 {
+  width: 100%;
+  height: calc(100%);
+  object-fit: cover;
+  border-radius: 0px 0px 0px 100px;
 }
 
 .cardweAre {
-    width: 48%;
-    max-width: 3500px;
-    display: flex;
-    align-items: center;
-    column-gap: 5%;
-    padding: 10px;
+  width: 48%;
+  max-width: 3500px;
+  display: flex;
+  align-items: center;
+  column-gap: 5%;
+  padding: 10px;
 }
 
 .cardweAre .imgCard {
-    width: 30%;
-    max-width: 60px;
-    height: 60px;
-    border-radius: 6px;
+  width: 30%;
+  max-width: 60px;
+  height: 60px;
+  border-radius: 6px;
 }
 
 .infoCard {
-    width: calc(100% - 60px);
-    max-width: 65%;
+  width: calc(100% - 60px);
+  max-width: 65%;
 }
 
 .description {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .buttonSeeMore {
-    background-color: #FF7456;
-    color: #ffffff;
-    padding: 10px 25px;
-    width: max-content;
-    text-decoration: none;
-    border-radius: 25px;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
+  background-color: #ff7456;
+  color: #ffffff;
+  padding: 10px 25px;
+  width: max-content;
+  text-decoration: none;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
 }
 
 .fs-customList-option {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 @media (min-width: 900px) and (max-width: 1000px) {
-    .cardweAre {
-        flex-direction: column;
-    }
+  .cardweAre {
+    flex-direction: column;
+  }
 
-    .infoCard{
-        max-width: 100%;
-        width: 95%;
-        text-align: center;
-        row-gap: 5px;
-    }
+  .infoCard {
+    max-width: 100%;
+    width: 95%;
+    text-align: center;
+    row-gap: 5px;
+  }
 
-    .imgCard{
-        width: 60%;
-        max-width: auto;
-    }
+  .imgCard {
+    width: 60%;
+    max-width: auto;
+  }
 
-    .titleCard {
-        width: 100%;
-    }
+  .titleCard {
+    width: 100%;
+  }
 
-    .description{
-        width: 100%;
-    }
+  .description {
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
-    .container {
-        flex-direction: column !important;
-        row-gap: 25px;
-    }
+  .container {
+    flex-direction: column !important;
+    row-gap: 25px;
+  }
 
-    .contentLeft {
-        width: 100%;
-    }
+  .contentLeft {
+    width: 100%;
+  }
 
-    .contentRight{
-        width: 70%;
-        min-height: 70vw;
-        margin: auto;
-    }
+  .contentRight {
+    width: 70%;
+    min-height: 70vw;
+    margin: auto;
+  }
 
-    .buttonSeeMore {
-        margin: auto;
-    }
+  .buttonSeeMore {
+    margin: auto;
+  }
 }
 
 @media (max-width: 600px) {
-    .containerCardsWeAre {
-        flex-direction: column;
-    }
+  .containerCardsWeAre {
+    flex-direction: column;
+  }
 
-    .cardweAre {
-        width: 100%;
-        min-height: 110px;
-    }
+  .cardweAre {
+    width: 100%;
+    min-height: 110px;
+  }
 
-    .contentRight{
-        width: 100%;
-        min-height: 90vw;
-    }
-    .buttonSeeMore {
-        margin: 0;
-    }
-    }
+  .contentRight {
+    width: 100%;
+    min-height: 90vw;
+  }
+  .buttonSeeMore {
+    margin: 0;
+  }
+}
