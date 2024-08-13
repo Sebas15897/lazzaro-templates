@@ -44,7 +44,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
       .dispatch(new SelectProjectAction(project))
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
-        this.router.navigate(['/clasic/portafolio']);
+        this.router.navigate(['/minimalist/portafolio']);
       });
   }
 

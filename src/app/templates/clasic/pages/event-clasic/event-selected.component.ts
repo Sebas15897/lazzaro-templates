@@ -29,7 +29,6 @@ export class EventSelectedComponent implements OnInit, OnDestroy {
 
   subscribeState() {
     this.getEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
-      console.log(resp);
       this.event = resp;
     });
   }

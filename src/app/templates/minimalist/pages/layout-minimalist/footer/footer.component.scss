@@ -28,16 +28,15 @@
 }
 
 .optionList {
-  color: #ffffff;
   margin-bottom: 20px;
-}
-
-.optionList a {
-  color: #ffffff;
 }
 
 .fs-custom {
   font-size: 20px;
+}
+
+li {
+  list-style: none;
 }
 
 a {
@@ -45,8 +44,6 @@ a {
 }
 
 .hr-custom {
-  color: #ffffff;
-  background-color: #ffffff;
   height: 2px;
 }
 
@@ -86,7 +83,7 @@ a {
     .containerOptions{
       width: 100%;
     }
-    
+
     .footer-container{
       padding: 30px;
     }

@@ -50,6 +50,13 @@ export const routes: Routes = [
             (module) => module.ProductMinimalistModule
           ),
       },
+      {
+        path: 'events',
+        loadChildren: () =>
+          import('./pages/events-minimalist/events-minimalist.module').then(
+            (module) => module.EventsMinimalistModule
+          ),
+      },
     ],
   },
 ];

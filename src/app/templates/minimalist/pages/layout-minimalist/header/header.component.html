@@ -5,31 +5,65 @@
     <img class="logo" src="assets/images/logo.png" alt="logo" />
     <ul class="itemsPc nav-items d-flex gap-4">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Inicio</a>
+        <a
+          class="nav-link"
+          routerLink="/minimalist"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          >Inicio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" fragment="services">Servicios</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist"
+          fragment="services"
+          >Servicios</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" fragment="portafolio">Portafolio</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist"
+          fragment="portafolio"
+          >Portafolio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" fragment="eventos">Eventos</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist"
+          fragment="eventos"
+          >Eventos</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/minimalist/blog">Blog</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist/blog"
+          >Blog</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/minimalist/store">Tienda</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist/store"
+          >Tienda</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/minimalist/contact">Contacto</a>
+        <a
+          class="nav-link"
+          [ngStyle]="{ color: styles?.menuTextColor }"
+          routerLink="/minimalist/contact"
+          >Contacto</a
+        >
       </li>
     </ul>
-    <img
-      class="menuHeader"
-      src="assets/images/menuGreen.svg"
-      alt=""
-    />
+    <img class="menuHeader" src="assets/images/menuGreen.svg" alt="" />
   </div>
 </nav>
