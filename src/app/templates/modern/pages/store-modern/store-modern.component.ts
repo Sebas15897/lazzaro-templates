@@ -11,7 +11,7 @@ import { ShopState } from 'src/app/core/store/shop/shop.store';
   styleUrls: ['./store-modern.component.scss']
 })
 export class StoreModernComponent implements OnInit, OnDestroy {
-  
+
   private destroy: Subject<boolean> = new Subject<boolean>();
   listProducts$: Observable<IShop[]> = new Observable();
   sectionShop$: Observable<IShopSection> = new Observable();
@@ -39,7 +39,7 @@ export class StoreModernComponent implements OnInit, OnDestroy {
   }
 
   redirect(id: string) {
-    this.router.navigate([`/clasic/product/${id}`]);
+    this.router.navigate([`/modern/product/${id}`]);
   }
 
   ngOnDestroy() {

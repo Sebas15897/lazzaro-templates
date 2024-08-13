@@ -18,7 +18,7 @@
     <div
       class="cardsEventos d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
     >
-      <div class="cardSpecific" *ngFor="let event of listEvents">
+      <div class="cardSpecific" *ngFor="let event of listEvents"   (click)="onSelectEvent(event)">
         <img
           class="imgCardSpecif"
           [src]="event.images[0]?.url"

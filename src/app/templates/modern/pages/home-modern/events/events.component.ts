@@ -3,6 +3,8 @@ import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { IEvent, IEventsSection } from '../../../../../core/interfaces/events.interface';
 import { EventsState } from '../../../../../core/store/events/events.state';
+import { SelectEventAction } from '../../../../../core/store/events/events.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -18,7 +20,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   listEvents: IEvent[];
   sectionEvents: IEventsSection;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.listEvents$ = this.store.select(EventsState.ListAllEvents);
     this.sectionEvents$ = this.store.select(EventsState.EventsSection);
   }
@@ -35,6 +37,15 @@ export class EventsComponent implements OnInit, OnDestroy {
     this.sectionEvents$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionEvents = resp;
     });
+  }
+
+  onSelectEvent(event: IEvent) {
+    this.store
+      .dispatch(new SelectEventAction(event))
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        this.router.navigate(['/modern/events']);
+      });
   }
 
   ngOnDestroy() {

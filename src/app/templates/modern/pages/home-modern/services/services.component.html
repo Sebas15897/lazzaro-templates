@@ -24,9 +24,8 @@
         *ngFor="let service of listServices"
 
       >
-        <a 
+        <div
           *ngIf="service.calendly_url"
-          [href]="service.calendly_url"
           [ngStyle]="{
             'background-color': sectionServices?.properties?.cardsBackground
           }"
@@ -41,7 +40,7 @@
           </div>
           <div class="titleCard fw-bold">{{ service.service_name }}</div>
           <div class="descriptionCard" [innerHTML]="service.description"></div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
