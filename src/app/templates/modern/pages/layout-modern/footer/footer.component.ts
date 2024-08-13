@@ -54,6 +54,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 
     this.styles$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       if (resp) {
+        console.log(resp);
         this.styles = resp;
       } else {
         this.styles = null;

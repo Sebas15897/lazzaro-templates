@@ -22,7 +22,7 @@
 }
 
 .containerSection {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 80px auto;
 }
@@ -37,12 +37,13 @@
 
 .containerImages {
   width: 100%;
-  height: 95%;
+  max-height: 400px;
 }
 
 .carrusel img {
   width: 100%;
   height: 100%;
+  max-height: 400px;
   object-fit: cover;
 }
 
@@ -119,6 +120,6 @@
   }
 
   .containerSection {
-      margin: 80px auto 30px; 
+      margin: 80px auto 30px;
   }
 }

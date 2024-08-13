@@ -54,8 +54,15 @@ export const routes: Routes = [
       {
         path: 'contact',
         loadChildren: () =>
-          import('./pages//contact-clasic/contact-clasic.module').then(
+          import('./pages/contact-clasic/contact-clasic.module').then(
             (module) => module.ContactClasicModule
+          ),
+      },
+      {
+        path: 'blog',
+        loadChildren: () =>
+          import('./pages/blog-clasic/blog-clasic.module').then(
+            (module) => module.BlogClasicModule
           ),
       },
       {

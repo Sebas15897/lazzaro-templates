@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { LoadingState } from './core/store/loading/loading.state';

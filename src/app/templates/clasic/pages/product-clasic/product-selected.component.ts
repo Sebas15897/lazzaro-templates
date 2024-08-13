@@ -12,6 +12,7 @@ import { FormBuyComponent } from '../../../../shared/form-buy/form-buy.component
   templateUrl: './product-selected.component.html',
   styleUrls: ['./product-selected.component.scss'],
 })
+
 export class ProductSelectedComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listProducts$: Observable<IShop[]> = new Observable();

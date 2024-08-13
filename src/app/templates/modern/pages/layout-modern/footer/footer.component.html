@@ -12,27 +12,89 @@
 
       <ul>
         <li class="optionList fw-bold border-bottom-custom fs-custom">
-          <a href="#"> Contact </a>
+          <a href="#"> Contacto </a>
         </li>
         <li class="optionList">
           <a href="#">{{ footer?.info?.transparency?.fileUrl }}</a>
         </li>
-        <li class="optionList"><a href="#"> City </a></li>
-        <li class="optionList"><a href="#"> Zip Code </a></li>
-        <li class="optionList"><a href="#"> Email </a></li>
-        <li class="optionList"><a href="#"> Phone </a></li>
+        <li class="optionList">
+          <a href="#" [ngStyle]="{ color: styles?.menuTextColor }"> Ciudad </a>
+        </li>
+        <li class="optionList">
+          <a href="#" [ngStyle]="{ color: styles?.menuTextColor }">
+            Zip Code
+          </a>
+        </li>
+        <li class="optionList">
+          <a href="#" [ngStyle]="{ color: styles?.menuTextColor }"> Email </a>
+        </li>
+        <li class="optionList">
+          <a href="#" [ngStyle]="{ color: styles?.menuTextColor }"> Celular </a>
+        </li>
       </ul>
 
       <ul>
         <li class="optionList fw-bold border-bottom-custom fs-custom">
-          <a href="#"> Links </a>
+          <a href="#"> Enlaces </a>
         </li>
-        <li class="optionList"><a href="#"> Services </a></li>
-        <li class="optionList"><a href="#"> Portfolio </a></li>
-        <li class="optionList"><a href="#"> Events </a></li>
-        <li class="optionList"><a href="#"> Blog </a></li>
-        <li class="optionList"><a href="#"> Shop </a></li>
-        <li class="optionList"><a href="#"> Contact </a></li>
+        <li class="optionList">
+          <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/modern">
+            Inicio
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            href="#"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern"
+            fragment="services"
+          >
+            Servicios
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            href="#"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+            routerLink="/modern"
+            fragment="portafolio"
+          >
+            Portfolio
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/modern"
+            fragment="eventos"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Eventos
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/modern/blog"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Blog
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/modern/store"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Tienda
+          </a>
+        </li>
+        <li class="optionList">
+          <a
+            routerLink="/modern/contact"
+            [ngStyle]="{ color: styles?.menuTextColor }"
+          >
+            Contacto
+          </a>
+        </li>
       </ul>
 
       <div class="">
@@ -58,7 +120,6 @@
           >
             <img src="assets/images/icons8-twitterxRed.svg" alt="Twitter" />
           </a>
-          <!-- Añade más iconos y enlaces según sea necesario -->
         </div>
       </div>
     </div>

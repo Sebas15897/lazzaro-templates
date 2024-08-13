@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { ServicesState } from '../../../../core/store/services/services.state';
 import {
   IShop,
   IShopSection,

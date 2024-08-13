@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IWebConfig } from '../../interfaces/web-config.interface';
 import { AppSettings } from '../../config/app-settings/app.settings';
 import { IWebSite } from '../../interfaces/web.interface';

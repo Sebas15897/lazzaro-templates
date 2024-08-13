@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HomeClasicComponent } from './home-clasic.component';
 import { HomeClasicRoutingModule } from './home-clasic.routing.module';
 import { EventosComponent } from './eventos/eventos.component';
@@ -24,6 +24,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     CarouselComponent,
   ],
   imports: [CommonModule, HomeClasicRoutingModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
 export class HomeClasicModule {}
