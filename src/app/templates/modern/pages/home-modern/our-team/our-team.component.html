@@ -15,23 +15,33 @@
       {{ teamData?.subTitle }}
     </p>
 
-    <div
-      class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
-    >
-      <div class="cardSpecific" *ngFor="let member of teamData?.members">
-        <a [href]="member.linkedin" target="_blank">
-          <img [src]="member.picture" [alt]="member.name" />
-        </a>
-        <div class="infoCard p-2">
-          <p class="titleCard color-text fw-bold">{{ member.name }}</p>
-          <p class="description color-text">{{ member.position }}</p>
-          <div class="socialMedia">
-            <a *ngIf="member.linkedin" [href]="member.linkedin" target="_blank">
-              <img src="assets/images/icons8-linkedin1Red.svg" alt="LinkedIn" />
-            </a>
+
+
+  <div class="swiper-container container swiper-container-modern-team" style="position: relative; overflow: hidden;">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let member of teamData?.members">
+        <div class="cardSpecific" >
+          <a [href]="member.linkedin" target="_blank">
+            <img [src]="member.picture" [alt]="member.name" />
+          </a>
+          <div class="infoCard p-2">
+            <p class="titleCard color-text fw-bold">{{ member.name }}</p>
+            <p class="description color-text">{{ member.position }}</p>
+            <div class="socialMedia">
+              <a *ngIf="member.linkedin" [href]="member.linkedin" target="_blank">
+                <img src="assets/images/icons8-linkedin1Red.svg" alt="LinkedIn" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="sliderNext" (click)="slideNextTeam()">
+      <img src="assets/images/nextSlider.png" alt="">
+    </div>
+    <div class="sliderPrev" (click)="slidePrevTeam()">
+      <img src="assets/images/prevslider.png" alt="">
     </div>
   </div>
 </div>

@@ -5,7 +5,6 @@ import { IProject, IPortfolioSection } from '../../../../../core/interfaces/port
 import { PortfolioState } from '../../../../../core/store/portfolio/portfolio.state';
 import { SelectProjectAction } from '../../../../../core/store/portfolio/portfolio.actions';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-portafolio',
   templateUrl: './portafolio.component.html',
@@ -20,6 +19,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   listProjects: IProject[];
   sectionProjects: IPortfolioSection;
 
+
   constructor(private store: Store, private router: Router) {
     this.listProjects$ = this.store.select(PortfolioState.ListAllProjects);
     this.sectionProjects$ = this.store.select(PortfolioState.PortfolioSection);
@@ -27,11 +27,13 @@ export class PortafolioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
+
   }
 
   subscribeState() {
     this.listProjects$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.listProjects = resp;
+
     });
 
     this.sectionProjects$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
@@ -52,5 +54,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
+
+  
 }
 

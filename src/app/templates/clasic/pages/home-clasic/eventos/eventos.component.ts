@@ -64,16 +64,10 @@ export class EventosComponent implements OnInit, OnDestroy {
     this.destroy.unsubscribe();
   }
 
-  splitEvents(events: any[], size: number): any[][] {
-    const eventGroups = [];
-    for (let i = 0; i < events.length; i += size) {
-      eventGroups.push(events.slice(i, i + size));
-    }
-    return eventGroups;
-  }
+
 
   carrousel(){
-    this.swiperInstance = new Swiper('.swiper-container', {
+    this.swiperInstance = new Swiper('.swiper-container-event', {
       loop: true,
       pagination: {
         el: '.swiper-pagination',

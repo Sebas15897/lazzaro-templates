@@ -73,17 +73,6 @@ a {
   }
 }
 
-
-
-// slider
-.styleContainerSlider{
-  display: flex;
-  overflow: hidden;
-  max-width: calc((300px * 3) + 40px + var(--bs-gutter-x) * .5 + var(--bs-gutter-x) * .5);
-  position: relative;
-}
-
-
 // carrousel
 
 .swiper-container {
