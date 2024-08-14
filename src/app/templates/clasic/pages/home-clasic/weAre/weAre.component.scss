@@ -32,13 +32,12 @@ img {
 
 .contentLeft {
   width: 50%;
+  height: max-content;
 }
 
 .contentRight {
   width: 45%;
 }
-
-
 
 .contentRight .imgRight {
   width: 100%;
@@ -67,16 +66,34 @@ img {
   max-width: 65%;
 }
 
+.descriptionSectionAboutUs{
+  max-height: 190px;
+  overflow: hidden;
+}
+
+.imgAboutUs{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.containerRightAboutUs{
+  height: 100%;
+}
+
 .description {
   font-size: 14px;
+  max-height: 200px;
 }
 
 .buttonSeeMore {
-  background-color: #5c7df1;
+  background-color: #5C7DF1;
   color: #ffffff;
   padding: 10px 20px;
   width: max-content;
+  cursor: pointer;
   text-decoration: none;
+  
 }
 
 .fs-customList-option {
@@ -149,47 +166,3 @@ img {
   }
 }
 
-.row-gap-custom {
-  row-gap: 20px;
-}
-
-.column-gap-custom {
-  column-gap: 20px;
-}
-
-.generalShadow {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.borderRadius {
-  border-radius: 8px;
-}
-
-.imgCard {
-  width: 100%;
-  height: auto;
-}
-
-.infoCard {
-  padding: 10px;
-}
-
-.cardweAre {
-  width: 45%;
-}
-
-.buttonSeeMore {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  display: inline-block;
-}
-
-.listOptions li {
-  margin-bottom: 15px;
-}
-
-.fs-customList-option {
-  font-size: 1.5rem;
-}

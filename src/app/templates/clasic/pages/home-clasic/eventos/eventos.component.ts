@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
+
+
 import {
   IEvent,
   IEventsSection,
@@ -8,6 +10,7 @@ import {
 import { EventsState } from '../../../../../core/store/events/events.state';
 import { SelectEventAction } from '../../../../../core/store/events/events.actions';
 import { Router } from '@angular/router';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-eventos',
@@ -23,6 +26,8 @@ export class EventosComponent implements OnInit, OnDestroy {
   listEvents: IEvent[];
   sectionEvents: IEventsSection;
 
+  swiperInstance: Swiper;
+
   constructor(private store: Store, private router: Router) {
     this.listEvents$ = this.store.select(EventsState.ListAllEvents);
     this.sectionEvents$ = this.store.select(EventsState.EventsSection);
@@ -30,16 +35,19 @@ export class EventosComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
+    this.carrousel();
   }
 
   subscribeState() {
     this.listEvents$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.listEvents = resp;
+      this.carrousel();
     });
 
     this.sectionEvents$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionEvents = resp;
     });
+
   }
 
   onSelectEvent(event: IEvent) {
@@ -55,4 +63,50 @@ export class EventosComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
+
+
+
+  carrousel(){
+    this.swiperInstance = new Swiper('.swiper-container-event', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.sliderNext',
+        prevEl: '.sliderPrev'
+      },
+      slidesPerView: 3,
+      spaceBetween: 10,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        },
+        700: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1025: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+
+      }
+    });
+  }
+
+  slideNext() {
+    if (this.swiperInstance) {
+      this.swiperInstance.slideNext();
+    }
+  }
+
+  slidePrev() {
+    if (this.swiperInstance) {
+      this.swiperInstance.slidePrev();
+    }
+  }
 }
+

@@ -4,6 +4,8 @@
 >
   <div class="container d-flex justify-content-between flex-row-reverse">
     <div
+      #leftContentAboutUs
+      style="height: max-content; min-height:max-content;"
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"
     >
       <h2
@@ -17,7 +19,7 @@
         {{ aboutUs?.subTitle }}
       </p>
 
-      <span class="fs-6 color-text" [innerHTML]="aboutUs?.description"></span>
+      <span class="fs-6 color-text" class="descriptionSectionAboutUs" [ngStyle]="{maxHeight: maxHeightAboutUs }"  [innerHTML]="aboutUs?.description"></span>
 
       <div
         class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap row-gap-custom column-gap-custom"
@@ -30,14 +32,13 @@
           </div>
         </div>
       </div>
-      <a
-        href="#"
+      <div
         class="buttonSeeMore generalShadow"
         *ngIf="aboutUs?.features?.buttons?.length > 0"
-        >Leer más</a
-      >
+        (click)="seeMore()"
+        >Leer más</div>
     </div>
-    <div class="contentRight">
+    <div class="contentRight" style="min-height: 526px;" #rightContentAboutUs>
       <img class="imgRight" [src]="aboutUs?.imgUrl" alt="" />
     </div>
   </div>

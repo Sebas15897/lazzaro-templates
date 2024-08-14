@@ -9,35 +9,44 @@
       {{ sectionEvents?.properties?.subtitle || "Lorem Ipsum" }}
     </p>
 
-    <div
-      class="d-flex justify-content-around flex-wrap column-gap-custom row-gap-custom"
-    >
+    <div class="container" style="position: relative;">
       <div
-        *ngFor="let event of listEvents"
-        class="cardSpecific borderRadius generalShadow"
-        (click)="onSelectEvent(event)"
-        style="cursor: pointer"
+
+        class="d-flex column-gap-custom row-gap-custom"
       >
-        <img
-          class="imgCardEvents"
-          [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
-          alt="{{ event.name }}"
-        />
-        <div class="infoCard">
-          <p class="titleCard fw-bold">{{ event.name }}</p>
-          <div [innerHTML]="event?.description"></div>
-          <div class="date">
-            <img src="assets/images/calendar.svg" alt="Calendar icon" />
-            <p class="date margin-bottom-0">
-              {{ event.dates.event_start | date : "dd/MM/yyyy" }}
-            </p>
+      <div class="swiper-container  swiper-container-e-minimalist container" style="overflow: hidden;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let event of listEvents">
+            <div
+                class="cardSpecific borderRadius generalShadow"
+                (click)="onSelectEvent(event)"
+              >
+                <img
+                  [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
+                  alt=""
+                />
+                <div class="infoCard">
+                  <p class="titleCard fw-bold">{{ event.name }}</p>
+                  <div class="description" [innerHTML]="event.description"></div>
+                  <p class="date">
+                    {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+                  </p>
+                </div>
+                <div class="optionsCard d-flex justify-content-between flex-wrap">
+                  <a class="text-black" [href]="event.url || '#'">Leer más</a>
+                  <div class="text-black fw-bold">Reservar</div>
+                </div>
+              </div>
+            </div>
           </div>
+        <div class="swiper-pagination"></div>
+        <div class="sliderNext" (click)="slideNext()">
+          <img src="assets/images/nextSlider.png" alt="">
         </div>
-        <div class="optionsCard d-flex justify-content-between flex-wrap">
-          <a class="color-text" [href]="event.url || '#'">Leer más</a>
-          <a class="color-text fw-bold" href="#">Reservar</a>
+        <div class="sliderPrev" (click)="slidePrev()">
+          <img src="assets/images/prevslider.png" alt="">
         </div>
       </div>
-    </div>
+      
   </div>
 </div>
