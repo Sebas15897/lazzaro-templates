@@ -42,8 +42,8 @@ export class OurTeamComponent implements OnInit, OnDestroy {
   
 
   initializeSwiperTeamClasic() {
-    this.swiperInstanceTeamClasic = new Swiper('.swiper-container-event', {
-      // loop: true,
+    this.swiperInstanceTeamClasic = new Swiper('.swiper-container-modern-team', {
+      loop: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -52,7 +52,7 @@ export class OurTeamComponent implements OnInit, OnDestroy {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      slidesPerView: 2,
+      slidesPerView: 3,
       spaceBetween: 10,
       breakpoints: {
         320: {
@@ -64,14 +64,13 @@ export class OurTeamComponent implements OnInit, OnDestroy {
           spaceBetween: 20
         },
         1025: {
-          slidesPerView: 2,
-          spaceBetween: 10
+          slidesPerView: 3,
+          spaceBetween: 20
         },
       }
     });
   }
-
-
+  
   slideNextTeamClasic() {
     if (this.swiperInstanceTeamClasic) {
       this.swiperInstanceTeamClasic.slideNext();
