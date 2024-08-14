@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
+
+
 import {
   IEvent,
   IEventsSection,
@@ -55,4 +57,13 @@ export class EventosComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
+
+  splitEvents(events: any[], size: number): any[][] {
+    const eventGroups = [];
+    for (let i = 0; i < events.length; i += size) {
+      eventGroups.push(events.slice(i, i + size));
+    }
+    return eventGroups;
+  }
 }
+

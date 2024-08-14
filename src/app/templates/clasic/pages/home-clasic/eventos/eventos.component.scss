@@ -56,9 +56,13 @@ a {
 }
 
 .description {
-  max-height: 120px;
+  height: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease;
 }
 
 @media (max-width: 900px) {
@@ -66,4 +70,14 @@ a {
     clip-path: initial;
     padding: 40px 0;
   }
+}
+
+
+
+// slider
+.styleContainerSlider{
+  display: flex;
+  overflow: hidden;
+  max-width: calc((300px * 3) + 40px + var(--bs-gutter-x) * .5 + var(--bs-gutter-x) * .5);
+  position: relative;
 }

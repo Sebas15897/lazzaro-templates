@@ -24,6 +24,8 @@
 
 .containerReservas {
   background-color: #5c7df1;
+
+  padding: 40px;
 }
 
 .infoReservas {
@@ -51,4 +53,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+
+@media (max-width: 800px) {
+  .containerReservas{
+    flex-direction: column; 
+    row-gap: 30px;
+  }
+
+  .infoReservas{
+    row-gap: 30px;
+  }
+
+  .imgReservas{
+    width: 100%;
+  }
+
+  .infoReservas{
+    width: 100%;
+  }
 }

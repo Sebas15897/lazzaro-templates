@@ -72,3 +72,26 @@
     
 }
 
+@media (max-width: 700px) {
+    .containerReservas{
+        flex-direction: column;
+        background-color: #2C3E50;
+        row-gap: 30px;
+        padding-top: 0;
+    }
+    .imgReservas{
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        
+        top: -29px;
+        max-width: 100%;
+    }
+
+    .infoReservas{
+        width: 100%;
+        padding-left: 0;
+        height: auto;
+        row-gap: 30px;
+    }
+}

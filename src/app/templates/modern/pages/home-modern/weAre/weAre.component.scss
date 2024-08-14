@@ -34,6 +34,11 @@
 .contentLeft {
   width: 50%;
 }
+.descriptionSectionAboutUs{
+  max-height: 190px;
+  overflow: hidden;
+}
+
 
 .contentRight {
   width: 45%;
@@ -88,6 +93,7 @@
   border-radius: 25px;
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
+  cursor: pointer;
 }
 
 .fs-customList-option {
