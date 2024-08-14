@@ -23,13 +23,13 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.carrousel();
+    this.carrouselMinimalist();
   }
 
   subscribeState() {
     this.teamData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.teamData = resp;
-      this.carrousel();
+      this.carrouselMinimalist();
     });
   }
 
@@ -38,10 +38,10 @@ export class OurTeamComponent implements OnInit, OnDestroy {
     this.destroy.unsubscribe();
   }
 
-  swiperInstance: Swiper;
+  swiperInstanceMinimalist: Swiper;
 
-  carrousel(){
-    this.swiperInstance = new Swiper('.swiper-container-team-minimalist', {
+  carrouselMinimalist(){
+    this.swiperInstanceMinimalist = new Swiper('.swiper-container-clasic-minimalist', {
       loop: true,
       pagination: {
         el: '.swiper-pagination',
@@ -51,7 +51,7 @@ export class OurTeamComponent implements OnInit, OnDestroy {
         nextEl: '.sliderNext',
         prevEl: '.sliderPrev'
       },
-      slidesPerView: 3,
+      slidesPerView: 2,
       spaceBetween: 10,
       breakpoints: {
         320: {
@@ -63,7 +63,7 @@ export class OurTeamComponent implements OnInit, OnDestroy {
           spaceBetween: 20
         },
         1025: {
-          slidesPerView: 3,
+          slidesPerView: 2,
           spaceBetween: 20
         },
 
@@ -72,14 +72,14 @@ export class OurTeamComponent implements OnInit, OnDestroy {
   }
 
   slideNext() {
-    if (this.swiperInstance) {
-      this.swiperInstance.slideNext();
+    if (this.swiperInstanceMinimalist) {
+      this.swiperInstanceMinimalist.slideNext();
     }
   }
 
   slidePrev() {
-    if (this.swiperInstance) {
-      this.swiperInstance.slidePrev();
+    if (this.swiperInstanceMinimalist) {
+      this.swiperInstanceMinimalist.slidePrev();
     }
   }
 }

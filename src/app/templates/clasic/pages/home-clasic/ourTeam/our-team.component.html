@@ -15,13 +15,13 @@
   >
     {{ teamData?.subTitle }}
   </h2>
-
-  <!-- <div
+<!-- 
+  <div
     class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
   >
     <div
       class="cardSpecific borderRadius generalShadow"
-      *ngFor="let member of "
+      *ngFor="let member of teamData?.members"
     >
       <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
       <div class="infoCard">
@@ -31,22 +31,36 @@
       </div>
     </div>
   </div> -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let member of teamData?.members">
-        <div class="cardSpecific borderRadius generalShadow">
-          <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
-          <div class="infoCard">
-            <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
-            <p class="titleCard fw-bold">{{ member.name }}</p>
-            <p class="description">{{ member.position }}</p>
+
+
+  <div class="container" style="position: relative;">
+    <div
+
+      class="d-flex column-gap-custom row-gap-custom"
+    >
+    <div class="swiper-container swiper-container-event container" style="overflow: hidden;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let member of teamData?.members">
+          <div
+            class="cardSpecific borderRadius generalShadow"
+          >
+            <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
+            <div class="infoCard">
+              <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
+              <p class="titleCard fw-bold">{{ member.name }}</p>
+              <p class="description">{{ member.position }}</p>
+            </div>
           </div>
         </div>
+      <div class="swiper-pagination"></div>
+      <!-- <div class="sliderNext" (click)="slideNext()">
+        <img src="assets/images/nextSlider.png" alt="">
       </div>
+      <div class="sliderPrev" (click)="slidePrev()">
+        <img src="assets/images/prevslider.png" alt="">
+      </div> -->
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Add Navigation -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    
   </div>
+</div>
+</div>

@@ -16,7 +16,7 @@ export class OurTeamComponent implements OnInit, OnDestroy {
   teamData$: Observable<ITeam> = new Observable();
 
   teamData: ITeam;
-  swiperInstance1: Swiper;
+  swiperInstanceTeamClasic: Swiper;
 
   constructor(private store: Store) {
     this.teamData$ = this.store.select(WebState.teamData);
@@ -24,16 +24,15 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.initializeSwiper();
+    this.initializeSwiperTeamClasic();
   }
 
   subscribeState() {
     this.teamData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.teamData = resp;
-      this.initializeSwiper();
+      this.initializeSwiperTeamClasic();
     });
   }
-  swiperInstance: Swiper;
 
 
   ngOnDestroy() {
@@ -41,9 +40,10 @@ export class OurTeamComponent implements OnInit, OnDestroy {
     this.destroy.unsubscribe();
   }
   
-  initializeSwiper() {
-    this.swiperInstance = new Swiper('.swiper-container', {
-      loop: true,
+
+  initializeSwiperTeamClasic() {
+    this.swiperInstanceTeamClasic = new Swiper('.swiper-container-event', {
+      // loop: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -52,7 +52,7 @@ export class OurTeamComponent implements OnInit, OnDestroy {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      slidesPerView: 3,
+      slidesPerView: 2,
       spaceBetween: 10,
       breakpoints: {
         320: {
@@ -64,10 +64,23 @@ export class OurTeamComponent implements OnInit, OnDestroy {
           spaceBetween: 20
         },
         1025: {
-          slidesPerView: 3,
-          spaceBetween: 20
+          slidesPerView: 2,
+          spaceBetween: 10
         },
       }
     });
+  }
+
+
+  slideNextTeamClasic() {
+    if (this.swiperInstanceTeamClasic) {
+      this.swiperInstanceTeamClasic.slideNext();
+    }
+  }
+
+  slidePrevTeamClasic() {
+    if (this.swiperInstanceTeamClasic) {
+      this.swiperInstanceTeamClasic.slidePrev();
+    }
   }
 }

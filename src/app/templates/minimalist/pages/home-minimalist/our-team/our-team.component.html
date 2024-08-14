@@ -33,38 +33,41 @@
       </div>
     </div>
   </div> -->
+
   <div class="container" style="position: relative;">
     <div
+
       class="d-flex column-gap-custom row-gap-custom"
     >
-    <div class="swiper-container swiper-container-team-minimalist container" style="overflow: hidden;">
+    <div class="swiper-container  swiper-container-e-minimalist container" style="overflow: hidden;">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let member of teamData?.members">
+        <div class="swiper-slide"    *ngFor="let member of teamData?.members">
           <div
-            class="cardSpecific borderRadius generalShadow"
-          >
-            <img [src]="member.picture" [alt]="member.name" />
-            <div class="infoCard">
-              <p class="titleCard color-text fw-bold fw-bold">{{ member.name }}</p>
-              <p class="description color-text">
-                {{ member.position }}
-              </p>
-              <div class="socialMedia">
-                <img src="assets/images/icons8-instagram.svg" alt="" />
-                <img src="assets/images/icons8-tik-tok.svg" alt="" />
-                <img src="assets/images/icons8-twitterx.svg" alt="" />
-                <img src="assets/images/icons8-linkedin1.svg" alt="" />
-              </div>
+          class="cardSpecific borderRadius generalShadow"
+
+        >
+          <img [src]="member.picture" [alt]="member.name" />
+          <div class="infoCard">
+            <p class="titleCard color-text fw-bold fw-bold">{{ member.name }}</p>
+            <p class="description color-text">
+              {{ member.position }}
+            </p>
+            <div class="socialMedia">
+              <img src="assets/images/icons8-instagram.svg" alt="" />
+              <img src="assets/images/icons8-tik-tok.svg" alt="" />
+              <img src="assets/images/icons8-twitterx.svg" alt="" />
+              <img src="assets/images/icons8-linkedin1.svg" alt="" />
             </div>
           </div>
         </div>
-      <div class="swiper-pagination"></div>
+      <!-- <div class="swiper-pagination"></div>
       <div class="sliderNext" (click)="slideNext()">
         <img src="assets/images/nextSlider.png" alt="">
       </div>
       <div class="sliderPrev" (click)="slidePrev()">
         <img src="assets/images/prevslider.png" alt="">
-      </div>
+      </div> -->
     </div>
     
+</div>
 </div>
