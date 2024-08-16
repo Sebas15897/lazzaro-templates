@@ -1,14 +1,15 @@
-<nav class="modern-header w-100 d-flex justify-content-center">
+<nav class="modern-header w-100 d-flex justify-content-center" [class.backgroundHeader]="!menuOpen">
   <div
     class="modern-header-items d-flex justify-content-between align-items-center"
   >
     <img class="logo" src="assets/images/logo.png" alt="logo" />
-    <ul class="itemsPc nav-items d-flex gap-4">
+    <ul class="itemsPc nav-items d-flex gap-4" [class.hidden]="!menuOpen">
       <li class="nav-item active">
         <a
           class="nav-link"
           routerLink="/minimalist"
           [ngStyle]="{ color: styles?.menuTextColor }"
+          (click)="closeMenu()"
           >Inicio</a
         >
       </li>
@@ -18,6 +19,7 @@
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist"
           fragment="services"
+          (click)="closeMenu()"
           >Servicios</a
         >
       </li>
@@ -27,6 +29,7 @@
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist"
           fragment="portafolio"
+          (click)="closeMenu()"
           >Portafolio</a
         >
       </li>
@@ -36,6 +39,7 @@
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist"
           fragment="eventos"
+          (click)="closeMenu()"
           >Eventos</a
         >
       </li>
@@ -44,6 +48,7 @@
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist/blog"
+          (click)="closeMenu()"
           >Blog</a
         >
       </li>
@@ -52,6 +57,7 @@
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist/store"
+          (click)="closeMenu()"
           >Tienda</a
         >
       </li>
@@ -60,10 +66,11 @@
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/minimalist/contact"
+          (click)="closeMenu()"
           >Contacto</a
         >
       </li>
     </ul>
-    <img class="menuHeader" src="assets/images/menuGreen.svg" alt="" />
+    <img class="menuHeader"  [src]="menuOpen ? 'assets/images/closeMenuWhite.svg' : 'assets/images/menuGreen.svg'"alt="Menu" (click)="toggleMenu()"/>
   </div>
 </nav>
