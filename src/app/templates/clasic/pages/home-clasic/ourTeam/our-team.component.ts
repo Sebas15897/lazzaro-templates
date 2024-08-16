@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { ITeam } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
 import Swiper from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-our-team',
@@ -11,12 +12,12 @@ import Swiper from 'swiper';
   styleUrls: ['./our-team.component.scss'],
 })
 
-export class OurTeamComponent implements OnInit, OnDestroy {
+export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   teamData$: Observable<ITeam> = new Observable();
 
   teamData: ITeam;
-  swiperInstanceTeamClasic: Swiper;
+  swiperTeamClasic: Swiper;
 
   constructor(private store: Store) {
     this.teamData$ = this.store.select(WebState.teamData);
@@ -24,13 +25,11 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.initializeSwiperTeamClasic();
   }
 
   subscribeState() {
     this.teamData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.teamData = resp;
-      this.initializeSwiperTeamClasic();
     });
   }
 
@@ -41,46 +40,28 @@ export class OurTeamComponent implements OnInit, OnDestroy {
   }
   
 
-  initializeSwiperTeamClasic() {
-    this.swiperInstanceTeamClasic = new Swiper('.swiper-container-event', {
-      // loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      slidesPerView: 2,
-      spaceBetween: 10,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10
-        },
-        700: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        1025: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-      }
-    });
+  configTeam: SwiperOptions = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: true,
+  };
+
+  ngAfterViewInit() {
+    this.swiperTeamClasic = new Swiper('.swiper-container-two', this.configTeam);
   }
 
-
+  
   slideNextTeamClasic() {
-    if (this.swiperInstanceTeamClasic) {
-      this.swiperInstanceTeamClasic.slideNext();
+    if (this.swiperTeamClasic) {
+      this.swiperTeamClasic.slideNext();
     }
   }
 
   slidePrevTeamClasic() {
-    if (this.swiperInstanceTeamClasic) {
-      this.swiperInstanceTeamClasic.slidePrev();
+    if (this.swiperTeamClasic) {
+      this.swiperTeamClasic.slidePrev();
     }
   }
 }

@@ -55,15 +55,15 @@ export class OurTeamComponent implements OnInit, OnDestroy {
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 10
+          spaceBetween: 10,
         },
         700: {
           slidesPerView: 2,
-          spaceBetween: 20
+          spaceBetween: 10,
         },
         1025: {
           slidesPerView: 3,
-          spaceBetween: 20
+          spaceBetween: 10,
         },
       }
     });
