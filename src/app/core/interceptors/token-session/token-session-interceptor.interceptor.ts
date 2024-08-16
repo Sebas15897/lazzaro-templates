@@ -14,11 +14,15 @@ import {
   LoadingHiddeAction,
   LoadingShowAction,
 } from '../../store/loading/loading.actions';
+import { SweetAlertHelper } from '../../config/sweet-alert/sweet-alert.helper';
 
 @Injectable()
+
 export class LoadingInterceptor implements HttpInterceptor {
-  constructor(private store: Store) {
-  }
+  constructor(
+    private store: Store,
+    private sweetAlertHelper: SweetAlertHelper
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -29,9 +33,16 @@ export class LoadingInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
+          // Puedes agregar cualquier lógica aquí si es necesario
         }
       }),
       catchError((error: HttpErrorResponse) => {
+        this.sweetAlertHelper.createCustomAlert({
+          title: 'Error',
+          text: error.message,
+          icon: 'error',
+        });
+
         return throwError(() => error);
       }),
       finalize(() => {

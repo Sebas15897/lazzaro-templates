@@ -4,9 +4,10 @@
 >
   <div class="container d-flex justify-content-between py-4">
     <div
-    #leftContentAboutUS
-      style="height: max-content; min-height:max-content;"
-      class="contentLeft d-flex flex-column row-gap-custom2 column-gap-custom">
+      #leftContentAboutUS
+      style="height: max-content; min-height: max-content"
+      class="contentLeft d-flex flex-column row-gap-custom2 column-gap-custom"
+    >
       <p
         class="fw-bold fs-6 margin-bottom-0"
         [ngStyle]="{ color: aboutUs?.subTitleColor }"
@@ -21,8 +22,11 @@
         {{ aboutUs?.title }}
       </h2>
 
-      <span class="descriptionSectionAboutUs" 
-        [ngStyle]="{maxHeight: maxHeightAboutUs }" [innerHTML]="aboutUs?.description"></span>
+      <span
+        class="descriptionSectionAboutUs"
+        [ngStyle]="{ maxHeight: maxHeightAboutUs }"
+        [innerHTML]="aboutUs?.description"
+      ></span>
       <div
         class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap row-gap-custom2"
       >
@@ -40,15 +44,29 @@
         </div>
       </div>
 
-      <div
-        class="buttonSeeMore borderRadius generalShadow"
-        *ngIf="aboutUs?.features?.buttons?.length > 0"
-        (click)="seeMore()"
-        >Leer más</div
-      >
+      <div class="btn-container d-flex gap-4">
+        <div
+          class="buttonSeeMore borderRadius generalShadow"
+          *ngIf="aboutUs?.features?.buttons?.length > 0"
+          (click)="seeMore()"
+        >
+          Leer más
+        </div>
+        <div
+          *ngFor="let button of aboutUs?.features?.buttons"
+          class="buttonSeeMore borderRadius generalShadow"
+          (click)="redirect(button?.link)"
+        >
+          {{ button?.text }}
+        </div>
+      </div>
     </div>
-    <div class="contentRight containerRightAboutUs" style="min-height: 526px;" #rightContentAboutUs>
-      <img class="imgAboutUs"  [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" />
+    <div
+      class="contentRight containerRightAboutUs"
+      style="min-height: 526px"
+      #rightContentAboutUs
+    >
+      <img class="imgAboutUs" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" />
     </div>
   </div>
 </div>

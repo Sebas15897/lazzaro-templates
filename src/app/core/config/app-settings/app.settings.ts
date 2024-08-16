@@ -10,6 +10,10 @@ export class AppSettings {
     websites: EndPoints.urlBase('websites/'),
   };
 
+  public contact = {
+    postSendMail: EndPoints.urlBase('mail/send'),
+  }
+
   public services = {
     getServices: EndPoints.urlBase('service/member/'),
   };
