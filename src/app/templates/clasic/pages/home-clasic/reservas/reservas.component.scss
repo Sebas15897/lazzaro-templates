@@ -23,8 +23,6 @@
 }
 
 .containerReservas {
-  background-color: #5c7df1;
-
   padding: 40px;
 }
 
@@ -58,7 +56,7 @@
 
 @media (max-width: 800px) {
   .containerReservas{
-    flex-direction: column; 
+    flex-direction: column;
     row-gap: 30px;
   }
 

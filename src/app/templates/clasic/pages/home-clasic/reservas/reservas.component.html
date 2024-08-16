@@ -1,24 +1,48 @@
 <div
-  class="container  containerReservas d-flex justify-content-between generalShadow borderRadius"
+  class="py-4"
+  [ngStyle]="{ 'background-color': reservas?.design?.backgroundColor }"
 >
-  <div class="infoReservas">
-    <p class="text-white fw-bold fs-6 margin-bottom-0">RESERVAS</p>
+  <div
+    class="container containerReservas d-flex justify-content-between generalShadow borderRadius"
+    [ngStyle]="{ 'background-color': reservas?.design?.bannerColor }"
+  >
+    <div
+      class="infoReservas"
+      [ngClass]="{
+        'order-2': reservas?.design?.layout === 'right',
+        'order-1': reservas?.design?.layout === 'left'
+      }"
+    >
+      <p
+        class="fw-bold fs-6 margin-bottom-0"
+        [ngStyle]="{ color: reservas?.titleColor }"
+      >
+        {{ reservas?.title }}
+      </p>
 
-    <h2 class="text-white fw-bold fs-3 margin-bottom-0">Lorem ipsum</h2>
+      <h2
+        class="fw-bold fs-3 margin-bottom-0"
+        [ngStyle]="{ color: reservas?.subtitleColor }"
+      >
+        {{ reservas?.subTitle }}
+      </h2>
 
-    <p class="text-white fs-6">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime
-      iste possimus voluptatem sint non dolorem consectetur sequi quasi pariatur
-      a earum aut, rerum ad ipsa sit laborum eveniet eaque.
-    </p>
+      <p class="fs-6" [ngStyle]="{ color: reservas?.subtitleColor }">
+        {{ reservas?.subtitle }}
+      </p>
 
-    <a class="buttonReserva borderRadius" href="#">Reserva</a>
-  </div>
-  <div class="imgReservas">
-    <img
-      class="generalShadow borderRadius"
-      src="assets/images/portafolio1.jpeg"
-      alt=""
-    />
+      <a class="buttonReserva borderRadius" [href]="reservas?.buttonUrl">{{
+        reservas?.buttonText
+      }}</a>
+    </div>
+    <div
+      class="imgReservas"
+      [ngClass]="{
+        'order-1': reservas?.design?.layout === 'right',
+        'order-2': reservas?.design?.layout === 'left'
+      }"
+    >
+      <img class="generalShadow borderRadius" [src]="reservas?.imgUrl" alt="" />
+    </div>
   </div>
 </div>

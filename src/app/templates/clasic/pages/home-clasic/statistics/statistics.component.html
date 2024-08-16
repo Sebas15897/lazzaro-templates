@@ -1,24 +1,21 @@
-<div class="containerStatistics">
-  <div class="contentMetricsInfo d-flex justify-content-around align-items-center row-gap-custom">
-      <div class="contentMetric">
-        <img src="assets/images/icoUbication.svg" alt="">
-        <div class="number">+1250</div>
-        <div class="text">Lorem ipsum</div>
+<div
+  class="containerStatistics"
+  [ngStyle]="{ 'background-color': impactData?.design?.backgoundColor }"
+>
+  <div
+    class="contentMetricsInfo d-flex justify-content-around align-items-center row-gap-custom"
+  >
+    <div *ngFor="let item of impactData?.data" class="contentMetric">
+      <img [src]="item.url" [alt]="item.url" />
+      <div
+        class="number"
+        [ngStyle]="{ color: impactData?.design?.amountColor }"
+      >
+        +{{ item?.amount }}
       </div>
-      <div class="contentMetric">
-        <img src="assets/images/icoUbication.svg" alt="">
-        <div class="number">+1250</div>
-        <div class="text">Lorem ipsum</div>
+      <div class="text" [ngStyle]="{ color: impactData?.design?.color }">
+        {{ item?.text }}
       </div>
-      <div class="contentMetric">
-        <img src="assets/images/icoUbication.svg" alt="">
-        <div class="number">+1250</div>
-        <div class="text">Lorem ipsum</div>
-      </div>
-      <div class="contentMetric">
-        <img src="assets/images/icoUbication.svg" alt="">
-        <div class="number">+1250</div>
-        <div class="text">Lorem ipsum</div>
-      </div>
+    </div>
   </div>
 </div>

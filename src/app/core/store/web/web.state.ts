@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
   IAboutUs,
+  IBookings,
   IFooter,
   IHomePage,
+  IImpact,
   IStyle,
   ITeam,
   IWebSite,
@@ -20,7 +22,10 @@ import {
 } from '../services/services.actions';
 import { GetShopSection, getAllProducts } from '../shop/shop.actions';
 import { GetAllEvents, GetEventsSectionAction } from '../events/events.actions';
-import { GetAllProjects, GetProjectsSectionAction } from '../portfolio/portfolio.actions';
+import {
+  GetAllProjects,
+  GetProjectsSectionAction,
+} from '../portfolio/portfolio.actions';
 
 export interface WebStateModel {
   webProps: IWebSite;
@@ -67,6 +72,14 @@ export class WebState {
 
   @Selector() static footer(state: WebStateModel): IFooter {
     return state?.webProps?.properties?.footer ?? null;
+  }
+
+  @Selector() static impactData(state: WebStateModel): IImpact {
+    return state?.webProps?.properties?.impact ?? null;
+  }
+
+  @Selector() static bookings(state: WebStateModel): IBookings {
+    return state?.webProps?.properties?.bookings ?? null;
   }
 
   constructor(
