@@ -43,8 +43,8 @@
         <div class="swiper-pagination"></div>
         <!-- Botones de navegación -->
       </div>
-      <div class="swiper-button-prev" (click)="slidePrev()">  <img src="assets/images/prevslider.png" alt=""></div>
-      <div class="swiper-button-next" (click)="slideNext()"><img src="assets/images/nextSlider.png" alt=""></div>
+      <div class="swiper-button-prev" (click)="slidePrev()" *ngIf="listEvents.length > 3">  <img src="assets/images/prevslider.png" alt=""></div>
+      <div class="swiper-button-next" (click)="slideNext()" *ngIf="listEvents.length > 3"><img src="assets/images/nextSlider.png" alt=""></div>
     </div>
   </div>  
 </div>

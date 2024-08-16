@@ -80,7 +80,7 @@
       <div class="swiper-pagination"></div>
       <!-- Botones de navegación -->
     </div>
-    <div class="swiper-button-prev" (click)="slidePrev()">  <img src="assets/images/arrowPrevMinimalist.svg" alt=""></div>
-    <div class="swiper-button-next" (click)="slideNext()"><img src="assets/images/arrowMinimalist.svg" alt=""></div>
+    <div class="swiper-button-prev" (click)="slidePrev()" *ngIf="listEvents.length > 3">  <img src="assets/images/arrowPrevMinimalist.svg" alt=""></div>
+    <div class="swiper-button-next" (click)="slideNext()" *ngIf="listEvents.length > 3"><img src="assets/images/arrowMinimalist.svg" alt=""></div>
   </div>
 </div>
