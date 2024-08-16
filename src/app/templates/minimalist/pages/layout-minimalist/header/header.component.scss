@@ -1,9 +1,10 @@
 .modern-header {
-  // background-color: rgb(40, 91, 108);
+  background-color: transparent;
   height: 55px;
   position: absolute;
   z-index: 1000;
   top: 0;
+  transition: background-color ease 0.2s;
 }
 
 .modern-header-items {
@@ -36,22 +37,40 @@ a {
 }
 
 
+
+
+.backgroundHeader{
+  background-color: transparent !important;
+}
+
 @media (max-width: 800px) {
   .itemsPc{
-    display: none !important;
-    position: fixed;
-    top: 60px;
+    position: absolute;
+    top: 55px;
     z-index: 100;
     background-color: rgb(40, 91, 108);
-    width: 100%;
-    left: 0;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 10px 30px 30px;
     row-gap: 28px;
+    left: 0;
+    visibility: visible;
+    // transition: visibility ease 0.1s;
+    // right: 0;
   }
 
   .menuHeader{
     display: flex;
+  }
+  
+  .hidden{
+    visibility: hidden !important;
+    // right: -100% !important;
+    // transition: visibility ease 0.1s;
+  }
+
+  .modern-header {
+    background-color: rgb(40, 91, 108);
   }
 }

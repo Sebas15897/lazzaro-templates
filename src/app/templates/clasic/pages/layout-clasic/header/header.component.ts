@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
+    
   }
 
   subscribeState() {
@@ -48,5 +49,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy.next(true);
     this.destroy.unsubscribe();
+  }
+
+  menuOpen = false;
+
+  toggleMenu() {
+    console.log('toggle')
+    
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(){
+    this.menuOpen = false;
   }
 }
