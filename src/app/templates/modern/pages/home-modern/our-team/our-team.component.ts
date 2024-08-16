@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { ITeam } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
 import Swiper from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-our-team',
@@ -11,7 +12,7 @@ import Swiper from 'swiper';
   styleUrls: ['./our-team.component.scss'],
 })
 
-export class OurTeamComponent implements OnInit, OnDestroy {
+export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   teamData$: Observable<ITeam> = new Observable();
 
@@ -24,13 +25,11 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.initializeSwiperTeam();
   }
 
   subscribeState() {
     this.teamData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.teamData = resp;
-      this.initializeSwiperTeam();
     });
   }
 
@@ -39,36 +38,33 @@ export class OurTeamComponent implements OnInit, OnDestroy {
     this.destroy.unsubscribe();
   }
   
-  initializeSwiperTeam() {
-    this.swiperInstanceTeamModern = new Swiper('.swiper-container-modern-team', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
+    
+  config: SwiperOptions = {
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 10,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 10
       },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+      700: {
+        slidesPerView: 3,
+        spaceBetween: 20
       },
-      slidesPerView: 3,
-      spaceBetween: 10,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        700: {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-        1025: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-        },
-      }
-    });
-  }
+      1025: {
+        slidesPerView: 4,
+        spaceBetween: 20
+      },
+    }
 
+  };
+
+  ngAfterViewInit() {
+    this.swiperInstanceTeamModern = new Swiper('.swiper-container-modern-team', this.config);
+  }
 
   slideNextTeam() {
     if (this.swiperInstanceTeamModern) {
