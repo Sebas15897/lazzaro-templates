@@ -18,6 +18,11 @@
   row-gap: 30px;
 }
 
+.paddingCustom{
+  padding-top:30px !important;
+  padding-bottom:30px !important;
+}
+
 .column-gap-custom {
   column-gap: 20px;
 }
@@ -28,7 +33,7 @@
 
 .cardSpecific {
   max-width: 300px;
-  width: 90%;
+  width: 100%;
   background-color: #ffffff;
 }
 
@@ -82,11 +87,11 @@
   transform: translate(-50%, -50%);
 }
 .sliderPrev{
-  left: 0px;
+  left: 50px !important;
 }
 
 .sliderNext {
-  right: -32px;
+  right: 0;
 }
 
 @media (max-width: 480px) {
@@ -100,81 +105,59 @@
   
 }
 
-
-// carrousel
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
+.swiper-button-prev{
+  
 }
 
-.swiper-slide {
+.swiper-button-next{
+  
+}
+
+.swiper-button-prev::after{
+  content: '' !important;
+  
+}
+.swiper-button-next::after{
+  content: '' !important;
+}
+
+.swiper-slide{
+  width: 300px !important;
+  max-width: 90% !important;
+}
+
+.containerCarrousel{
+  position: relative;
+  // max-width: 1042px;
   display: flex;
   justify-content: center;
+  padding: 0 50px;
 }
 
-.card {
-  width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+.swiper-container{
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-}
-
-.card-body {
-  padding: 15px;
-}
-
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
+  position: relative;
+  // width: calc(90% - 100px);
   display: flex;
   justify-content: center;
 }
 
-
-
-.swiper-pagination-bullet {
-  background: #000;
-}
-
-.sliderPrev,
-.sliderNext {
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.sliderPrev{
-  left: 20px;
-}
-
-.sliderNext {
-  right: 20px;
-}
-
-@media (max-width: 480px) {
-  .sliderPrev{
-    left: 5%;
+@media (max-width: 900px) {
+  .diagonal {
+    clip-path: initial;
+    padding: 40px 0;
   }
-  
-  .sliderNext {
-    right: -3%;
+}
+
+@media (max-width: 500px) {
+  .swiper-button-prev{
+    display: none !important;
+  }
+  .swiper-button-next{
+    display: none !important;
+  }
+
+  .containerCarrousel{
+    padding: 0;
   }
 }

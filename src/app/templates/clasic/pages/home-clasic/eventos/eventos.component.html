@@ -4,7 +4,7 @@
   [style]="{ 'background-color': sectionEvents?.properties?.background }"
 >
   <div
-    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
+    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom" 
   >
     <p class="text-black fw-bold fs-6 margin-bottom-0">
       {{ sectionEvents?.properties?.subtitle || "NUESTROS EVENTOS" }}
@@ -13,13 +13,9 @@
       {{ sectionEvents?.properties?.title || "Eventos que se vienen" }}
     </h2>
 
-    <div class="container" style="position: relative;">
-      <div
-
-        class="d-flex column-gap-custom row-gap-custom"
-      >
-      <div class="swiper-container swiper-container-event container" style="overflow: hidden;">
-        <div class="swiper-wrapper">
+    <div class="container containerCarrousel" style="position: relative; max-width: 100%;">
+      <div class="swiper-container swiper-container-one container" style="width: 960px;" >
+        <div class="swiper-wrapper"  style="overflow: hidden;">
           <div class="swiper-slide" *ngFor="let event of listEvents">
             <div
                 class="cardSpecific borderRadius generalShadow"
@@ -43,16 +39,13 @@
               </div>
             </div>
           </div>
+        <!-- Paginación -->
         <div class="swiper-pagination"></div>
-        <div class="sliderNext" (click)="slideNext()">
-          <img src="assets/images/nextSlider.png" alt="">
-        </div>
-        <div class="sliderPrev" (click)="slidePrev()">
-          <img src="assets/images/prevslider.png" alt="">
-        </div>
+        <!-- Botones de navegación -->
       </div>
-      
+      <div class="swiper-button-prev" (click)="slidePrev()">  <img src="assets/images/prevslider.png" alt=""></div>
+      <div class="swiper-button-next" (click)="slideNext()"><img src="assets/images/nextSlider.png" alt=""></div>
     </div>
-  </div>
+  </div>  
 </div>
 

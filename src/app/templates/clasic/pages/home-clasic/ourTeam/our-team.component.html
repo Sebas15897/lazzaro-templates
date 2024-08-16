@@ -1,6 +1,6 @@
 <div
   *ngIf="teamData?.enabled"
-  class="d-flex flex-column justify-content-center align-items-center row-gap-custom p-4"
+  class="d-flex flex-column justify-content-center align-items-center row-gap-custom p-4 pb-0"
   [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }"
 >
   <p
@@ -16,21 +16,41 @@
     {{ teamData?.subTitle }}
   </h2>
 
-  <div
+  <!-- <div
     class="contentCards d-flex justify-content-center flex-wrap column-gap-custom row-gap-custom"
-  >
-    <div
-      class="cardSpecific borderRadius generalShadow"
-      *ngFor="let member of teamData?.members"
-    >
-      <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
-      <div class="infoCard">
-        <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
-        <p class="titleCard fw-bold">{{ member.name }}</p>
-        <p class="description">{{ member.position }}</p>
+  > -->
+
+  <!-- </div> -->
+
+    
+</div>
+<div class=" paddingCustom"   [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }">
+    <div class="container">
+      <div class="container containerCarrousel"  style="position: relative; max-width: 100%;">
+        <div class="swiper-container swiper-container-two container" style="width: 960px;" >
+          <div class="swiper-wrapper" style="overflow: hidden;">
+            <div class="swiper-slide" *ngFor="let member of teamData?.members">
+              <div class="cardSpecific borderRadius generalShadow">
+                <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />
+                <div class="infoCard">
+                  <img src="/assets/images/icons8-linkedin.svg" alt="linkedin" />
+                  <p class="titleCard fw-bold">{{ member.name }}</p>
+                  <p class="description">{{ member.position }}</p>
+                </div>
+              </div>
+            </div>
+            <!-- Pagin  ación -->
+            <div class="swiper-pagination"></div>
+            <!-- Botones de navegación -->
+          </div>
+        </div>
+        <div class="swiper-button-prev" (click)="slidePrevTeamClasic()"> <img src="assets/images/prevslider.png" alt=""></div>
+        <div class="swiper-button-next" (click)="slideNextTeamClasic()"><img src="assets/images/nextSlider.png" alt=""></div>
       </div>
     </div>
-  </div>
 
 
 </div>
+
+
+
