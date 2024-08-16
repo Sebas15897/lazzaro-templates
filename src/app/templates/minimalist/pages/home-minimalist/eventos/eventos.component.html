@@ -9,7 +9,7 @@
       {{ sectionEvents?.properties?.subtitle || "Lorem Ipsum" }}
     </p>
 
-    <div class="container" style="position: relative;">
+    <!-- <div class="container" style="position: relative;">
       <div
 
         class="d-flex column-gap-custom row-gap-custom"
@@ -48,5 +48,39 @@
         </div>
       </div>
       
+  </div> -->
+
+  <div class="container containerCarrousel" style="position: relative; max-width: 100%;">
+    <div class="swiper-container swiper-container-e-minimalist container" style="width: 960px;" >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let event of listEvents">
+          <div
+            class="cardSpecific borderRadius generalShadow"
+            (click)="onSelectEvent(event)"
+          >
+            <img
+              [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
+              alt=""
+            />
+            <div class="infoCard">
+              <p class="titleCard fw-bold">{{ event.name }}</p>
+              <div class="description" [innerHTML]="event.description"></div>
+              <p class="date">
+                {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+              </p>
+            </div>
+            <div class="optionsCard d-flex justify-content-between flex-wrap">
+              <a class="text-black" [href]="event.url || '#'">Leer más</a>
+              <div class="text-black fw-bold">Reservar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Paginación -->
+      <div class="swiper-pagination"></div>
+      <!-- Botones de navegación -->
+    </div>
+    <div class="swiper-button-prev" (click)="slidePrev()">  <img src="assets/images/arrowPrevMinimalist.svg" alt=""></div>
+    <div class="swiper-button-next" (click)="slideNext()"><img src="assets/images/arrowMinimalist.svg" alt=""></div>
   </div>
 </div>

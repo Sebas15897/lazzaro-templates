@@ -28,7 +28,7 @@
     <div class="container">
       <div class="container containerCarrousel"  style="position: relative; max-width: 100%;">
         <div class="swiper-container swiper-container-two container" style="width: 960px;" >
-          <div class="swiper-wrapper" style="overflow: hidden;">
+          <div class="swiper-wrapper">
             <div class="swiper-slide" *ngFor="let member of teamData?.members">
               <div class="cardSpecific borderRadius generalShadow">
                 <img class="imageOurTeamCard" [src]="member.picture" [alt]="member.name" />

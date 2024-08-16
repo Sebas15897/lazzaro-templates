@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { ITeam } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
 import Swiper from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-our-team',
@@ -11,7 +12,7 @@ import Swiper from 'swiper';
   styleUrls: ['./our-team.component.scss']
 })
 
-export class OurTeamComponent implements OnInit, OnDestroy {
+export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   teamData$: Observable<ITeam> = new Observable();
 
@@ -23,13 +24,11 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.carrouselMinimalist();
   }
 
   subscribeState() {
     this.teamData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.teamData = resp;
-      this.carrouselMinimalist();
     });
   }
 
@@ -40,44 +39,26 @@ export class OurTeamComponent implements OnInit, OnDestroy {
 
   swiperInstanceMinimalist: Swiper;
 
-  carrouselMinimalist(){
-    this.swiperInstanceMinimalist = new Swiper('.swiper-container-clasic-minimalist', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.sliderNext',
-        prevEl: '.sliderPrev'
-      },
-      slidesPerView: 2,
-      spaceBetween: 10,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10
-        },
-        700: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        1025: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
+  
+  configTeam: SwiperOptions = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: true,
+  };
 
-      }
-    });
+  ngAfterViewInit() {
+    this.swiperInstanceMinimalist = new Swiper('.swiper-container-clasic-minimalist', this.configTeam);
   }
 
-  slideNext() {
+  slideNextTeamMinimalist() {
     if (this.swiperInstanceMinimalist) {
       this.swiperInstanceMinimalist.slideNext();
     }
   }
 
-  slidePrev() {
+  slidePrevTeamMinimalist() {
     if (this.swiperInstanceMinimalist) {
       this.swiperInstanceMinimalist.slidePrev();
     }

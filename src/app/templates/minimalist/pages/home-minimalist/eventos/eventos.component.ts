@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
@@ -6,6 +6,7 @@ import { IEvent, IEventsSection } from '../../../../../core/interfaces/events.in
 import { SelectEventAction } from '../../../../../core/store/events/events.actions';
 import { EventsState } from '../../../../../core/store/events/events.state';
 import Swiper from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-eventos',
@@ -13,7 +14,7 @@ import Swiper from 'swiper';
   styleUrls: ['./eventos.component.scss']
 })
 
-export class EventosComponent implements OnInit, OnDestroy {
+export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listEvents$: Observable<IEvent[]> = new Observable();
   sectionEvents$: Observable<IEventsSection> = new Observable();
@@ -28,7 +29,6 @@ export class EventosComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    this.carrousel();
   }
 
   subscribeState() {
@@ -38,7 +38,6 @@ export class EventosComponent implements OnInit, OnDestroy {
 
     this.sectionEvents$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionEvents = resp;
-      this.carrousel();
     });
   }
 
@@ -58,35 +57,32 @@ export class EventosComponent implements OnInit, OnDestroy {
 
   swiperInstance: Swiper;
 
-  carrousel(){
-    this.swiperInstance = new Swiper('.swiper-container-e-minimalist', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
+  
+  config: SwiperOptions = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 10,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 10
       },
-      navigation: {
-        nextEl: '.sliderNext',
-        prevEl: '.sliderPrev'
+      700: {
+        slidesPerView: 2,
+        spaceBetween: 20
       },
-      slidesPerView: 3,
-      spaceBetween: 10,
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10
-        },
-        700: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        1025: {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
+      1025: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      },
+    }
 
-      }
-    });
+  };
+
+  ngAfterViewInit() {
+    this.swiperInstance = new Swiper('.swiper-container-e-minimalist', this.config);
   }
 
   slideNext() {
