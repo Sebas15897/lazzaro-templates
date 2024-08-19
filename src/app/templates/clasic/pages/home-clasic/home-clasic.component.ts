@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './home-clasic.component.html',
   styleUrls: ['./home-clasic.component.scss']
 })
+
 export class HomeClasicComponent {
 
 }

@@ -3,6 +3,7 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
   IAboutUs,
   IBookings,
+  IContact,
   IFooter,
   IHomePage,
   IImpact,
@@ -66,8 +67,8 @@ export class WebState {
     return state?.webProps?.properties?.team ?? null;
   }
 
-  @Selector() static webConfig(state: WebStateModel): ITeam {
-    return state?.webProps?.properties?.team ?? null;
+  @Selector() static webConfig(state: WebStateModel): IWebConfig {
+    return state?.webConfig ?? null;
   }
 
   @Selector() static footer(state: WebStateModel): IFooter {
@@ -80,6 +81,10 @@ export class WebState {
 
   @Selector() static bookings(state: WebStateModel): IBookings {
     return state?.webProps?.properties?.bookings ?? null;
+  }
+
+  @Selector() static contact(state: WebStateModel): IContact {
+    return state?.webProps?.properties?.contact ?? null;
   }
 
   constructor(

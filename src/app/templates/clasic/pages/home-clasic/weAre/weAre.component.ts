@@ -52,7 +52,7 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.heightRight();
     }, 1000);
-    
+
   }
 
   seeMore(){
@@ -64,10 +64,11 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       const divHeight = this.leftContentAboutUS.nativeElement.offsetHeight;
       this.rightContentAboutUs.nativeElement.style.height = `${divHeight}px`;
-      console.log(divHeight);
     }, 0);
-
   }
 
+  redirect(url: string) {
+    window.open(url, '_blank');
+  }
 
 }

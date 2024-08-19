@@ -37,13 +37,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeState();
-    
   }
 
   subscribeState() {
     this.styles$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.styles = resp;
+      if (resp) {
+        this.updateFavicon(resp?.logo);
+      }
     });
+  }
+
+  updateFavicon(iconUrl: string) {
+    const link: HTMLLinkElement | null =
+      document.querySelector("link[rel*='icon']");
+    if (link) {
+      link.href = iconUrl;
+    } else {
+      const newLink: HTMLLinkElement = document.createElement('link');
+      newLink.rel = 'icon';
+      newLink.href = iconUrl;
+      document.head.appendChild(newLink);
+    }
   }
 
   ngOnDestroy() {
@@ -54,12 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   menuOpen = false;
 
   toggleMenu() {
-    console.log('toggle')
-    
     this.menuOpen = !this.menuOpen;
   }
 
-  closeMenu(){
+  closeMenu() {
     this.menuOpen = false;
   }
 }

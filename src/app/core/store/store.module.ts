@@ -8,6 +8,7 @@ import { ShopState } from './shop/shop.store';
 import { EventsState } from './events/events.state';
 import { PortfolioState } from './portfolio/portfolio.state';
 import { LoadingState } from './loading/loading.state';
+import { ContactState } from './contact/contact.state';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { LoadingState } from './loading/loading.state';
         EventsState,
         PortfolioState,
         LoadingState,
+        ContactState
       ],
       {
         developmentMode: !environment.production,
