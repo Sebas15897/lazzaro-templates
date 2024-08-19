@@ -27,45 +27,71 @@
   </div> -->
   <div class="carousel-inner">
     <div class="carousel-item active">
+      
       <div
         class="hero-img"
-        [ngStyle]="{ 'background-image': 'url(' + homePage?.mainImage + ')' }"
-      ></div>
-      <div
-        class="carousel-caption d-none d-md-block"
-        [ngStyle]="{ 'justify-content': homePage?.design.layout }"
+        [ngStyle]="homePage?.design.layout == 'left-fill' || homePage?.design.layout == 'right-fill' ||  homePage?.design.layout == 'center' ? {'background-image': 'url(' + homePage?.mainImage + ')'} :  {'background': homePage?.design.backgroundColor}"
       >
+    
+      <!-- [ngStyle]="
+            homePage?.design.layout == 'left-fill' ? { 'justify-content': 'start' } : 
+            homePage?.design.layout == 'right-fill' ? { 'justify-content': 'end' } :
+            homePage?.design.layout == 'left' ? { 'justify-content': 'space-around', 'column-gap': '20px', 'flex-direction': 'row-reverse' } :
+            homePage?.design.layout == 'right' ? { 'justify-content': 'space-around', 'column-gap': '20px'} :
+            { 'justify-content': homePage?.design.layout } " style="transform: translateY(-50%); top: 50%; bottom: 0; height: max-content; align-items: center;" -->
         <div
-          class="hero-text"
-          [ngStyle]="{ 'text-align': homePage?.design.layout }"
+          class="carousel-caption d-none d-md-block golbalStyleCarrousel"
+          [ngClass]="{
+            'left-fill': homePage?.design.layout == 'left-fill',
+            'right-fill': homePage?.design.layout == 'right-fill',
+            'left': homePage?.design.layout == 'left',
+            'right': homePage?.design.layout == 'right',
+            'center': homePage?.design.layout == 'center' || homePage?.design.layout == 'default'
+          }"
         >
-          <h1 [ngStyle]="{ color: homePage?.titleColor }">
-            {{ homePage?.title }}
-          </h1>
-          <p [ngStyle]="{ color: homePage?.subTitleColor }">
-            {{ homePage?.subTitle }}
-          </p>
-          <a
-            class="btn btn-primary"
-            [href]="homePage?.firstButtonLink"
-            role="button"
-            target="_blank"
-            [ngStyle]="{
-              'background-color': homePage?.firstButtonColor,
-              'border-color': homePage?.firstButtonColor
-            }"
+
+          <div class="imgCarrousel" *ngIf="homePage?.design.layout != 'left-fill' && homePage?.design.layout != 'right-fill' &&  homePage?.design.layout != 'center'">
+            <img [src]="homePage?.mainImage" [alt]="homePage?.mainImage" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+          </div>
+          <div
+            class="hero-text"
+            style="height: max-content;"
+            [ngStyle]="
+            homePage?.design.layout == 'left-fill' ?{ 'text-align': 'left' } : 
+            homePage?.design.layout == 'right-fill' ?{ 'text-align': 'right' } :
+            homePage?.design.layout == 'center' ?{ 'text-align': 'center' } :
+            { 'text-align': 'left' }"
           >
-            {{ homePage?.firstButtonText }}
-          </a>
-          <a
-            class="btn btn-primary"
-            target="_blank"
-            [href]="homePage?.secondButtonLink"
-            role="button"
-            [ngStyle]="{ 'background-color': homePage?.secondButtonColor }"
-          >
-            {{ homePage?.secondButtonText }}
-          </a>
+            <h1 [ngStyle]="{ color: homePage?.titleColor }">
+              {{ homePage?.title }}
+            </h1>
+            <p [ngStyle]="{ color: homePage?.subTitleColor }">
+              {{ homePage?.subTitle }}
+            </p>
+            <a
+              class="btn btn-primary"
+              [href]="homePage?.firstButtonLink"
+              role="button"
+              target="_blank"
+              [ngStyle]="{
+                'background-color': homePage?.firstButtonColor,
+                'border-color': homePage?.firstButtonColor
+              }"
+              style="width: max-content;"
+            >
+              {{ homePage?.firstButtonText }}
+            </a>
+            <a
+              class="btn btn-primary"
+              target="_blank"
+              [href]="homePage?.secondButtonLink"
+              role="button"
+              [ngStyle]="{ 'background-color': homePage?.secondButtonColor }"
+              style="width: max-content;"
+            >
+              {{ homePage?.secondButtonText }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
