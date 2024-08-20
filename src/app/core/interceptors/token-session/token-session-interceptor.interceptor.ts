@@ -17,7 +17,6 @@ import {
 import { SweetAlertHelper } from '../../config/sweet-alert/sweet-alert.helper';
 
 @Injectable()
-
 export class LoadingInterceptor implements HttpInterceptor {
   constructor(
     private store: Store,
@@ -39,7 +38,7 @@ export class LoadingInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         this.sweetAlertHelper.createCustomAlert({
           title: 'Error',
-          text: error.message,
+          text: 'Ha ocurrido un error. Si el problema persiste, por favor, contacta con soporte técnico.',
           icon: 'error',
         });
 

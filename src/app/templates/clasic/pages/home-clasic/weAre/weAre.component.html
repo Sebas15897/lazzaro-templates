@@ -7,6 +7,7 @@
       #leftContentAboutUS
       style="height: max-content; min-height: max-content"
       class="contentLeft d-flex flex-column row-gap-custom2 column-gap-custom"
+      [ngClass]="{'order-2': aboutUs?.design.layout === 'right'}"
     >
       <p
         class="fw-bold fs-6 margin-bottom-0"
@@ -63,6 +64,7 @@
     </div>
     <div
       class="contentRight containerRightAboutUs"
+      [ngClass]="{'order-1': aboutUs?.design.layout === 'right'}"
       style="min-height: 526px"
       #rightContentAboutUs
     >
@@ -70,6 +72,7 @@
     </div>
   </div>
 </div>
+
 
 <br />
 <br />
@@ -130,3 +133,4 @@
     </div>
   </div>
 </div>
+
