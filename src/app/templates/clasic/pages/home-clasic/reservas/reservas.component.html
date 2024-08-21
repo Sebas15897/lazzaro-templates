@@ -4,13 +4,14 @@
 >
   <div
     class="container containerReservas d-flex justify-content-between generalShadow borderRadius"
-    [ngStyle]="{ 'background-color': reservas?.design?.bannerColor }"
+    [ngStyle]="reservas?.design?.layout === 'center' ? {'background-image': 'url(' + reservas?.imgUrl + ')', 'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat' } :{ 'background-color': reservas?.design?.bannerColor }"
   >
     <div
       class="infoReservas"
       [ngClass]="{
         'order-2': reservas?.design?.layout === 'right',
-        'order-1': reservas?.design?.layout === 'left'
+        'order-1': reservas?.design?.layout === 'left',
+        'center': reservas?.design?.layout === 'center'
       }"
     >
       <p
@@ -39,7 +40,8 @@
       class="imgReservas"
       [ngClass]="{
         'order-1': reservas?.design?.layout === 'right',
-        'order-2': reservas?.design?.layout === 'left'
+        'order-2': reservas?.design?.layout === 'left',      
+        'noneImage': reservas?.design?.layout === 'center'
       }"
     >
       <img class="generalShadow borderRadius" [src]="reservas?.imgUrl" alt="" />
