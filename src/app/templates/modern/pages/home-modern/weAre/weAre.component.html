@@ -1,5 +1,7 @@
 <div [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }">
-  <div class="container containerSectionWeAre d-flex justify-content-between ">
+  <div class="container containerSectionWeAre d-flex justify-content-between "
+  [ngStyle]=" aboutUs?.design.layout === 'right' ? {'flex-direction': 'row-reverse' } : {}"
+  >
     <div
       #leftContentAboutUS
       style="height: max-content; min-height:max-content;"
@@ -43,7 +45,9 @@
       >
     </div>
     <div class="contentRight" style="min-height: 526px;" #rightContentAboutUs>
-      <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" />
+      <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" 
+      [ngStyle]=" aboutUs?.design.layout === 'right' ? {'border-radius': '0px 0px 0px 100px' } : {'border-radius' : '0px 0px 100px 0px'}"
+      />
     </div>
   </div>
 </div>
@@ -98,6 +102,7 @@
     <div class="contentRight">
       <img
         class="imgRight2"
+        [ngStyle]=" whyChooseUsData?.design.layout === 'right' ? {'border-radius': '0px 0px 0px 100px' } : {'border-radius' : '0px 0px 100px 0px'}"
         [src]="whyChooseUsData?.imgUrl"
         [alt]="whyChooseUsData?.imgUrl"
       />

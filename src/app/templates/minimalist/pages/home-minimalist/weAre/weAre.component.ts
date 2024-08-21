@@ -41,6 +41,7 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
       this.whyChooseUsData = resp;
     });
   }
+  
 
   ngOnDestroy() {
     this.destroy.next(true);
