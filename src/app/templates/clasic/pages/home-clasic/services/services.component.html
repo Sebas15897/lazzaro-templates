@@ -36,7 +36,10 @@
         >
           {{ service?.service_name }}
         </div>
-        <div class="descriptionCard" [innerHTML]="service?.description"></div>
+        <div
+          class="descriptionCard"
+          [innerHTML]="sanitizeHtml(service?.description)"
+        ></div>
       </div>
     </div>
   </div>

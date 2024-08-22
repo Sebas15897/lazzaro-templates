@@ -4,11 +4,12 @@ import { EventsState } from '../../../../core/store/events/events.state';
 import { IEvent } from '../../../../core/interfaces/events.interface';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-selected',
   templateUrl: './event-selected.component.html',
-  styleUrls: ['./event-selected.component.scss']
+  styleUrls: ['./event-selected.component.scss'],
 })
 
 export class EventSelectedComponent implements OnInit, OnDestroy {
@@ -19,7 +20,7 @@ export class EventSelectedComponent implements OnInit, OnDestroy {
 
   event: IEvent;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private sanitizer: DomSanitizer) {
     this.getEvent$ = this.store.select(EventsState.SelectEvent);
   }
 
@@ -37,9 +38,13 @@ export class EventSelectedComponent implements OnInit, OnDestroy {
     this.activeIndex = index;
   }
 
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+
   ngOnDestroy() {
     this.store.dispatch(new SelectEventAction(null));
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  }
+}

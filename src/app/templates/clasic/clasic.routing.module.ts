@@ -38,7 +38,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'portafolio',
+        path: 'portafolio/:porfolioId',
         loadChildren: () =>
           import('./pages/portafolio-clasic/portafolio-clasic.module').then(
             (module) => module.PortafolioModule

@@ -29,10 +29,8 @@
         <div class="infoCard">
           <p class="text-black fw-bold fs-6">{{ product?.title }}</p>
           <p class="descriptionCard" [innerHTML]="product?.description"></p>
-          <div
-            class="options d-flex justify-content-between align-items-center"
-          >
-            <a class="seeMore" href="#">Leer más</a>
+          <div class="options d-flex justify-content-end align-items-center">
+            <!-- <a class="seeMore" href="#">Leer más</a> -->
             <button class="btn btn-primary" (click)="redirect(product?.id)">
               Comprar
             </button>

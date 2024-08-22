@@ -6,6 +6,7 @@ import {
   IServiceSection,
 } from '../../../../../core/interfaces/services.interface';
 import { ServicesState } from '../../../../../core/store/services/services.state';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-services',
@@ -21,9 +22,13 @@ export class ServicesComponent implements OnInit, OnDestroy {
   listServices: IService[];
   sectionServices: IServiceSection;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private sanitizer: DomSanitizer) {
     this.listServices$ = this.store.select(ServicesState.ListAllServices);
     this.sectionServices$ = this.store.select(ServicesState.ServiceSection);
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   ngOnInit() {

@@ -3,6 +3,9 @@
     <div class="text-center">
       <h2>Terminos y condiciones</h2>
     </div>
-    <div class="text-justify" [innerHTML]="footer.info.terms"></div>
+    <div
+      class="text-justify"
+      [innerHTML]="sanitizeHtml(footer?.info?.terms)"
+    ></div>
   </div>
 </div>
