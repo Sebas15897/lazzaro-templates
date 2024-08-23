@@ -5,7 +5,11 @@ import { TransparencyModule } from './transparency/transparency.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, TermsConditionsModule, TransparencyModule],
+  imports: [
+    CommonModule,
+    TermsConditionsModule,
+    TransparencyModule,
+  ],
 })
 
 export class SharedModule {}

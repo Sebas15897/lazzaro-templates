@@ -28,6 +28,7 @@
         [ngStyle]="{
           'background-color': sectionServices?.properties?.cardsBackground
         }"
+        (click)="payService(service)"
       >
         <img [src]="service.image_url" [alt]="service?.service_name" />
         <div

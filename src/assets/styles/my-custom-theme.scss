@@ -60,6 +60,11 @@ input, textarea {
   border-radius: 10px;
 }
 
+.form-check-input {
+  height: 16px !important;
+  padding: 0;
+}
+
 input::placeholder {
   font-style: normal;
   font-weight: 500;

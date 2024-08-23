@@ -1,0 +1,221 @@
+<div
+  class="container-sections container d-flex flex-column justify-content-center align-items-center"
+>
+<div class="tabs-container mb-4">
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngIf="payment_in_advance">
+      <a
+        class="nav-link"
+        [ngClass]="{ active: activeTab === 'pago', disabled: isPaySuccess }"
+        (click)="setActiveTab('pago')"
+        href="javascript:void(0);"
+      >
+        Pasarela de Pago
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [ngClass]="{ active: activeTab === 'cita', disabled: !isPaySuccess && payment_in_advance }"
+        (click)="setActiveTab('cita')"
+        href="javascript:void(0);"
+      >
+        Reserva de Cita
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div
+    *ngIf="activeTab === 'pago' && payment_in_advance"
+    class="form-container"
+  >
+    <form [formGroup]="formPayService" *ngIf="!isShowStripe">
+      <div class="row" formGroupName="client_info">
+        <div class="col-6 mb-3">
+          <div>
+            <label for="nombre" class="form-label"
+              >Nombre <span class="req">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              placeholder="Ingrese su nombre"
+              formControlName="fistName"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="apellidos" class="form-label"
+              >Apellidos <span class="req">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="apellidos"
+              placeholder="Ingrese sus apellidos"
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="email" class="form-label"
+              >Email <span class="req">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Ingrese su correo electrónico"
+              formControlName="email"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="movil" class="form-label">Móvil</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="movil"
+              placeholder="Ingrese su número móvil"
+              mask="000-000-0000"
+              formControlName="phone"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="direccion" class="form-label">Dirección</label>
+            <input
+              type="text"
+              class="form-control"
+              id="direccion"
+              placeholder="Ingrese su dirección"
+              formControlName="address"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="dni" class="form-label">DNI</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dni"
+              placeholder="Ingrese su DNI"
+              formControlName="dni"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="fecha-nacimiento" class="form-label"
+              >Fecha de nacimiento <span class="req">*</span></label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="fecha-nacimiento"
+              formControlName="birthdate"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="codigo-postal" class="form-label">Código postal</label>
+            <input
+              type="text"
+              class="form-control"
+              id="codigo-postal"
+              placeholder="Ingrese su código postal"
+              formControlName="postal_code"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="ciudad" class="form-label"
+              >Ciudad <span class="req">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="ciudad"
+              placeholder="Ingrese su ciudad"
+              formControlName="city"
+            />
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <div>
+            <label for="pais" class="form-label"
+              >País <span class="req">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="pais"
+              placeholder="Ingrese su país"
+              formControlName="country"
+            />
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <div>
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea
+              class="form-control"
+              id="mensaje"
+              rows="3"
+              placeholder="Ingrese su mensaje"
+              formControlName="message"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="privacidad"
+            formControlName="policy"
+          />
+          <label class="form-check-label" for="privacidad"
+            >Acepto la
+            <a href="https://lazzaro.io/tech/" target="_blank"
+              >política de privacidad.</a
+            ></label
+          >
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center align-items-center">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="formPayService.invalid"
+          (click)="payService()"
+        >
+          Pagar
+        </button>
+      </div>
+    </form>
+    <app-stripe
+      *ngIf="isShowStripe"
+      [payloadPayment]="formPayService.value"
+    ></app-stripe>
+  </div>
+
+  <div *ngIf="activeTab === 'cita'" class="form-container">
+    <iframe
+      [src]="sanitizedCalendlyUrl"
+      width="100%"
+      height="660"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>

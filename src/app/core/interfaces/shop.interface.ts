@@ -34,3 +34,10 @@ export interface IProperties {
   titleColor: string;
   subtitleColor: string;
 }
+
+export interface ICreateOrderPayload {
+  id: string;
+  member_id: string;
+  payment_id: string;
+  product_id: string;
+}
