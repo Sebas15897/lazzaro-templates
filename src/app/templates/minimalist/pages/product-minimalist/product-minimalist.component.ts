@@ -20,6 +20,8 @@ export class ProductMinimalistComponent implements OnInit, OnDestroy {
   productId: string;
   product: IShop;
 
+  activeIndex = 0;
+
   constructor(
     private store: Store,
     private router: Router,
@@ -47,6 +49,11 @@ export class ProductMinimalistComponent implements OnInit, OnDestroy {
       width: '600px',
       data: this.product,
     });
+  }
+
+  
+  setActiveIndex(index: number): void {
+    this.activeIndex = index;
   }
 
   ngOnDestroy() {

@@ -63,8 +63,8 @@
 }
 
 .description {
-  min-height: 70px;
-  max-height: 70px;
+  min-height: 30px;
+  max-height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -96,6 +96,11 @@
   overflow: hidden;
   position: relative;
   // width: calc(90% - 100px);
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-wrapper{
   display: flex;
   justify-content: center;
 }

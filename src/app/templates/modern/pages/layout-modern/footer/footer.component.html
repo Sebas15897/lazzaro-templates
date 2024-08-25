@@ -11,8 +11,10 @@
       <img [src]="styles?.logo" alt="Logo" />
 
       <ul>
-        <li class="optionList fw-bold border-bottom-custom fs-custom">
-          <a href="#"> Contacto </a>
+        <li class="optionList fw-bold fs-custom">
+          
+          <a 
+          [ngStyle]="{ color: styles?.menuTextColor, 'border-bottom': '3px solid ' + (styles?.menuTextColor) }"> Contacto </a>
         </li>
         <li class="optionList">
           <a href="#">{{ footer?.info?.transparency?.fileUrl }}</a>
@@ -34,8 +36,8 @@
       </ul>
 
       <ul>
-        <li class="optionList fw-bold border-bottom-custom fs-custom">
-          <a href="#"> Enlaces </a>
+        <li class="optionList fw-bold fs-custom">
+          <a [ngStyle]="{ color: styles?.menuTextColor, 'border-bottom': '3px solid ' + (styles?.menuTextColor) }" > Enlaces </a>
         </li>
         <li class="optionList">
           <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/modern">

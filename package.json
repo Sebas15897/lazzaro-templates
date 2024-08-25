@@ -26,7 +26,7 @@
     "@ngxs/devtools-plugin": "^18.0.0-dev.master-f15c5bb",
     "@ngxs/logger-plugin": "^18.0.0-dev.master-f15c5bb",
     "@ngxs/store": "^18.0.0-dev.master-f15c5bb",
-    "@stripe/stripe-js": "^4.3.0",
+    "@stripe/stripe-js": "",
     "bootstrap": "^5.3.3",
     "ngx-mask": "^18.0.0",
     "ngx-spinner": "^17.0.0",

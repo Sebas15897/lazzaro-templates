@@ -20,6 +20,8 @@ export class ProductModernComponent implements OnInit, OnDestroy {
   productId: string;
   product: IShop;
 
+  activeIndex = 0;
+
   constructor(
     private store: Store,
     private router: Router,
@@ -49,6 +51,11 @@ export class ProductModernComponent implements OnInit, OnDestroy {
       data: this.product,
     });
   }
+
+  setActiveIndex(index: number): void {
+    this.activeIndex = index;
+  }
+
 
   ngOnDestroy() {
     this.destroy.next(true);

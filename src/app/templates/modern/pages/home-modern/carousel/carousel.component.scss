@@ -39,6 +39,12 @@
   }
 }
 
+.border-radius{
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+}
+
 @media (max-width: 600px) {
   .carousel-caption {
     transform: translateY(-25%);

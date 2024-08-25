@@ -97,6 +97,11 @@ a {
   content: '' !important;
 }
 
+.swiper-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .swiper-slide{
   width: 220px !important;
   max-width: 90% !important;
