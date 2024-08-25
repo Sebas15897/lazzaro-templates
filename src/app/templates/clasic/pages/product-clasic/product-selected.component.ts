@@ -46,7 +46,7 @@ export class ProductSelectedComponent implements OnInit, OnDestroy {
   buy() {
     this.dialog.open(FormBuyComponent, {
       width: '600px',
-      data: this.product,
+      data: this.productId,
     });
   }
 

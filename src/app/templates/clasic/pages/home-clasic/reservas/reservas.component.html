@@ -1,31 +1,34 @@
 <div
+  *ngIf="reservas.enabled"
   class="py-4"
   [ngStyle]="{ 'background-color': reservas?.design?.backgroundColor }"
 >
   <div
     class="container containerReservas d-flex justify-content-between generalShadow borderRadius"
-    [ngStyle]="reservas?.design?.layout === 'center' ? {'background-image': 'url(' + reservas?.imgUrl + ')', 'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat' } :{ 'background-color': reservas?.design?.bannerColor }"
+    [ngStyle]="
+      reservas?.design?.layout === 'center'
+        ? {
+            'background-image': 'url(' + reservas?.imgUrl + ')',
+            'background-size': 'cover',
+            'background-position': 'center',
+            'background-repeat': 'no-repeat'
+          }
+        : { 'background-color': reservas?.design?.bannerColor }
+    "
   >
     <div
       class="infoReservas"
       [ngClass]="{
         'order-2': reservas?.design?.layout === 'right',
         'order-1': reservas?.design?.layout === 'left',
-        'center': reservas?.design?.layout === 'center'
+        center: reservas?.design?.layout === 'center'
       }"
     >
-      <p
-        class="fw-bold fs-6 margin-bottom-0"
-        [ngStyle]="{ color: reservas?.titleColor }"
-      >
-        {{ reservas?.title }}
-      </p>
-
       <h2
         class="fw-bold fs-3 margin-bottom-0"
         [ngStyle]="{ color: reservas?.subtitleColor }"
       >
-        {{ reservas?.subTitle }}
+        {{ reservas?.title }}
       </h2>
 
       <p class="fs-6" [ngStyle]="{ color: reservas?.subtitleColor }">
@@ -40,8 +43,8 @@
       class="imgReservas"
       [ngClass]="{
         'order-1': reservas?.design?.layout === 'right',
-        'order-2': reservas?.design?.layout === 'left',      
-        'noneImage': reservas?.design?.layout === 'center'
+        'order-2': reservas?.design?.layout === 'left',
+        noneImage: reservas?.design?.layout === 'center'
       }"
     >
       <img class="generalShadow borderRadius" [src]="reservas?.imgUrl" alt="" />

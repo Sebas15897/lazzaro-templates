@@ -52,6 +52,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'pay-service/:serviceId',
+        loadChildren: () =>
+          import('./pages/pay-service/pay-service.module').then(
+            (module) => module.PayServiceModule
+          ),
+      },
+      {
         path: 'contact',
         loadChildren: () =>
           import('./pages/contact-clasic/contact-clasic.module').then(

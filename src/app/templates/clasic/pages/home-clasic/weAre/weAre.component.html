@@ -1,4 +1,5 @@
 <div
+  *ngIf="aboutUs.enabled"
   class="pb-4"
   [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }"
 >
@@ -7,7 +8,7 @@
       #leftContentAboutUS
       style="height: max-content; min-height: max-content"
       class="contentLeft d-flex flex-column row-gap-custom2 column-gap-custom"
-      [ngClass]="{'order-2': aboutUs?.design.layout === 'right'}"
+      [ngClass]="{ 'order-2': aboutUs?.design.layout === 'right' }"
     >
       <p
         class="fw-bold fs-6 margin-bottom-0"
@@ -29,6 +30,7 @@
         [innerHTML]="aboutUs?.description"
       ></span>
       <div
+        *ngIf="aboutUs?.features?.enabled"
         class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap row-gap-custom2"
       >
         <div
@@ -46,16 +48,10 @@
       </div>
 
       <div class="btn-container d-flex gap-4">
-        <div
-          class="buttonSeeMore borderRadius generalShadow"
-          *ngIf="aboutUs?.features?.buttons?.length > 0"
-          (click)="seeMore()"
-        >
-          Leer más
-        </div>
+        <div class="btn btn-primary" (click)="seeMore()">Leer más</div>
         <div
           *ngFor="let button of aboutUs?.features?.buttons"
-          class="buttonSeeMore borderRadius generalShadow"
+          class="btn btn-primary"
           (click)="redirect(button?.link)"
         >
           {{ button?.text }}
@@ -64,7 +60,7 @@
     </div>
     <div
       class="contentRight containerRightAboutUs"
-      [ngClass]="{'order-1': aboutUs?.design.layout === 'right'}"
+      [ngClass]="{ 'order-1': aboutUs?.design.layout === 'right' }"
       style="min-height: 526px"
       #rightContentAboutUs
     >
@@ -73,12 +69,12 @@
   </div>
 </div>
 
-
 <br />
 <br />
 <br />
 
 <div
+  *ngIf="whyChooseUsData.enabled"
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
 >
   <div
@@ -133,4 +129,3 @@
     </div>
   </div>
 </div>
-

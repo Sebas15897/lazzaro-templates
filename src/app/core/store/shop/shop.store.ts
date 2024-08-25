@@ -2,8 +2,13 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { IShop, IShopSection } from '../../interfaces/shop.interface';
-import { getAllProducts, GetShopSection } from './shop.actions';
+import {
+  getAllProducts,
+  GetShopSection,
+  PostCreateOrderAction,
+} from './shop.actions';
 import { ShopService } from '../../services/shop/shop.service';
+import { SweetAlertHelper } from '../../config/sweet-alert/sweet-alert.helper';
 
 export interface ShopStateModel {
   shopSection: IShopSection;
@@ -17,7 +22,6 @@ export interface ShopStateModel {
     shop: [],
   },
 })
-
 @Injectable()
 export class ShopState {
   @Selector() static ShopSection(state: ShopStateModel): IShopSection {
@@ -28,7 +32,10 @@ export class ShopState {
     return state?.shop ?? [];
   }
 
-  constructor(private shopService: ShopService) {}
+  constructor(
+    private shopService: ShopService,
+    private sweetAlertHelper: SweetAlertHelper
+  ) {}
 
   @Action(GetShopSection)
   GetShopSection(
@@ -63,6 +70,16 @@ export class ShopState {
           }
         },
       })
+    );
+  }
+
+  @Action(PostCreateOrderAction)
+  PostCreateOrderAction(
+    ctx: StateContext<ShopStateModel>,
+    { payload }: PostCreateOrderAction
+  ) {
+    return this.shopService.postCreatedOrder(payload).pipe(
+      tap({})
     );
   }
 }

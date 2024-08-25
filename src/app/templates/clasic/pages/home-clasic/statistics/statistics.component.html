@@ -1,5 +1,6 @@
 <div
   class="containerStatistics"
+  *ngIf="impactData.enabled"
   [ngStyle]="{ 'background-color': impactData?.design?.backgroundColor }"
 >
   <div

@@ -2,6 +2,7 @@
   class="diagonal"
   id="eventos"
   [style]="{ 'background-color': sectionEvents?.properties?.background }"
+  *ngIf="sectionEvents.active"
 >
   <div
     class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"

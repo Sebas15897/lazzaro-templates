@@ -39,13 +39,13 @@
       </div>
       <div
         (click)="seeMore()"
-        class="buttonSeeMore borderRadius generalShadow"
+        class="btn btn-primary borderRadius "
         *ngIf="aboutUs?.features?.buttons?.length > 0"
         >Leer más</div
       >
     </div>
     <div class="contentRight" style="min-height: 526px;" #rightContentAboutUs>
-      <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl" 
+      <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl"
       [ngStyle]=" aboutUs?.design.layout === 'right' ? {'border-radius': '0px 0px 0px 100px' } : {'border-radius' : '0px 0px 100px 0px'}"
       />
     </div>
