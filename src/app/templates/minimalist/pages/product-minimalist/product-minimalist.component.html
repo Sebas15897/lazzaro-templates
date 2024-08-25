@@ -2,17 +2,22 @@
   <div class="containerSection d-flex justify-content-between">
     <div class="carrusel">
       <div class="containerImages">
-        <img
-          class="borderRadius"
-          [src]="product?.default_img"
-          [alt]="product?.title"
-        />
+        <ng-container *ngFor="let image of product?.images; let i = index">
+          <img
+            class="borderRadius"
+            [src]="image"
+            [alt]="image"
+            *ngIf="activeIndex === i"
+          />
+        </ng-container>
       </div>
       <div class="buttons">
-        <div class="buttonOptions active" id="button1"></div>
-        <div class="buttonOptions" id="button2"></div>
-        <div class="buttonOptions" id="button3"></div>
-        <div class="buttonOptions" id="button4"></div>
+        <div
+          class="buttonOptions"
+          *ngFor="let image of product?.images; let i = index"
+          [class.active]="activeIndex === i"
+          (click)="setActiveIndex(i)"
+        ></div>
       </div>
     </div>
     <div class="infoSection row-gap-custom d-flex flex-column">
@@ -30,13 +35,6 @@
         <button class="btn btn-primary" (click)="buy()">
           Comprar
         </button>
-      </div>
-      <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>
-      <div class="socialMedia d-flex align-items-center column-gap-custom">
-        <img src="assets/images/icons8-instagramWhite.svg" alt="Instagram" />
-        <img src="assets/images/icons8-linkedinWhite.svg" alt="LinkedIn" />
-        <img src="assets/images/icons8-twitterxWhite.svg" alt="Twitter" />
-        <img src="assets/images/icons8-whatsappWhite.svg" alt="WhatsApp" />
       </div>
     </div>
   </div>

@@ -5,9 +5,9 @@
 }
 
 .borderRadius {
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
 }
 
 .margin-bottom-0 {
@@ -84,16 +84,12 @@
   font-size: 14px;
 }
 
+
 .buttonSeeMore {
-  background-color: #ff7456;
-  color: #ffffff;
-  padding: 10px 25px;
   width: max-content;
-  text-decoration: none;
   border-radius: 25px;
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
-  cursor: pointer;
 }
 
 .fs-customList-option {
