@@ -26,6 +26,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   subscribeState() {
     this.impactData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      console.log(resp, 'respuesta');
       this.impactData = resp;
     });
   }

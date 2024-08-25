@@ -7,13 +7,13 @@ import {
 } from '../../../../../core/interfaces/portfolio.iterface';
 import { PortfolioState } from '../../../../../core/store/portfolio/portfolio.state';
 import { Router } from '@angular/router';
-import { SelectProjectAction } from '../../../../../core/store/portfolio/portfolio.actions';
 
 @Component({
   selector: 'app-portafolio',
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.scss'],
 })
+
 export class PortafolioComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listProjects$: Observable<IProject[]> = new Observable();
@@ -42,12 +42,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   }
 
   onSelectProject(project: IProject) {
-    this.store
-      .dispatch(new SelectProjectAction(project))
-      .pipe(takeUntil(this.destroy))
-      .subscribe(() => {
-        this.router.navigate(['/clasic/portafolio']);
-      });
+    this.router.navigate([`/clasic/portafolio/${project.id}`]);
   }
 
   ngOnDestroy() {

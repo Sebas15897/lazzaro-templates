@@ -1,10 +1,9 @@
-<!-- carousel.component.html -->
 <div
   id="carouselExampleIndicators"
   class="carousel slide"
   data-bs-ride="carousel"
 >
-  <div class="carousel-indicators">
+  <!--   <div class="carousel-indicators">
     <button
       type="button"
       data-bs-target="#carouselExampleIndicators"
@@ -25,21 +24,102 @@
       data-bs-slide-to="2"
       aria-label="Slide 3"
     ></button>
-  </div>
+  </div> -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <!-- <img src="assets/images/hero.jpeg" class="d-block w-100 img-hero" style="height: 500px;" alt="First slide" /> -->
-      <div class="hero-img"></div>
-      <div class="carousel-caption d-none d-md-block">
-        <div class="hero-text">
-          <h1>BUCEA CON NOSOTROS Y EXPLORA MUCHO</h1>
-          <p>Explora el gran azul y su abanico de posibilidades</p>
-          <button class="btn btn-primary" href="#" role="button">Compra</button>
-          <button class="btn btn-primary" href="#" role="button">Reserva</button>
+      <div
+        class="hero-img"
+        [ngStyle]="
+          homePage?.design.layout == 'left-fill' ||
+          homePage?.design.layout == 'right-fill' ||
+          homePage?.design.layout == 'center'
+            ? { 'background-image': 'url(' + homePage?.mainImage + ')' }
+            : { background: homePage?.design.backgroundColor }
+        "
+      >
+        <!-- [ngStyle]="
+            homePage?.design.layout == 'left-fill' ? { 'justify-content': 'start' } :
+            homePage?.design.layout == 'right-fill' ? { 'justify-content': 'end' } :
+            homePage?.design.layout == 'left' ? { 'justify-content': 'space-around', 'column-gap': '20px', 'flex-direction': 'row-reverse' } :
+            homePage?.design.layout == 'right' ? { 'justify-content': 'space-around', 'column-gap': '20px'} :
+            { 'justify-content': homePage?.design.layout } " style="transform: translateY(-50%); top: 50%; bottom: 0; height: max-content; align-items: center;" -->
+        <div
+          class="carousel-caption d-none d-md-block golbalStyleCarrousel"
+          [ngClass]="{
+            'left-fill': homePage?.design.layout == 'left-fill',
+            'right-fill': homePage?.design.layout == 'right-fill',
+            left: homePage?.design.layout == 'left',
+            right: homePage?.design.layout == 'right',
+            center:
+              homePage?.design.layout == 'center' ||
+              homePage?.design.layout == 'default'
+          }"
+        >
+          <div
+            class="imgCarrousel"
+            *ngIf="
+              homePage?.design.layout != 'left-fill' &&
+              homePage?.design.layout != 'right-fill' &&
+              homePage?.design.layout != 'center'
+            "
+          >
+            <img
+              [src]="homePage?.mainImage"
+              [alt]="homePage?.mainImage"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+              "
+            />
+          </div>
+          <div
+            class="hero-text"
+            style="height: max-content"
+            [ngStyle]="
+              homePage?.design.layout == 'left-fill'
+                ? { 'text-align': 'left' }
+                : homePage?.design.layout == 'right-fill'
+                ? { 'text-align': 'right' }
+                : homePage?.design.layout == 'center'
+                ? { 'text-align': 'center' }
+                : { 'text-align': 'left' }
+            "
+          >
+            <h1 [ngStyle]="{ color: homePage?.titleColor }">
+              {{ homePage?.title }}
+            </h1>
+            <p [ngStyle]="{ color: homePage?.subTitleColor }">
+              {{ homePage?.subTitle }}
+            </p>
+            <a
+              class="btn btn-primary"
+              [href]="homePage?.firstButtonLink"
+              role="button"
+              target="_blank"
+              [ngStyle]="{
+                'background-color': homePage?.firstButtonColor,
+                'border-color': homePage?.firstButtonColor
+              }"
+              style="width: max-content"
+            >
+              {{ homePage?.firstButtonText }}
+            </a>
+            <a
+              class="btn btn-primary"
+              target="_blank"
+              [href]="homePage?.secondButtonLink"
+              role="button"
+              [ngStyle]="{ 'background-color': homePage?.secondButtonColor }"
+              style="width: max-content"
+            >
+              {{ homePage?.secondButtonText }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Add more carousel items here if needed -->
   </div>
   <a
     class="carousel-control-prev"

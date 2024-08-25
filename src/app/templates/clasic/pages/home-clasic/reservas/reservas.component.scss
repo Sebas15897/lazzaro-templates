@@ -53,6 +53,19 @@
   object-fit: cover;
 }
 
+.noneImage{
+  display:none;
+}
+
+.center{
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+  min-height: 300px;
+  text-align: center;
+}
+
 
 @media (max-width: 800px) {
   .containerReservas{

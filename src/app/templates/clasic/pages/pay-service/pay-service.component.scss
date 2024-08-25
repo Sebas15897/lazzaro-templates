@@ -1,0 +1,56 @@
+.tabs-container {
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+}
+
+.nav-tabs .nav-item {
+  width: 50%;
+  text-align: center;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #007bff;
+}
+
+.form-container {
+  background-color: #f4f8ff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.form-label {
+  color: #007bff;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.form-check-label {
+  color: #666;
+}
+
+#privacidad {
+  margin-right: 10px;
+}
+
+app-stripe {
+  width: 100%;
+}

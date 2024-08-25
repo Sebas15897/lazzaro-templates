@@ -1,7 +1,20 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IAboutUs, IWhyChooseUs } from '../../../../../core/interfaces/web.interface';
+import {
+  IAboutUs,
+  IWhyChooseUs,
+} from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
 
 @Component({
@@ -18,10 +31,11 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
   aboutUs: IAboutUs;
   whyChooseUsData: IWhyChooseUs;
 
-  // Modificar el estilo de la pagina (quienes somo)
-  maxHeightAboutUs:String = "190px";
-  @ViewChild('leftContentAboutUS') leftContentAboutUS!: ElementRef<HTMLDivElement>;
-  @ViewChild('rightContentAboutUs') rightContentAboutUs!: ElementRef<HTMLDivElement>;
+  maxHeightAboutUs: String = '190px';
+  @ViewChild('leftContentAboutUS')
+  leftContentAboutUS!: ElementRef<HTMLDivElement>;
+  @ViewChild('rightContentAboutUs')
+  rightContentAboutUs!: ElementRef<HTMLDivElement>;
 
   constructor(private store: Store, cdr: ChangeDetectorRef) {
     this.aboutUs$ = this.store.select(WebState.aboutUsData);
@@ -31,7 +45,6 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.subscribeState();
   }
-
 
   subscribeState() {
     this.aboutUs$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
@@ -52,15 +65,15 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.heightRight();
     }, 1000);
-
   }
 
-  seeMore(){
-    this.maxHeightAboutUs = this.maxHeightAboutUs === '190px' ? '100%' : '190px';
+  seeMore() {
+    this.maxHeightAboutUs =
+      this.maxHeightAboutUs === '190px' ? '100%' : '190px';
     this.heightRight();
   }
 
-  heightRight(){
+  heightRight() {
     setTimeout(() => {
       const divHeight = this.leftContentAboutUS.nativeElement.offsetHeight;
       this.rightContentAboutUs.nativeElement.style.height = `${divHeight}px`;
@@ -70,5 +83,4 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
   redirect(url: string) {
     window.open(url, '_blank');
   }
-
 }

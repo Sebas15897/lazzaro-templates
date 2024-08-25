@@ -9,6 +9,7 @@ import { EventsState } from './events/events.state';
 import { PortfolioState } from './portfolio/portfolio.state';
 import { LoadingState } from './loading/loading.state';
 import { ContactState } from './contact/contact.state';
+import { PaymentState } from './payment/payment.state';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ContactState } from './contact/contact.state';
         EventsState,
         PortfolioState,
         LoadingState,
-        ContactState
+        ContactState,
+        PaymentState,
       ],
       {
         developmentMode: !environment.production,
@@ -29,4 +31,5 @@ import { ContactState } from './contact/contact.state';
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
   ],
 })
+
 export class StateModule {}

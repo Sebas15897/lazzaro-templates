@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 
-
 import {
   IEvent,
   IEventsSection,
@@ -12,6 +11,7 @@ import { SelectEventAction } from '../../../../../core/store/events/events.actio
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
 import { SwiperOptions } from 'swiper/types';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-eventos',
@@ -19,7 +19,7 @@ import { SwiperOptions } from 'swiper/types';
   styleUrls: ['./eventos.component.scss'],
 })
 
-export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
+export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listEvents$: Observable<IEvent[]> = new Observable();
   sectionEvents$: Observable<IEventsSection> = new Observable();
@@ -29,7 +29,11 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
 
   swiperEvents: Swiper;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {
     this.listEvents$ = this.store.select(EventsState.ListAllEvents);
     this.sectionEvents$ = this.store.select(EventsState.EventsSection);
   }
@@ -46,7 +50,6 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
     this.sectionEvents$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionEvents = resp;
     });
-
   }
 
   onSelectEvent(event: IEvent) {
@@ -56,6 +59,10 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
       .subscribe(() => {
         this.router.navigate(['/clasic/events']);
       });
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   ngOnDestroy() {
@@ -72,18 +79,17 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
     breakpoints: {
       320: {
         slidesPerView: 2,
-        spaceBetween: 10
+        spaceBetween: 10,
       },
       700: {
         slidesPerView: 2,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
       1025: {
         slidesPerView: 3,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
-    }
-
+    },
   };
 
   ngAfterViewInit() {
@@ -102,4 +108,3 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit  {
     }
   }
 }
-

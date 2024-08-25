@@ -26,3 +26,25 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+$button-primary-color: #a8a8a8; // Color por defecto en Sass
+
+:root {
+  --dynamic-button-primary-color: #{$button-primary-color}; // Convertir el valor de Sass a una variable CSS
+}
+
+.btn-primary {
+  background-color: var(--dynamic-button-primary-color) !important;
+  border-color: var(--dynamic-button-primary-color) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--dynamic-button-hover-color) !important;
+  border-color: var(--dynamic-button-hover-color) !important;
+}
+
+.swiper-wrapper {
+  padding: 0.5rem;
+}

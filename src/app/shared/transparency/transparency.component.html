@@ -5,7 +5,7 @@
     </div>
     <div
       class="text-justify"
-      [innerHTML]="footer.info.transparency.description"
+      [innerHTML]="sanitizeHtml(footer.info.transparency.description)"
     ></div>
   </div>
 </div>

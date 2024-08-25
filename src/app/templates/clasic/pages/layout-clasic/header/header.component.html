@@ -1,18 +1,22 @@
 <nav
-  class="modern-header w-100 d-flex justify-content-center" [class.backgroundHeader]="!menuOpen"
+  class="modern-header w-100 d-flex justify-content-center"
+  [class.backgroundHeader]="!menuOpen"
 >
   <div
     class="modern-header-items d-flex justify-content-between align-items-center"
   >
     <img class="logo" [src]="styles?.logo" alt="logo" />
-    <ul class="itemsPc nav-items d-flex gap-4"  [class.hidden]="!menuOpen">
+    <ul
+      class="list-header itemsPc nav-items d-flex gap-4"
+      [class.hidden]="!menuOpen"
+    >
       <li class="nav-item active">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
           routerLink="/"
           (click)="closeMenu()"
-          >Home</a
+          >Inicio</a
         >
       </li>
       <li class="nav-item">
@@ -45,7 +49,7 @@
           >Eventos</a
         >
       </li>
-      <li class="nav-item">
+      <!--       <li class="nav-item">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -53,7 +57,7 @@
           (click)="closeMenu()"
           >Blog</a
         >
-      </li>
+      </li> -->
       <li class="nav-item">
         <a
           class="nav-link"
@@ -75,7 +79,11 @@
     </ul>
     <img
       class="menuHeader"
-      [src]="menuOpen ? 'assets/images/closeMenuWhite.svg' : 'assets/images/menuGreen.svg'"
+      [src]="
+        menuOpen
+          ? 'assets/images/closeMenuWhite.svg'
+          : 'assets/images/menuGreen.svg'
+      "
       alt="Menu"
       (click)="toggleMenu()"
     />

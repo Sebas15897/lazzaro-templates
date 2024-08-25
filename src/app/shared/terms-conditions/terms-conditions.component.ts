@@ -3,13 +3,13 @@ import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { IFooter, IStyle } from '../../core/interfaces/web.interface';
 import { WebState } from '../../core/store/web/web.state';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-terms-conditions',
   templateUrl: './terms-conditions.component.html',
   styleUrls: ['./terms-conditions.component.scss'],
 })
-
 export class TermsConditionsComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   footer$: Observable<IFooter> = new Observable();
@@ -19,7 +19,7 @@ export class TermsConditionsComponent implements OnInit, OnDestroy {
 
   styles: IStyle;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private sanitizer: DomSanitizer) {
     this.footer$ = this.store.select(WebState.footer);
     this.styles$ = this.store.select(WebState.styleData);
   }
@@ -44,6 +44,10 @@ export class TermsConditionsComponent implements OnInit, OnDestroy {
         this.styles = null;
       }
     });
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   ngOnDestroy() {

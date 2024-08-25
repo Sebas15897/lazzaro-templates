@@ -1,6 +1,7 @@
 <div
   class="containerStatistics"
-  [ngStyle]="{ 'background-color': impactData?.design?.backgoundColor }"
+  *ngIf="impactData.enabled"
+  [ngStyle]="{ 'background-color': impactData?.design?.backgroundColor }"
 >
   <div
     class="contentMetricsInfo d-flex justify-content-around align-items-center row-gap-custom"

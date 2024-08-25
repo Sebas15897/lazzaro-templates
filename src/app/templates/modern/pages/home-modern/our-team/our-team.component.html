@@ -63,13 +63,11 @@
               </div>
             </div>
           </div>
-          <!-- Paginación -->
           <div class="swiper-pagination"></div>
-          <!-- Botones de navegación -->
         </div>
       </div>
-      <div class="swiper-button-prev" (click)="slidePrevTeam()">  <img src="assets/images/arrowPrevModern.svg" alt=""></div>
-      <div class="swiper-button-next" (click)="slideNextTeam()"><img src="assets/images/arrowNextModern.svg" alt=""></div>
+      <div class="swiper-button-prev" (click)="slidePrevTeam()" *ngIf="teamData?.members.length > 4">  <img src="assets/images/arrowPrevModern.svg" alt=""></div>
+      <div class="swiper-button-next" (click)="slideNextTeam()" *ngIf="teamData?.members.length > 4"><img src="assets/images/arrowNextModern.svg" alt=""></div>
     </div>
   </div>
 </div>

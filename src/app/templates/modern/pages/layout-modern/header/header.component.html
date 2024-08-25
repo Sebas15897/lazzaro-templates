@@ -1,29 +1,72 @@
-<nav class="modern-header w-100 d-flex justify-content-center" [class.backgroundHeader]="!menuOpen">
-  <div class="modern-header-items d-flex justify-content-between align-items-center">
-    <img class="logo" src="assets/images/logo.png" alt="logo" />
-    <ul class="itemsPc nav-items d-flex gap-4" [class.hidden]="!menuOpen">
+<nav
+  class="modern-header w-100 d-flex justify-content-center"
+  [class.backgroundHeader]="!menuOpen"
+>
+  <div
+    class="modern-header-items d-flex justify-content-between align-items-center"
+  >
+    <img class="logo" [src]="styles?.logo" alt="logo" />
+    <ul
+      class="list-header itemsPc nav-items d-flex gap-4"
+      [class.hidden]="!menuOpen"
+    >
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/modern" (click)="closeMenu()">Inicio</a>
+        <a class="nav-link" routerLink="/modern" (click)="closeMenu()"
+          >Inicio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern" (click)="closeMenu()" fragment="services">Servicios</a>
+        <a
+          class="nav-link"
+          routerLink="/modern"
+          (click)="closeMenu()"
+          fragment="services"
+          >Servicios</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern" (click)="closeMenu()" fragment="portafolio">Portafolio</a>
+        <a
+          class="nav-link"
+          routerLink="/modern"
+          (click)="closeMenu()"
+          fragment="portafolio"
+          >Portafolio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern" (click)="closeMenu()" fragment="eventos">Eventos</a>
+        <a
+          class="nav-link"
+          routerLink="/modern"
+          (click)="closeMenu()"
+          fragment="eventos"
+          >Eventos</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern/blog" (click)="closeMenu()" >Blog</a>
+        <a class="nav-link" routerLink="/modern/blog" (click)="closeMenu()"
+          >Blog</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern/store" (click)="closeMenu()" >Tienda</a>
+        <a class="nav-link" routerLink="/modern/store" (click)="closeMenu()"
+          >Tienda</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/modern/contact" (click)="closeMenu()" >Contacto</a>
+        <a class="nav-link" routerLink="/modern/contact" (click)="closeMenu()"
+          >Contacto</a
+        >
       </li>
     </ul>
-    <img class="menuHeader" [src]="menuOpen ? 'assets/images/closeMenuWhite.svg' : 'assets/images/menuGreen.svg'" alt="Menu" (click)="toggleMenu()">
+    <img
+      class="menuHeader"
+      [src]="
+        menuOpen
+          ? 'assets/images/closeMenuWhite.svg'
+          : 'assets/images/menuGreen.svg'
+      "
+      alt="Menu"
+      (click)="toggleMenu()"
+    />
   </div>
 </nav>
