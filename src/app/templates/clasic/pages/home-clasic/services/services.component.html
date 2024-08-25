@@ -2,6 +2,7 @@
   class="diagonal"
   id="servicios"
   [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
+  *ngIf="sectionServices.active"
 >
   <div
     class="d-flex flex-column justify-content-center align-items-center row-gap-custom"

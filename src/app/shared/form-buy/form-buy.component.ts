@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { FormHeaderComponent } from '../../core/components/form-header/form-header.component';
 import { Store } from '@ngxs/store';
-import { PostPaymentAction } from '../../core/store/payment/payment.actions';
+import { ClearStrippePaymentAction, PostPaymentAction } from '../../core/store/payment/payment.actions';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { IShop } from '../../core/interfaces/shop.interface';
 import { ShopState } from '../../core/store/shop/shop.store';
@@ -158,6 +158,7 @@ export class FormBuyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.dispatch(new ClearStrippePaymentAction());
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }

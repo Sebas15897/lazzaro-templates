@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
-import { PostPaymentAction, SuccesStripePaymentAction } from './payment.actions';
+import {
+  ClearStrippePaymentAction,
+  PostPaymentAction,
+  SuccesStripePaymentAction,
+} from './payment.actions';
 import { PaymentService } from '../../services/payment/payment.service';
 import { IPaymentResponse } from '../../interfaces/payment.interface';
 
@@ -26,9 +30,7 @@ export class PaymentState {
     return state?.paymentResponse ?? null;
   }
 
-  @Selector() static SuccesStripePayment(
-    state: PaymentStateModel
-  ): boolean {
+  @Selector() static SuccesStripePayment(state: PaymentStateModel): boolean {
     return state?.successStripePayment ?? false;
   }
 
@@ -61,8 +63,21 @@ export class PaymentState {
     ctx: StateContext<PaymentStateModel>,
     { payload }: SuccesStripePaymentAction
   ) {
-    return ctx.patchState({
-      successStripePayment: payload,
-    });
+    return payload
+      ? ctx.patchState({
+          successStripePayment: payload,
+        })
+      : ctx.patchState({
+          successStripePayment: false,
+        });
+  }
+
+  @Action(ClearStrippePaymentAction)
+  ClearStrippePaymentAction(
+    ctx: StateContext<PaymentStateModel>,
+  ) {
+
+    ctx.dispatch(new SuccesStripePaymentAction(false));
+    ctx.dispatch(new PostPaymentAction(null));
   }
 }

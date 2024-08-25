@@ -87,6 +87,10 @@ export class WebState {
     return state?.webProps?.properties?.contact ?? null;
   }
 
+  @Selector() static appStyle(state: WebStateModel): IStyle {
+    return state?.webProps?.properties?.style ?? null;
+  }
+
   constructor(
     private webDataService: WebDataService,
     private titleService: Title

@@ -7,7 +7,7 @@ import { IService } from '../../../../core/interfaces/services.interface';
 import { ServicesState } from '../../../../core/store/services/services.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { PostPaymentAction } from '../../../../core/store/payment/payment.actions';
+import { ClearStrippePaymentAction, PostPaymentAction } from '../../../../core/store/payment/payment.actions';
 import { IPaymentResponse } from '../../../../core/interfaces/payment.interface';
 import { PaymentState } from '../../../../core/store/payment/payment.state';
 
@@ -167,6 +167,7 @@ export class PayServiceComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.dispatch(new ClearStrippePaymentAction());
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }

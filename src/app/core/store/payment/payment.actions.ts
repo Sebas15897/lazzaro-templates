@@ -9,3 +9,8 @@ export class SuccesStripePaymentAction {
   static readonly type = '[Templates - Payment] Succes Stripe Payment Action';
   constructor(public payload: boolean) {}
 }
+
+export class ClearStrippePaymentAction {
+  static readonly type = '[Templates - Payment] Clear Strippe Payment Action';
+  constructor() {}
+}
