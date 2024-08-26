@@ -31,9 +31,22 @@
       Entradas disponibles: {{ event?.tickets?.length }}
     </p>
 
+    <p
+      class="fw-bold fs-5 margin-bottom-0"
+      *ngIf="event?.location === 'online'"
+    >
+      Evento online.
+    </p>
+
     <div class="containerButtonSection d-flex justify-content-start">
-      <div class="buttonsSection generalShadow">Comprar</div>
-      <div class="buttonsSection generalShadow">Ver ubicación</div>
+      <button class="btn btn-primary">Comprar</button
+      ><a
+        class="btn btn-primary"
+        *ngIf="event?.location !== 'online'"
+        [href]="event?.location"
+        target="_blank"
+        >Ver ubicación</a
+      >
     </div>
 
     <!-- <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>

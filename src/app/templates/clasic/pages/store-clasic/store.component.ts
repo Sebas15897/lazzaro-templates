@@ -42,7 +42,7 @@ export class StoreComponent implements OnInit, OnDestroy {
   }
 
   redirect(id: string) {
-    this.router.navigate([`/clasic/product/${id}`]);
+    this.router.navigate([`/classic/product/${id}`]);
   }
 
   ngOnDestroy() {

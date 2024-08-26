@@ -1,5 +1,5 @@
 <div
-  *ngIf="aboutUs.enabled"
+  *ngIf="aboutUs?.enabled"
   class="pb-4"
   [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }"
 >
@@ -74,7 +74,7 @@
 <br />
 
 <div
-  *ngIf="whyChooseUsData.enabled"
+  *ngIf="whyChooseUsData?.enabled"
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
 >
   <div

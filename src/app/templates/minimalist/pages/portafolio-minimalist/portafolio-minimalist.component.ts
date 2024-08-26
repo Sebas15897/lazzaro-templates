@@ -27,7 +27,6 @@ export class PortafolioMinimalistComponent implements OnInit, OnDestroy {
 
   subscribeState() {
     this.getProject$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
-      console.log(resp);
       this.project = resp;
     });
   }

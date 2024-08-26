@@ -25,4 +25,5 @@ export interface IWebConfig {
   stripe_account_id: string;
   deletedAt: null;
   SubscriptionMembershipId: null;
+  website: any;
 }

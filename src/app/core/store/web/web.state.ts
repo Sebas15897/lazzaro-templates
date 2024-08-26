@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
   IAboutUs,
@@ -27,6 +27,7 @@ import {
   GetAllProjects,
   GetProjectsSectionAction,
 } from '../portfolio/portfolio.actions';
+import { Router } from '@angular/router';
 
 export interface WebStateModel {
   webProps: IWebSite;
@@ -40,7 +41,6 @@ export interface WebStateModel {
     webConfig: null,
   },
 })
-
 @Injectable()
 export class WebState {
   @Selector() static webIsActive(state: WebStateModel): boolean {
@@ -93,7 +93,9 @@ export class WebState {
 
   constructor(
     private webDataService: WebDataService,
-    private titleService: Title
+    private titleService: Title,
+    private router: Router,
+    private ngZone: NgZone,
   ) {}
 
   @Action(GetWebDataAction)
@@ -122,6 +124,9 @@ export class WebState {
           if (resp) {
             ctx.patchState({
               webConfig: resp,
+            });
+            this.ngZone.run(() => {
+              this.router.navigate([`${resp.website.template}/home`]);
             });
             this.titleService.setTitle(resp.companyName);
             ctx.dispatch(new GetWebDataAction(resp.websiteId));

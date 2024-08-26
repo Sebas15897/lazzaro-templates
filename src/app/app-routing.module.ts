@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'clasic',
+    path: 'classic',
     loadChildren: () =>
       import('./templates/clasic/clasic.module').then(
         (module) => module.ClasicModule
@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'clasic',
+    redirectTo: 'classic',
     pathMatch: 'full',
   },
 ];

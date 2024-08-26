@@ -42,7 +42,7 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   }
 
   onSelectProject(project: IProject) {
-    this.router.navigate([`/clasic/portafolio/${project.id}`]);
+    this.router.navigate([`/classic/portafolio/${project.id}`]);
   }
 
   ngOnDestroy() {

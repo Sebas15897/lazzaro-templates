@@ -57,7 +57,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
       .dispatch(new SelectEventAction(event))
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
-        this.router.navigate(['/clasic/events']);
+        this.router.navigate(['/classic/events']);
       });
   }
 

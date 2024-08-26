@@ -51,7 +51,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
   }
 
   payService(service: IService) {
-    this.router.navigate([`/clasic/pay-service/${service.id}`]);
+    this.router.navigate([`/classic/pay-service/${service.id}`]);
   }
 
   ngOnDestroy() {

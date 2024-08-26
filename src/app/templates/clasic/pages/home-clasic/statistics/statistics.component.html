@@ -1,7 +1,11 @@
 <div
   class="containerStatistics"
-  *ngIf="impactData.enabled"
-  [ngStyle]="{ 'background-color': impactData?.design?.backgroundColor }"
+  *ngIf="impactData?.enabled"
+  [ngStyle]="{
+    'background-image': 'url(' + impactData?.design?.backgroundImage + ')',
+    'background-size': 'cover',
+    'background-position': 'center'
+  }"
 >
   <div
     class="contentMetricsInfo d-flex justify-content-around align-items-center row-gap-custom"

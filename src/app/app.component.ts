@@ -48,6 +48,7 @@ export class AppComponent implements OnDestroy {
       if (resp) {
         document.documentElement.style.setProperty('--dynamic-button-primary-color', resp?.buttonColor);
         document.documentElement.style.setProperty('--dynamic-button-hover-color', resp?.buttonColor);
+        document.body.style.backgroundColor = resp?.menuColor;
       }
     });
   }
