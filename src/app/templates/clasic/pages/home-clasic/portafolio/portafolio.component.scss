@@ -28,7 +28,7 @@
 }
 
 .cardImage {
-  width: 33%;
+  width: calc(33% - 25px);
   height: 250px;
   position: relative;
 }

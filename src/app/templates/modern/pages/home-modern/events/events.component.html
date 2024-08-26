@@ -14,37 +14,6 @@
     >
       {{ sectionEvents?.properties?.subtitle }}
     </p>
-  <!-- <div class="swiper-container container swiper-container-modern-event" style="position: relative; overflow: hidden;">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let event of listEvents">
-        <div class="cardSpecific" (click)="onSelectEvent(event)">
-          <img
-            class="imgCardSpecif"
-            [src]="event.images[0]?.url"
-            [alt]="event.name"
-          />
-          <div class="infoCard">
-            <p class="titleCard fw-bold">{{ event.name }}</p>
-            <p class="description" [innerHTML]="event.description"></p>
-            <div class="date">
-              <img src="assets/images/calendar.svg" alt="Calendar Icon" />
-              <p class="date margin-bottom-0">
-                {{ event.dates.event_start | date : "dd/MM/yyyy" }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="sliderNext" (click)="slideNext()">
-      <img src="assets/images/nextSlider.png" alt="">
-    </div>
-    <div class="sliderPrev" (click)="slidePrev()">
-      <img src="assets/images/prevslider.png" alt="">
-    </div>
-  </div> -->
-
   
     <div class="container containerCarrousel" style="position: relative;">
       <div class="swiper-container swiper-container-modern-event container" style="width: 960px;" >

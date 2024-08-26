@@ -94,6 +94,11 @@ a {
   padding: 0 50px;
 }
 
+.swiper-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .swiper-container{
   overflow: hidden;
   position: relative;

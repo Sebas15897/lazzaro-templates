@@ -17,6 +17,8 @@ export class PortafolioModernComponent implements OnInit, OnDestroy {
 
   project: IProject;
 
+  activeIndex = 0;
+
   constructor(private store: Store) {
     this.getProject$ = this.store.select(PortfolioState.SelectedProject);
   }
@@ -30,6 +32,10 @@ export class PortafolioModernComponent implements OnInit, OnDestroy {
       console.log(resp);
       this.project = resp;
     });
+  }
+
+  setActiveIndex(index: number): void {
+    this.activeIndex = index;
   }
 
   ngOnDestroy() {
