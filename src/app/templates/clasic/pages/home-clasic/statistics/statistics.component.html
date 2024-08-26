@@ -2,7 +2,12 @@
   class="containerStatistics"
   *ngIf="impactData?.enabled"
   [ngStyle]="{
-    'background-image': 'url(' + impactData?.design?.backgroundImage + ')',
+    'background-image': impactData?.design?.backgroundImage
+      ? 'url(' + impactData?.design?.backgroundImage + ')'
+      : 'none',
+    'background-color': impactData?.design?.backgroundImage
+      ? 'none'
+      : impactData?.design?.backgroundColor,
     'background-size': 'cover',
     'background-position': 'center'
   }"
