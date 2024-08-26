@@ -15,6 +15,24 @@
       </p>
     </div>
     <div class="carrusel">
+        <!-- <div class="containerImages">
+          <ng-container *ngFor="let image of project?.image_url; let i = index">
+            <img
+              class="borderRadius"
+              [src]="project?.image_url"
+              [alt]="project?.image_url"
+              *ngIf="activeIndex === i"
+            />
+          </ng-container>
+        </div>
+        <div class="buttons">
+          <div
+            class="buttonOptions"
+            *ngFor="let image of project?.images; let i = index"
+            [class.active]="activeIndex === i"
+            (click)="setActiveIndex(i)"
+          ></div>
+        </div> -->
       <div class="containerImages">
         <img
           class="borderRadius"
@@ -24,9 +42,9 @@
       </div>
       <div class="buttons">
         <div class="buttonOptions active" id="button1"></div>
-        <div class="buttonOptions" id="button2"></div>
+        <!-- <div class="buttonOptions" id="button2"></div>
         <div class="buttonOptions" id="button3"></div>
-        <div class="buttonOptions" id="button4"></div>
+        <div class="buttonOptions" id="button4"></div> -->
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ export interface Properties {
   background: string;
   titleColor: string;
   subtitleColor: string;
+  layout: String;
 }
 
 export interface IProject {

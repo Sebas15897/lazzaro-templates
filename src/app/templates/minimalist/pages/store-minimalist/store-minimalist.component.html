@@ -1,4 +1,5 @@
 <div
+  [ngStyle]="{ 'background-color': sectionShop?.properties?.background }"
   class="container containerSection d-flex flex-column justify-content-center align-items-center row-gap-custom"
 >
   <h2
@@ -30,9 +31,8 @@
       <div class="infoCard">
         <p class="text-black fw-bold fs-6">{{ product.title }}</p>
         <div class="descriptionCard" [innerHTML]="product?.description"></div>
-        <div class="options d-flex justify-content-between align-items-center">
-          <a class="seeMore fw-bold" (click)="redirect(product.id)">Leer más</a>
-          <a class="buttonCard" (click)="redirect(product.id)">Comprar</a>
+        <div class="options d-flex justify-content-end align-items-center">
+          <a class="buttonCard btn-primary" (click)="redirect(product.id)">Comprar</a>
         </div>
       </div>
     </div>

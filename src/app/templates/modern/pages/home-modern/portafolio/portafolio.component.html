@@ -11,6 +11,7 @@
 
   <div
     class="containerCards d-flex justify-content-center align-items-center flex-wrap"
+    [ngStyle]="sectionProjects?.properties?.layout === 'grid' ?  { 'column-gap': '0', 'row-gap' : '0' } : { 'column-gap': '25px', 'row-gap' : '25px' }"
   >
     <div class="cardImage" *ngFor="let project of listProjects" (click)="onSelectProject(project)">
       <img [src]="project.image_url" [alt]="project?.title" />
