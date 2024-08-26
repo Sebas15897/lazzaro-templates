@@ -1,26 +1,29 @@
-<div class="containerStatistics">
+<div class="containerStatistics"
+  *ngIf="impactData?.enabled"
+  [ngStyle]="{
+    'background-image': impactData?.design?.backgroundImage
+      ? 'url(' + impactData?.design?.backgroundImage + ')'
+      : 'none',
+    'background-color': impactData?.design?.backgroundImage
+      ? 'none'
+      : impactData?.design?.backgroundColor,
+    'background-size': 'cover',
+    'background-position': 'center'
+  }"
+>
   <div
     class="container contentMetricsInfo d-flex justify-content-around align-items-center row-gap-custom"
   >
-    <div class="contentMetric">
+    <div *ngFor="let item of impactData?.data" class="contentMetric">
       <div class="square"></div>
-      <div class="number">+1250</div>
-      <div class="text">Lorem ipsum</div>
-    </div>
-    <div class="contentMetric">
-      <div class="square"></div>
-      <div class="number">+1250</div>
-      <div class="text">Lorem ipsum</div>
-    </div>
-    <div class="contentMetric">
-      <div class="square"></div>
-      <div class="number">+1250</div>
-      <div class="text">Lorem ipsum</div>
-    </div>
-    <div class="contentMetric">
-      <div class="square"></div>
-      <div class="number">+1250</div>
-      <div class="text">Lorem ipsum</div>
+      <div
+        class="number"
+        [ngStyle]="{ color: impactData?.design?.amountColor }"
+      >+{{ item?.amount }}</div>
+      <div
+        class="text"
+        [ngStyle]="{ color: impactData?.design?.color }"
+      >{{ item?.text }}</div>
     </div>
   </div>
 </div>
