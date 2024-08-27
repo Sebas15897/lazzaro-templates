@@ -105,7 +105,7 @@
             *ngFor="let subtitle of whyChooseUsData?.subtitles; let i = index"
           >
             <ng-container *ngIf="subtitle.description">
-              <span class="fw-bold fs-customList-option color-text"
+              <span class="fw-bold fs-customList-option text-dark"
                 >{{ ("0" + (i + 1)).slice(-2) }}.</span
               >
               <p class="margin-bottom-0">{{ subtitle.description }}</p>
