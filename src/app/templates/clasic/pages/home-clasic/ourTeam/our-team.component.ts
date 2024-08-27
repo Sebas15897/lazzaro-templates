@@ -51,7 +51,7 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.swiperTeamClasic = new Swiper('.swiper-container-two', this.configTeam);
-    }, 100);
+    }, 600);
   }
 
 

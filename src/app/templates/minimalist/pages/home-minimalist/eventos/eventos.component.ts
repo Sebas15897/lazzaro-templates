@@ -87,7 +87,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
         '.swiper-container-e-minimalist',
         this.config
       );
-    }, 100);
+    }, 600);
   }
 
   slideNext() {

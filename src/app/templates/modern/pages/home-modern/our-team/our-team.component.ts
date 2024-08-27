@@ -65,7 +65,7 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
         '.swiper-container-modern-team',
         this.config
       );
-    }, 100);
+    }, 600);
   }
 
   slideNextTeam() {

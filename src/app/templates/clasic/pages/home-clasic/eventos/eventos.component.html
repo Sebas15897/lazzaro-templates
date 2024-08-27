@@ -5,7 +5,7 @@
   *ngIf="sectionEvents?.active"
 >
   <div
-    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
+    class="container d-flex flex-column justify-content-center align-items-center row-gap-custom py-4"
   >
     <p class="fw-bold fs-6 margin-bottom-0">
       {{ sectionEvents?.properties?.subtitle || "NUESTROS EVENTOS" }}
@@ -29,7 +29,9 @@
               (click)="onSelectEvent(event)"
             >
               <img
-                [src]="event?.images[0]?.url || 'assets/images/portafolio1.jpeg'"
+                [src]="
+                  event?.images[0]?.url || 'assets/images/portafolio1.jpeg'
+                "
                 [alt]="event?.name"
               />
               <div class="infoCard">

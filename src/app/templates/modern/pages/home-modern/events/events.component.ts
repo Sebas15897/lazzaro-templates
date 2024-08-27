@@ -91,7 +91,7 @@ export class EventsComponent implements OnInit, OnDestroy, AfterViewInit {
         '.swiper-container-modern-event',
         this.config
       );
-    }, 100);
+    }, 600);
   }
 
   slideNext() {
