@@ -40,7 +40,13 @@
       </p>
 
       <div class="containerButtonSection d-flex justify-content-start">
-        <button class="btn btn-primary" (click)="buyEvent()">Comprar</button>
+        <button
+          class="btn btn-primary"
+          (click)="buyEvent()"
+          [disabled]="!event?.tickets?.length"
+        >
+          Comprar
+        </button>
         <a class="btn btn-primary" [href]="event?.url" target="_blank"
           >Ver ubicación</a
         >
