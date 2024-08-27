@@ -5,23 +5,32 @@ import { IEvent } from '../../../../core/interfaces/events.interface';
 import { SelectEventAction } from '../../../../core/store/events/events.actions';
 import { EventsState } from '../../../../core/store/events/events.state';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { FormBuyEventComponent } from '../../../../shared/form-buy-event/form-buy-event.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-modern',
   templateUrl: './event-modern.component.html',
-  styleUrls: ['./event-modern.component.scss']
+  styleUrls: ['./event-modern.component.scss'],
 })
-
 export class EventModernComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
-  getEvent$: Observable<IEvent> = new Observable();
+  getListEvent$: Observable<IEvent[]> = new Observable();
 
   activeIndex = 0;
 
+  eventId: string;
   event: IEvent;
 
-  constructor(private store: Store, private sanitizer: DomSanitizer) {
-    this.getEvent$ = this.store.select(EventsState.SelectEvent);
+  constructor(
+    private store: Store,
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
+    private sanitizer: DomSanitizer
+  ) {
+    this.eventId = this.activatedRoute.snapshot.params['eventId'];
+    this.getListEvent$ = this.store.select(EventsState.ListAllEvents);
   }
 
   ngOnInit() {
@@ -33,8 +42,17 @@ export class EventModernComponent implements OnInit, OnDestroy {
   }
 
   subscribeState() {
-    this.getEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
-      this.event = resp;
+    this.getListEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      if (resp) {
+        this.event = resp.find((product) => product.id === this.eventId);
+      }
+    });
+  }
+
+  buyEvent() {
+    this.dialog.open(FormBuyEventComponent, {
+      width: '600px',
+      data: this.event.id,
     });
   }
 
@@ -47,4 +65,4 @@ export class EventModernComponent implements OnInit, OnDestroy {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  }
+}

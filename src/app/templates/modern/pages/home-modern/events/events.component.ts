@@ -77,7 +77,7 @@ export class EventsComponent implements OnInit, OnDestroy, AfterViewInit {
       .dispatch(new SelectEventAction(event))
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
-        this.router.navigate(['/modern/events']);
+        this.router.navigate([`/modern/events/${event.id}`]);
       });
   }
 

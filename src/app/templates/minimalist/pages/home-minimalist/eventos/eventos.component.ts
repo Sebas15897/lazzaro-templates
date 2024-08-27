@@ -2,7 +2,10 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IEvent, IEventsSection } from '../../../../../core/interfaces/events.interface';
+import {
+  IEvent,
+  IEventsSection,
+} from '../../../../../core/interfaces/events.interface';
 import { SelectEventAction } from '../../../../../core/store/events/events.actions';
 import { EventsState } from '../../../../../core/store/events/events.state';
 import Swiper from 'swiper';
@@ -11,9 +14,8 @@ import { SwiperOptions } from 'swiper/types';
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.scss']
+  styleUrls: ['./eventos.component.scss'],
 })
-
 export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listEvents$: Observable<IEvent[]> = new Observable();
@@ -46,7 +48,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
       .dispatch(new SelectEventAction(event))
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
-        this.router.navigate(['/minimalist/events']);
+        this.router.navigate([`/minimalist/events/${event.id}`]);
       });
   }
 
@@ -57,7 +59,6 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   swiperInstance: Swiper;
 
-
   config: SwiperOptions = {
     loop: true,
     slidesPerView: 3,
@@ -67,23 +68,25 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
     breakpoints: {
       320: {
         slidesPerView: 2,
-        spaceBetween: 10
+        spaceBetween: 10,
       },
       700: {
         slidesPerView: 2,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
       1025: {
         slidesPerView: 3,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
-    }
-
+    },
   };
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.swiperInstance = new Swiper('.swiper-container-e-minimalist', this.config);
+      this.swiperInstance = new Swiper(
+        '.swiper-container-e-minimalist',
+        this.config
+      );
     }, 100);
   }
 

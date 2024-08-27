@@ -25,7 +25,7 @@ export const routes: Routes = [
           ).then((module) => module.PortafolioMinimalistModule),
       },
       {
-        path: 'events',
+        path: 'events/:eventId',
         loadChildren: () =>
           import('./pages/events-minimalist/events-minimalist.module').then(
             (module) => module.EventsMinimalistModule
