@@ -7,6 +7,7 @@ import {
 } from '../../../../../core/interfaces/services.interface';
 import { ServicesState } from '../../../../../core/store/services/services.state';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-services',
@@ -22,7 +23,11 @@ export class ServicesComponent implements OnInit, OnDestroy {
   listServices: IService[];
   sectionServices: IServiceSection;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {
     this.listServices$ = this.store.select(ServicesState.ListAllServices);
     this.sectionServices$ = this.store.select(ServicesState.ServiceSection);
   }
@@ -39,6 +44,10 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.sectionServices$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       this.sectionServices = resp;
     });
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   payService(service: IService) {

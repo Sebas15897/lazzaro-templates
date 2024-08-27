@@ -24,7 +24,7 @@
     >
       <div *ngFor="let service of listServices">
         <div
-        class="cardServices generalShadow borderRadius"
+          class="cardServices generalShadow borderRadius"
           *ngIf="service.calendly_url"
           [ngStyle]="{
             'background-color': sectionServices?.properties?.cardsBackground
@@ -37,6 +37,12 @@
               [alt]="service?.service_name"
               class="img-fluid"
             />
+          </div>
+          <div
+            class="titleCard fw-bold"
+            [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
+          >
+            Precio: € {{ service?.price }}
           </div>
           <div
             class="titleCard fw-bold"
