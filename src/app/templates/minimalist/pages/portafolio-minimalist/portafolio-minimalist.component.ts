@@ -57,4 +57,3 @@ export class PortafolioMinimalistComponent implements OnInit, OnDestroy {
     this.destroy.unsubscribe();
   }
 }
-

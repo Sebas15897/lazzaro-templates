@@ -18,7 +18,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'portafolio',
+        path: 'portafolio/:porfolioId',
         loadChildren: () =>
           import(
             './pages/portafolio-minimalist/portafolio-minimalist.module'
