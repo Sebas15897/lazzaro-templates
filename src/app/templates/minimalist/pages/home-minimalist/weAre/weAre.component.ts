@@ -61,7 +61,7 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
 
   heightRight(){
     setTimeout(() => {
-      const divHeight = this.leftContentAboutUs.nativeElement.offsetHeight;
+      const divHeight = this.leftContentAboutUs?.nativeElement.offsetHeight;
       this.rightContentAboutUs.nativeElement.style.height = `${divHeight}px`;
     }, 0);
   }
