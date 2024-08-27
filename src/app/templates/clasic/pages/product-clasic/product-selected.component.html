@@ -25,22 +25,15 @@
       <p class="margin-bottom-0">{{ product?.price }}€</p>
       <p class="margin-bottom-0" [innerHTML]="product?.description"></p>
       <p class="fw-bold fs-5 margin-bottom-0">Stock: {{ product?.stock }}</p>
-      <p class="fw-bold fs-5 margin-bottom-0">
+    <!--   <p class="fw-bold fs-5 margin-bottom-0">
         Discount: {{ product?.discount }}%
-      </p>
+      </p> -->
       <p class="fw-bold fs-5 margin-bottom-0">
         Delivery Time: {{ product?.delivery_time }}
       </p>
       <div class="containerButtonSection d-flex justify-content-start">
         <button class="btn btn-primary" (click)="buy()">Comprar</button>
       </div>
-      <!--       <p class="fw-bold fs-5 margin-bottom-0">Compartir:</p>
-      <div class="socialMedia d-flex align-items-center column-gap-custom">
-        <img src="assets/images/icons8-instagramWhite.svg" alt="Instagram" />
-        <img src="assets/images/icons8-linkedinWhite.svg" alt="LinkedIn" />
-        <img src="assets/images/icons8-twitterxWhite.svg" alt="Twitter" />
-        <img src="assets/images/icons8-whatsappWhite.svg" alt="WhatsApp" />
-      </div> -->
     </div>
   </div>
 </div>

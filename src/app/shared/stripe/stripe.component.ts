@@ -28,14 +28,21 @@ import {
 } from '../../core/store/loading/loading.actions';
 import { SuccesStripePaymentAction } from '../../core/store/payment/payment.actions';
 import { PostCreateOrderAction } from '../../core/store/shop/shop.actions';
-import { ICreateOrderPayload } from '../../core/interfaces/shop.interface';
+import {
+  ICreateOrderPayload,
+  IShop,
+} from '../../core/interfaces/shop.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { ISendMailPayload } from '../../core/interfaces/send-mail.interface';
-import { PostSendMailAction, PostSendMailNoMessageAction } from '../../core/store/contact/contact.actions';
+import {
+  PostSendMailAction,
+  PostSendMailNoMessageAction,
+} from '../../core/store/contact/contact.actions';
 import { IWebConfig } from '../../core/interfaces/web-config.interface';
 import { WebState } from '../../core/store/web/web.state';
 import { IEvent } from '../../core/interfaces/events.interface';
 import { EventsState } from '../../core/store/events/events.state';
+import { ShopState } from '../../core/store/shop/shop.store';
 
 @Component({
   selector: 'app-stripe',
@@ -57,6 +64,7 @@ export class StripeComponent implements OnInit, OnDestroy {
   payResponse$: Observable<IPaymentResponse> = new Observable();
   getListEvent$: Observable<IEvent[]> = new Observable();
   webConfig$: Observable<IWebConfig> = new Observable();
+  listProducts$: Observable<IShop[]> = new Observable();
   webConfig: IWebConfig;
 
   readonly stripe = injectStripe(environment.stripeKey);
@@ -77,6 +85,7 @@ export class StripeComponent implements OnInit, OnDestroy {
   paymentId: string;
 
   event: IEvent;
+  product: IShop;
 
   constructor(
     private store: Store,
@@ -85,6 +94,7 @@ export class StripeComponent implements OnInit, OnDestroy {
     this.payResponse$ = this.store.select(PaymentState.GetPaymentResponse);
     this.webConfig$ = this.store.select(WebState.webConfig);
     this.getListEvent$ = this.store.select(EventsState.ListAllEvents);
+    this.listProducts$ = this.store.select(ShopState.ListAllProducts);
   }
 
   ngOnInit() {
@@ -108,7 +118,15 @@ export class StripeComponent implements OnInit, OnDestroy {
     this.getListEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
       if (resp) {
         this.event = resp.find(
-          (product) => product?.id === this.payloadPayment?.eventId
+          (event) => event?.id === this.payloadPayment?.eventId
+        );
+      }
+    });
+
+    this.listProducts$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      if (resp) {
+        this.product = resp.find(
+          (product) => product.id === this.payloadPayment?.productId
         );
       }
     });
@@ -148,6 +166,184 @@ export class StripeComponent implements OnInit, OnDestroy {
             this.store.dispatch(new LoadingHiddeAction());
             this.paying.set(false);
             if (this.payloadPayment.entityType === 'Product') {
+              let emailOrganizer = `<!DOCTYPE html>
+                  <html lang="es">
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Lazzaro - Nueva Compra de Producto</title>
+                    <style>
+                      body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 0;
+                      }
+                      .container {
+                        max-width: 600px;
+                        margin: 20px auto;
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                      }
+                      .header {
+                        text-align: center;
+                        padding-bottom: 20px;
+                      }
+                      .header h1 {
+                        color: #333333;
+                      }
+                      .content {
+                        line-height: 1.6;
+                        color: #666666;
+                      }
+                      .content h2 {
+                        color: #333333;
+                        margin-bottom: 10px;
+                      }
+                      .content p {
+                        margin: 5px 0;
+                      }
+                      .footer {
+                        text-align: center;
+                        padding-top: 20px;
+                        color: #999999;
+                        font-size: 12px;
+                      }
+                      .footer p {
+                        margin: 5px 0;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class="container">
+                      <div class="header">
+                        <h1>Nueva Compra de Producto</h1>
+                      </div>
+                      <div class="content">
+                        <h2>Hola, ${this.webConfig?.firstName} ${this.webConfig?.lastName}!</h2>
+                        <p>Te informamos que un cliente ha realizado una nueva compra en tu tienda.</p>
+
+                        <h3>Detalles del Cliente:</h3>
+                        <p><strong>Nombre:</strong> ${this.payloadPayment?.client_info?.name}</p>
+                        <p><strong>Email:</strong> ${this.payloadPayment?.client_info?.email}</p>
+                        <p><strong>Teléfono:</strong> ${this.payloadPayment?.client_info?.phone}</p>
+                        <p><strong>Mensaje del Cliente:</strong> ${this.payloadPayment?.client_info?.message}</p>
+
+                        <h3>Detalles del Producto:</h3>
+                        <p><strong>Nombre del Producto:</strong> ${this.product?.title}</p>
+                        <p><strong>Precio Total:</strong> $${this.product?.price}</p>
+
+                        <p>Gracias por confiar en nosotros. ¡Esperamos que tengas un excelente día!</p>
+                      </div>
+                      <div class="footer">
+                        <p>Este es un correo generado automáticamente, por favor no respondas a este mensaje.</p>
+                        <p>&copy; 2024 Tu Lazzaro. Todos los derechos reservados.</p>
+                      </div>
+                    </div>
+                  </body>
+                  </html>
+                  `;
+              let emailShopProdut = `<!DOCTYPE html>
+              <html lang="es">
+              <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Lazzaro - Compra Exitosa</title>
+                <style>
+                  body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    margin: 0;
+                    padding: 0;
+                  }
+                  .container {
+                    max-width: 600px;
+                    margin: 20px auto;
+                    background-color: #ffffff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                  }
+                  .header {
+                    text-align: center;
+                    padding-bottom: 20px;
+                  }
+                  .header h1 {
+                    color: #333333;
+                  }
+                  .content {
+                    line-height: 1.6;
+                    color: #666666;
+                  }
+                  .content h2 {
+                    color: #333333;
+                    margin-bottom: 10px;
+                  }
+                  .content p {
+                    margin: 5px 0;
+                  }
+                  .footer {
+                    text-align: center;
+                    padding-top: 20px;
+                    color: #999999;
+                    font-size: 12px;
+                  }
+                  .footer p {
+                    margin: 5px 0;
+                  }
+                </style>
+              </head>
+              <body>
+                <div class="container">
+                  <div class="header">
+                    <h1>Lazzaro - Compra Exitosa - ${this.product?.title}</h1>
+                  </div>
+                  <div class="content">
+                    <h2>Hola, ${this.payloadPayment?.client_info?.name}!</h2>
+                    <p>Nos complace informarte que tu compra del producto ${
+                      this.product?.title
+                    }, ha sido procesada con éxito. A continuación, encontrarás los detalles de tu compra:</p>
+
+                    <h3>Detalles del Cliente:</h3>
+                    <p><strong>Nombre:</strong> ${
+                      this.payloadPayment?.client_info?.name ?? 'N/A'
+                    }</p>
+                    <p><strong>Email:</strong> ${
+                      this.payloadPayment?.client_info?.email ?? 'N/A'
+                    }</p>
+                    <p><strong>Teléfono:</strong> ${
+                      this.payloadPayment?.client_info?.phone ?? 'N/A'
+                    }</p>
+                    <p><strong>Dirección:</strong> ${
+                      this.payloadPayment?.client_info?.address ?? 'N/A'
+                    }, ${this.payloadPayment?.client_info?.city ?? 'City'}, ${
+                              this.payloadPayment?.client_info?.postal_code ?? 'Postal Code'
+                            }, ${this.payloadPayment?.client_info?.country ?? 'Country'}</p>
+                    <p><strong>DNI:</strong> ${
+                      this.payloadPayment?.client_info?.dni ?? 'N/A'
+                    }</p>
+                    <p><strong>Fecha de Nacimiento:</strong> ${
+                      this.payloadPayment?.client_info?.birthdate ?? 'N/A'
+                    }</p>
+
+                    <h3>Detalles del Producto:</h3>
+                    <p><strong>Producto:</strong> ${this.product?.title}</p>
+                    <p><strong>Precio Total:</strong> $${this.product?.price}</p>
+
+                    <h3>Mensaje del Cliente:</h3>
+                    <p>${this.payloadPayment?.client_info?.message}</p>
+
+                    <p>Gracias por confiar en nosotros para tu compra. ¡Esperamos que disfrutes de tu producto!</p>
+                  </div>
+                  <div class="footer">
+                    <p>Este es un correo generado automáticamente, por favor no respondas a este mensaje.</p>
+                    <p>&copy; 2024 Lazzaro. Todos los derechos reservados.</p>
+                  </div>
+                </div>
+              </body>
+              </html>`;
               this.sweetAlertHelper.createCustomAlert({
                 title: '¡Éxito!',
                 text: 'El pago se ha realizado con éxito.',
@@ -159,6 +355,20 @@ export class StripeComponent implements OnInit, OnDestroy {
                 payment_id: this.paymentId,
                 product_id: this.payloadPayment.productId,
               };
+              const sendBuyerProduct: ISendMailPayload = {
+                to: this.payloadPayment?.client_info?.email,
+                subject: 'Lazzaro - Compra exitosa',
+                message: emailShopProdut,
+                from: this.webConfig?.email,
+              };
+              const sendOrganizerProduct: ISendMailPayload = {
+                to: this.webConfig?.email,
+                subject: 'Lazzaro - Compra exitosa',
+                message: emailOrganizer,
+                from: this.payloadPayment?.client_info?.email,
+              };
+              this.store.dispatch(new PostSendMailNoMessageAction(sendBuyerProduct));
+              this.store.dispatch(new PostSendMailNoMessageAction(sendOrganizerProduct));
               this.store.dispatch(new PostCreateOrderAction(payload));
             } else if (this.payloadPayment.entityType === 'Event') {
               let emailTemplateBuyer = `
@@ -361,7 +571,9 @@ export class StripeComponent implements OnInit, OnDestroy {
                 from: this.payloadPayment?.client_info?.email,
               };
               this.store.dispatch(new PostSendMailNoMessageAction(sendBuyer));
-              this.store.dispatch(new PostSendMailNoMessageAction(sendOrganizer));
+              this.store.dispatch(
+                new PostSendMailNoMessageAction(sendOrganizer)
+              );
             } else {
               this.sweetAlertHelper.createCustomAlert({
                 title: '¡Éxito!',
