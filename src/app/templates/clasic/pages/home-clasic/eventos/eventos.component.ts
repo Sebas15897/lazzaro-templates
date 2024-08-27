@@ -29,6 +29,28 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   swiperEvents: Swiper;
 
+  config: SwiperOptions = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 10,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      700: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1025: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
+  };
+
   constructor(
     private store: Store,
     private router: Router,
@@ -65,46 +87,24 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
-  ngOnDestroy() {
-    this.destroy.next(true);
-    this.destroy.unsubscribe();
-  }
-
-  config: SwiperOptions = {
-    loop: true,
-    slidesPerView: 3,
-    spaceBetween: 10,
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: true,
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-      },
-      700: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      1025: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-    },
-  };
-
   ngAfterViewInit() {
     this.swiperEvents = new Swiper('.swiper-container-one', this.config);
   }
 
   slideNext() {
     if (this.swiperEvents) {
-      this.swiperEvents.slideNext();
+      this.swiperEvents?.slideNext();
     }
   }
 
   slidePrev() {
     if (this.swiperEvents) {
-      this.swiperEvents.slidePrev();
+      this.swiperEvents?.slidePrev();
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
   }
 }

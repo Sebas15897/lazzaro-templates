@@ -4,6 +4,7 @@ import { Subject, Observable, takeUntil } from 'rxjs';
 import { IEvent } from '../../../../core/interfaces/events.interface';
 import { SelectEventAction } from '../../../../core/store/events/events.actions';
 import { EventsState } from '../../../../core/store/events/events.state';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-modern',
@@ -19,12 +20,16 @@ export class EventModernComponent implements OnInit, OnDestroy {
 
   event: IEvent;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private sanitizer: DomSanitizer) {
     this.getEvent$ = this.store.select(EventsState.SelectEvent);
   }
 
   ngOnInit() {
     this.subscribeState();
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   subscribeState() {

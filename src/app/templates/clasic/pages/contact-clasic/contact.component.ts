@@ -6,6 +6,7 @@ import { WebState } from '../../../../core/store/web/web.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostSendMailAction } from '../../../../core/store/contact/contact.actions';
 import { IWebConfig } from '../../../../core/interfaces/web-config.interface';
+import { ContactState } from '../../../../core/store/contact/contact.state';
 
 @Component({
   selector: 'app-contact',
@@ -26,6 +27,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   constructor(private store: Store, private fb: FormBuilder) {
     this.contact$ = this.store.select(WebState.contact);
     this.webConfig$ = this.store.select(WebState.webConfig);
+    this.isMailSend$ = this.store.select(ContactState.isMailSend);
     this.formContact = this.createForm();
   }
 

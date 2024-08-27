@@ -67,6 +67,13 @@ export const routes: Routes = [
         component: TransparencyComponent,
       },
       {
+        path: 'pay-service/:serviceId',
+        loadChildren: () =>
+          import('./pages/pay-service/pay-service.module').then(
+            (module) => module.PayServiceModule
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full',

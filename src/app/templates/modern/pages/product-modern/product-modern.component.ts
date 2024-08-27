@@ -48,7 +48,7 @@ export class ProductModernComponent implements OnInit, OnDestroy {
     this.dialog.open(FormBuyComponent, {
       height: 'auto',
       width: '600px',
-      data: this.product,
+      data: this.product.id,
     });
   }
 

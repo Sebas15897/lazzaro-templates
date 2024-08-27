@@ -1,4 +1,4 @@
-<div [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }">
+<div class="py-2" [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }">
   <div class="container containerSectionWeAre d-flex justify-content-between "
   [ngStyle]=" aboutUs?.design.layout === 'right' ? {'flex-direction': 'row-reverse' } : {}"
   >
@@ -52,12 +52,10 @@
   </div>
 </div>
 
-<br>
-<br>
-<br>
 
 <div
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
+  class="py-2"
 >
   <div
     class="container containerSectionWeAre py-4 d-flex justify-content-between flex-row-reverse"

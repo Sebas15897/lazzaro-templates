@@ -1,13 +1,15 @@
 <div
-  [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
   id="servicios"
+  [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
+  *ngIf="sectionServices?.active"
+  class="py-4"
 >
   <div
     class="container p-4 d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
     <h2
       [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
-      class="color-text fw-bold fs-3 margin-bottom-0 pt-4"
+      class="color-text fw-bold fs-3 margin-bottom-0"
     >
       {{ sectionServices?.properties?.title }}
     </h2>
@@ -20,26 +22,32 @@
     <div
       class="d-flex justify-content-around align-items-center flex-wrap row-gap-custom column-gap-custom"
     >
-      <div
-        *ngFor="let service of listServices"
-
-      >
+      <div *ngFor="let service of listServices">
         <div
+        class="cardServices generalShadow borderRadius"
           *ngIf="service.calendly_url"
           [ngStyle]="{
             'background-color': sectionServices?.properties?.cardsBackground
           }"
-          class="cardServices generalShadow borderRadius"
+          (click)="payService(service)"
         >
-          <div class="square">
+          <div class="square mb-4">
             <img
-              [src]="service.image_url"
-              alt="{{ service.service_name }}"
+              [src]="service?.image_url"
+              [alt]="service?.service_name"
               class="img-fluid"
             />
           </div>
-          <div class="titleCard fw-bold">{{ service.service_name }}</div>
-          <div class="descriptionCard" [innerHTML]="service.description"></div>
+          <div
+            class="titleCard fw-bold"
+            [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
+          >
+            {{ service.service_name }}
+          </div>
+          <div
+            class="descriptionCard"
+            [innerHTML]="sanitizeHtml(service.description)"
+          ></div>
         </div>
       </div>
     </div>

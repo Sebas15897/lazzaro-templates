@@ -1,4 +1,7 @@
-<div [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }">
+<div
+  [ngStyle]="{ 'background-color': teamData?.design?.backgroundColor }"
+  *ngIf="teamData?.enabled"
+>
   <div
     class="p-4 d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
@@ -14,21 +17,31 @@
     >
       {{ teamData?.subTitle }}
     </p>
-    
-    <div class="container containerCarrousel" style="position: relative;">
-      <div class="swiper-container swiper-container-modern-team container" style="width: 960px;" >
+
+    <div class="container containerCarrousel" style="position: relative">
+      <div
+        class="swiper-container swiper-container-modern-team container"
+        style="width: 960px"
+      >
         <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let member of teamData?.members">
-            <div class="cardSpecific" >
-              <a [href]="member.linkedin" target="_blank" style="height: 32px;">
+            <div class="cardSpecific">
+              <a [href]="member.linkedin" target="_blank" style="height: 32px">
                 <img [src]="member.picture" [alt]="member.name" />
               </a>
               <div class="infoCard p-2">
                 <p class="titleCard color-text fw-bold">{{ member.name }}</p>
                 <p class="description color-text">{{ member.position }}</p>
                 <div class="socialMedia">
-                  <a *ngIf="member.linkedin" [href]="member.linkedin" target="_blank">
-                    <img src="assets/images/icons8-linkedin1Red.svg" alt="LinkedIn" />
+                  <a
+                    *ngIf="member.linkedin"
+                    [href]="member.linkedin"
+                    target="_blank"
+                  >
+                    <img
+                      src="assets/images/icons8-linkedin1Red.svg"
+                      alt="LinkedIn"
+                    />
                   </a>
                 </div>
               </div>
@@ -37,8 +50,20 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="swiper-button-prev" (click)="slidePrevTeam()" *ngIf="teamData?.members.length > 4">  <img src="assets/images/arrowPrevModern.svg" alt=""></div>
-      <div class="swiper-button-next" (click)="slideNextTeam()" *ngIf="teamData?.members.length > 4"><img src="assets/images/arrowNextModern.svg" alt=""></div>
+      <div
+        class="swiper-button-prev"
+        (click)="slidePrevTeam()"
+        *ngIf="teamData?.members?.length > 3"
+      >
+        <img src="assets/images/arrowPrevModern.svg" alt="arrowPrevModern" />
+      </div>
+      <div
+        class="swiper-button-next"
+        (click)="slideNextTeam()"
+        *ngIf="teamData?.members?.length > 3"
+      >
+        <img src="assets/images/arrowNextModern.svg" alt="arrowNextModern" />
+      </div>
     </div>
   </div>
 </div>

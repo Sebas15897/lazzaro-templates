@@ -1,23 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IImpact } from '../../../../../core/interfaces/web.interface';
+import { IBookings } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
 
 @Component({
-  selector: 'app-statistics',
-  templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.scss']
+  selector: 'app-reservas',
+  templateUrl: './reservas.component.html',
+  styleUrls: ['./reservas.component.scss'],
 })
 
-export class StatisticsComponent implements OnInit, OnDestroy {
+export class ReservasComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
-  impactData$: Observable<IImpact> = new Observable();
+  reservas$: Observable<IBookings> = new Observable();
 
-  impactData: IImpact;
+  reservas: IBookings;
 
   constructor(private store: Store) {
-    this.impactData$ = this.store.select(WebState.impactData);
+    this.reservas$ = this.store.select(WebState.bookings);
   }
 
   ngOnInit() {
@@ -25,8 +25,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   subscribeState() {
-    this.impactData$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
-      this.impactData = resp;
+    this.reservas$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      this.reservas = resp;
     });
   }
 

@@ -7,7 +7,7 @@
   <div
     class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
   >
-    <p class="text-black fw-bold fs-6 margin-bottom-0">
+    <p class="fw-bold fs-6 margin-bottom-0">
       {{ sectionEvents?.properties?.subtitle || "NUESTROS EVENTOS" }}
     </p>
     <h2 class="fw-bold text-black margin-bottom-0">
@@ -29,21 +29,21 @@
               (click)="onSelectEvent(event)"
             >
               <img
-                [src]="event.images[0]?.url || 'assets/images/portafolio1.jpeg'"
-                alt=""
+                [src]="event?.images[0]?.url || 'assets/images/portafolio1.jpeg'"
+                [alt]="event?.name"
               />
               <div class="infoCard">
-                <p class="titleCard fw-bold">{{ event.name }}</p>
+                <p class="titleCard fw-bold">{{ event?.name }}</p>
                 <div
                   class="description"
-                  [innerHTML]="sanitizeHtml(event.description)"
+                  [innerHTML]="sanitizeHtml(event?.description)"
                 ></div>
                 <p class="date">
-                  {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+                  {{ event?.dates?.event_start | date : "dd/MM/yyyy" }}
                 </p>
               </div>
               <div class="optionsCard d-flex justify-content-between flex-wrap">
-                <div class="text-black fw-bold c-pointer">Reservar</div>
+                <div class="fw-bold c-pointer">Reservar</div>
               </div>
             </div>
           </div>
@@ -53,16 +53,16 @@
       <div
         class="swiper-button-prev"
         (click)="slidePrev()"
-        *ngIf="listEvents.length > 3"
+        *ngIf="listEvents?.length > 3"
       >
-        <img src="assets/images/prevslider.png" alt="" />
+        <img src="assets/images/prevslider.png" alt="prevslider" />
       </div>
       <div
         class="swiper-button-next"
         (click)="slideNext()"
-        *ngIf="listEvents.length > 3"
+        *ngIf="listEvents?.length > 3"
       >
-        <img src="assets/images/nextSlider.png" alt="" />
+        <img src="assets/images/nextSlider.png" alt="nextSlider?" />
       </div>
     </div>
   </div>

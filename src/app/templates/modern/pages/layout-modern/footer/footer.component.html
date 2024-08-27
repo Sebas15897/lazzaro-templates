@@ -8,12 +8,12 @@
     <div
       class="containerOptions d-flex justify-content-between align-items-start"
     >
-      <img [src]="styles?.logo" alt="Logo" />
+      <img [src]="styles?.logo" [alt]="styles?.logo" />
 
-      <ul>
+      <!--       <ul>
         <li class="optionList fw-bold fs-custom">
-          
-          <a 
+
+          <a
           [ngStyle]="{ color: styles?.menuTextColor, 'border-bottom': '3px solid ' + (styles?.menuTextColor) }"> Contacto </a>
         </li>
         <li class="optionList">
@@ -33,11 +33,18 @@
         <li class="optionList">
           <a href="#" [ngStyle]="{ color: styles?.menuTextColor }"> Celular </a>
         </li>
-      </ul>
+      </ul> -->
 
       <ul>
         <li class="optionList fw-bold fs-custom">
-          <a [ngStyle]="{ color: styles?.menuTextColor, 'border-bottom': '3px solid ' + (styles?.menuTextColor) }" > Enlaces </a>
+          <a
+            [ngStyle]="{
+              color: styles?.menuTextColor,
+              'border-bottom': '3px solid ' + styles?.menuTextColor
+            }"
+          >
+            Enlaces
+          </a>
         </li>
         <li class="optionList">
           <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/modern">
@@ -102,13 +109,6 @@
       <div class="">
         <div class="socialMedia d-flex align-items-center column-gap-custom">
           <a
-            *ngIf="footer?.social?.instagram"
-            [href]="footer?.social?.instagram"
-            target="_blank"
-          >
-            <img src="assets/images/icons8-instagramRed.svg" alt="Instagram" />
-          </a>
-          <a
             *ngIf="footer?.social?.linkedIn"
             [href]="footer?.social?.linkedIn"
             target="_blank"
@@ -121,6 +121,27 @@
             target="_blank"
           >
             <img src="assets/images/icons8-twitterxRed.svg" alt="Twitter" />
+          </a>
+<!--           <a
+            *ngIf="footer?.social?.facebook"
+            [href]="footer?.social?.facebook"
+            target="_blank"
+          >
+            <img src="assets/images/icons8-twitterxRed.svg" alt="facebook" />
+          </a> -->
+      <!--     <a
+            *ngIf="footer?.social?.whatsapp"
+            [href]="footer?.social?.whatsapp"
+            target="_blank"
+          >
+            <img src="assets/images/icons8-instagramRed.svg" alt="Instagram" />
+          </a> -->
+          <a
+            *ngIf="footer?.social?.instagram"
+            [href]="footer?.social?.instagram"
+            target="_blank"
+          >
+            <img src="assets/images/icons8-instagramRed.svg" alt="Instagram" />
           </a>
         </div>
       </div>

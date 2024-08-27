@@ -37,11 +37,11 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  
-    
+
+
   config: SwiperOptions = {
     loop: true,
-    slidesPerView: 4,
+    slidesPerView: 3,
     spaceBetween: 10,
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: true,
@@ -55,7 +55,7 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
         spaceBetween: 20
       },
       1025: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 20
       },
     }

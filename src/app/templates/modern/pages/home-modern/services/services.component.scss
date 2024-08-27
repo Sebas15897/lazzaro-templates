@@ -23,23 +23,21 @@
 }
 
 .cardServices {
-  width: 90%;
   width: 300px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  cursor: pointer;
 }
 
 .square {
   width: 48px;
   height: 48px;
-  background-color: #ffffff;
   margin: auto;
 }
 
 .titleCard {
-  color: #ffffff;
   font-size: 18px;
   text-align: center;
   white-space: nowrap;
@@ -48,7 +46,6 @@
 }
 
 .descriptionCard {
-  min-height: 100px;
-  color: #ffffff;
+  max-height: 100px;
   text-align: center;
 }

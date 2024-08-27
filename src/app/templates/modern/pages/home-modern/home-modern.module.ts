@@ -9,6 +9,7 @@ import { PortafolioComponent } from './portafolio/portafolio.component';
 import { ServicesComponent } from './services/services.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { WeAreComponent } from './weAre/weAre.component';
+import { ReservasComponent } from './reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { WeAreComponent } from './weAre/weAre.component';
     ServicesComponent,
     StatisticsComponent,
     WeAreComponent,
+    ReservasComponent,
 
   ],
   imports: [CommonModule, HomeModernRoutingModule],

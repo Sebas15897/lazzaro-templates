@@ -1,4 +1,7 @@
-<div   [style]="{ 'background-color': sectionEvents?.properties?.background }">
+<div
+  [style]="{ 'background-color': sectionEvents?.properties?.background }"
+  *ngIf="sectionEvents?.active"
+>
   <div
     class="d-flex flex-column justify-content-center align-items-center row-gap-custom p-4"
   >
@@ -14,24 +17,27 @@
     >
       {{ sectionEvents?.properties?.subtitle }}
     </p>
-  
-    <div class="container containerCarrousel" style="position: relative;">
-      <div class="swiper-container swiper-container-modern-event container" style="width: 960px;" >
+
+    <div class="container containerCarrousel" style="position: relative">
+      <div
+        class="swiper-container swiper-container-modern-event container"
+        style="width: 960px"
+      >
         <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let event of listEvents">
             <div class="cardSpecific" (click)="onSelectEvent(event)">
               <img
                 class="imgCardSpecif"
-                [src]="event.images[0]?.url"
-                [alt]="event.name"
+                [src]="event?.images[0]?.url"
+                [alt]="event?.name"
               />
               <div class="infoCard">
-                <p class="titleCard fw-bold">{{ event.name }}</p>
-                <p class="description" [innerHTML]="event.description"></p>
+                <p class="titleCard fw-bold">{{ event?.name }}</p>
+                <p class="description" [innerHTML]="event?.description"></p>
                 <div class="date">
                   <img src="assets/images/calendar.svg" alt="Calendar Icon" />
                   <p class="date margin-bottom-0">
-                    {{ event.dates.event_start | date : "dd/MM/yyyy" }}
+                    {{ event?.dates?.event_start | date : "dd/MM/yyyy" }}
                   </p>
                 </div>
               </div>
@@ -40,9 +46,20 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="swiper-button-prev" (click)="slidePrev()" *ngIf="listEvents.length > 4">  <img src="assets/images/arrowPrevModern.svg" alt=""></div>
-      <div class="swiper-button-next" (click)="slideNext()" *ngIf="listEvents.length > 4"><img src="assets/images/arrowNextModern.svg" alt=""></div>
+      <div
+        class="swiper-button-prev"
+        (click)="slidePrev()"
+        *ngIf="listEvents.length > 3"
+      >
+        <img src="assets/images/arrowPrevModern.svg" alt="arrowPrevModern" />
+      </div>
+      <div
+        class="swiper-button-next"
+        (click)="slideNext()"
+        *ngIf="listEvents.length > 3"
+      >
+        <img src="assets/images/arrowNextModern.svg" alt="arrowNextModern" />
+      </div>
     </div>
   </div>
-
-<div>
+</div>
