@@ -154,7 +154,6 @@ export class FormBuyComponent implements OnInit, OnDestroy {
     delete form.policy;
     delete form.client_info.fistName;
     delete form.client_info.lastName;
-    console.log(form, 'form');
     this.store.dispatch(new PostPaymentAction(form));
   }
 

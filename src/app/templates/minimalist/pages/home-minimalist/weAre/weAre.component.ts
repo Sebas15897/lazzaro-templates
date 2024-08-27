@@ -18,7 +18,6 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
   aboutUs: IAboutUs;
   whyChooseUsData: IWhyChooseUs;
 
-  // Modificar el estilo de la pagina (quienes somo)
   maxHeightAboutUs:String = "190px";
   @ViewChild('leftContentAboutUs') leftContentAboutUs!: ElementRef<HTMLDivElement>;
   @ViewChild('rightContentAboutUs') rightContentAboutUs!: ElementRef<HTMLDivElement>;
@@ -41,7 +40,7 @@ export class WeAreComponent implements OnInit, OnDestroy, AfterViewInit {
       this.whyChooseUsData = resp;
     });
   }
-  
+
 
   ngOnDestroy() {
     this.destroy.next(true);

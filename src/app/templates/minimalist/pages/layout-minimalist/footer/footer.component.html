@@ -1,11 +1,13 @@
 <footer
   class="footer-container"
-  [style.background-color]="styles?.footerColor"
+  [ngStyle]="{
+    'background-color': footer?.design?.backgroundColor,
+  }"
 >
   <div class="firstPart d-flex">
     <img [src]="styles?.logo" [alt]="styles?.logo || 'Logo'" />
     <div class="containerOptions d-flex justify-content-evenly">
-      <ul class="listOptionsFooter">
+      <!--       <ul class="listOptionsFooter">
         <li
           class="optionList fw-bold fs-custom"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -27,7 +29,7 @@
         <li class="optionList" >
           <a  [ngStyle]="{ color: styles?.menuTextColor }">Phone</a>
         </li>
-      </ul>
+      </ul> -->
 
       <ul class="listOptionsFooter">
         <li
@@ -37,7 +39,9 @@
           <a [ngStyle]="{ color: styles?.menuTextColor }">Enlaces</a>
         </li>
         <li class="optionList">
-          <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/">Inicio</a>
+          <a [ngStyle]="{ color: styles?.menuTextColor }" routerLink="/"
+            >Inicio</a
+          >
         </li>
         <li class="optionList">
           <a

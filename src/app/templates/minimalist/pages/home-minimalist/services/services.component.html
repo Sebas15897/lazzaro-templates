@@ -1,6 +1,7 @@
 <div
   [ngStyle]="{ 'background-color': sectionServices?.properties?.background }"
-  class="p-4"
+  *ngIf="sectionServices?.active"
+  class="py-4"
 >
   <div
     class="container d-flex flex-column justify-content-center align-items-center row-gap-custom"
@@ -27,6 +28,7 @@
           'background-color': sectionServices?.properties?.cardsBackground
         }"
         *ngFor="let service of listServices"
+        (click)="payService(service)"
       >
         <img [src]="service.image_url" [alt]="service?.service_name" />
         <div class="titleCard fw-bold">{{ service.service_name }}</div>

@@ -47,11 +47,11 @@ export class ProductMinimalistComponent implements OnInit, OnDestroy {
   buy() {
     this.dialog.open(FormBuyComponent, {
       width: '600px',
-      data: this.product,
+      data: this.product?.id,
     });
   }
 
-  
+
   setActiveIndex(index: number): void {
     this.activeIndex = index;
   }

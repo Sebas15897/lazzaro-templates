@@ -1,0 +1,69 @@
+<div class="container-sections">
+  <div
+    class="containerSection d-flex flex-column justify-content-center align-items-center row-gap-custom"
+  >
+    <div class="contactSection borderRadius">
+      <div
+        class="leftContent borderRadius"
+        [ngStyle]="{ 'background-color': contact?.design?.backgroundColor }"
+      >
+        <h3 class="fs-3" [ngStyle]="{ color: contact?.titleColor }">
+          {{ contact?.title }}
+        </h3>
+        <p [ngStyle]="{ color: contact?.titleColor }">
+          {{ contact?.subTitle }}
+        </p>
+      </div>
+      <form [formGroup]="formContact" class="rigthSection">
+        <div
+          class="inputDoble d-flex justify-content-between column-gap-custom row-gap-custom"
+        >
+          <div class="input">
+            <p class="margin-bottom-0">Nombre</p>
+            <input
+              class="inputForm"
+              formControlName="from"
+              type="text"
+              placeholder="Ingrese un nombre"
+            />
+          </div>
+          <div class="input">
+            <p class="margin-bottom-0">Tema</p>
+            <input
+              class="inputForm"
+              formControlName="asunto"
+              type="text"
+              placeholder="Ingrese el asunto"
+            />
+          </div>
+        </div>
+        <div class="input">
+          <p class="margin-bottom-0">Email</p>
+          <input
+            class="inputForm"
+            formControlName="from"
+            type="email"
+            placeholder="Ingrese su correo eléctronico"
+          />
+        </div>
+        <div class="input">
+          <p class="margin-bottom-0">Mensaje</p>
+          <textarea
+            class="inputForm"
+            formControlName="message"
+            placeholder="Ingrese un mensaje"
+          ></textarea>
+        </div>
+        <div class="buttonSend">
+          <button
+            class="btn btn-primary"
+            [disabled]="formContact.invalid"
+            (click)="sendMail()"
+          >
+            Enviar mensaje
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

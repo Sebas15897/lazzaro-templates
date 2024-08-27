@@ -1,10 +1,19 @@
-<div class="py-2" [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }">
-  <div class="container containerSectionWeAre d-flex justify-content-between "
-  [ngStyle]=" aboutUs?.design.layout === 'right' ? {'flex-direction': 'row-reverse' } : {}"
+<div
+  class="py-2"
+  [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }"
+  *ngIf="aboutUs?.enabled"
+>
+  <div
+    class="container containerSectionWeAre d-flex justify-content-between"
+    [ngStyle]="
+      aboutUs?.design.layout === 'right'
+        ? { 'flex-direction': 'row-reverse' }
+        : {}
+    "
   >
     <div
       #leftContentAboutUS
-      style="height: max-content; min-height:max-content;"
+      style="height: max-content; min-height: max-content"
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"
     >
       <p
@@ -21,7 +30,11 @@
         {{ aboutUs?.title }}
       </h2>
 
-      <span class="descriptionSectionAboutUs" [ngStyle]="{maxHeight: maxHeightAboutUs }"  [innerHTML]="aboutUs?.description"></span>
+      <span
+        class="descriptionSectionAboutUs"
+        [ngStyle]="{ maxHeight: maxHeightAboutUs }"
+        [innerHTML]="aboutUs?.description"
+      ></span>
 
       <div
         class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap row-gap-custom"
@@ -39,23 +52,31 @@
       </div>
       <div
         (click)="seeMore()"
-        class="btn btn-primary borderRadius buttonSeeMore "
+        class="btn btn-primary borderRadius buttonSeeMore"
         *ngIf="aboutUs?.features?.buttons?.length > 0"
-        >Descubrir más</div
       >
+        Descubrir más
+      </div>
     </div>
-    <div class="contentRight" style="min-height: 526px;" #rightContentAboutUs>
-      <img class="imgRight" [src]="aboutUs?.imgUrl" [alt]="aboutUs?.imgUrl"
-      [ngStyle]=" aboutUs?.design.layout === 'right' ? {'border-radius': '0px 0px 0px 100px' } : {'border-radius' : '0px 0px 100px 0px'}"
+    <div class="contentRight" style="min-height: 526px" #rightContentAboutUs>
+      <img
+        class="imgRight"
+        [src]="aboutUs?.imgUrl"
+        [alt]="aboutUs?.imgUrl"
+        [ngStyle]="
+          aboutUs?.design.layout === 'right'
+            ? { 'border-radius': '0px 0px 0px 100px' }
+            : { 'border-radius': '0px 0px 100px 0px' }
+        "
       />
     </div>
   </div>
 </div>
 
-
 <div
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
   class="py-2"
+  *ngIf="whyChooseUsData?.enabled"
 >
   <div
     class="container containerSectionWeAre py-4 d-flex justify-content-between flex-row-reverse"
@@ -66,14 +87,10 @@
     <div
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"
     >
-      <p
-        class="text-black fw-bold fs-6 margin-bottom-0"
+      <h2
+        class="fw-bold text-black margin-bottom-0"
         [ngStyle]="{ color: whyChooseUsData?.titleColor }"
       >
-        ¿POR QUÉ ELEGIRNOS?
-      </p>
-
-      <h2 class="fw-bold text-black margin-bottom-0">
         {{ whyChooseUsData?.title }}
       </h2>
 
@@ -100,7 +117,11 @@
     <div class="contentRight">
       <img
         class="imgRight2"
-        [ngStyle]=" whyChooseUsData?.design.layout === 'right' ? {'border-radius': '0px 0px 0px 100px' } : {'border-radius' : '0px 0px 100px 0px'}"
+        [ngStyle]="
+          whyChooseUsData?.design.layout === 'right'
+            ? { 'border-radius': '0px 0px 0px 100px' }
+            : { 'border-radius': '0px 0px 100px 0px' }
+        "
         [src]="whyChooseUsData?.imgUrl"
         [alt]="whyChooseUsData?.imgUrl"
       />

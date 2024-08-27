@@ -67,6 +67,20 @@ export const routes: Routes = [
         path: 'transparency',
         component: TransparencyComponent,
       },
+      {
+        path: 'pay-service/:serviceId',
+        loadChildren: () =>
+          import('./pages/pay-service/pay-service.module').then(
+            (module) => module.PayServiceModule
+          ),
+      },
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('./pages/contact-minimalist/contact-minimalist.module').then(
+            (module) => module.ContactMinimalistModule
+          ),
+      },
     ],
   },
 ];

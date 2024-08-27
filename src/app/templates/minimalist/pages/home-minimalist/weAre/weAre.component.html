@@ -1,13 +1,19 @@
 <div
   class="py-4"
   [ngStyle]="{ 'background-color': aboutUs?.design.backgroundColor }"
+  *ngIf="aboutUs?.enabled"
 >
-  <div class="container d-flex justify-content-between"
-    [ngStyle]=" aboutUs?.design.layout === 'right' ? {'flex-direction': 'row-reverse' } : {}"
+  <div
+    class="container d-flex justify-content-between"
+    [ngStyle]="
+      aboutUs?.design.layout === 'right'
+        ? { 'flex-direction': 'row-reverse' }
+        : {}
+    "
   >
     <div
       #leftContentAboutUs
-      style="height: max-content; min-height:max-content;"
+      style="height: max-content; min-height: max-content"
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"
     >
       <h2
@@ -21,7 +27,12 @@
         {{ aboutUs?.subTitle }}
       </p>
 
-      <span class="fs-6 color-text" class="descriptionSectionAboutUs" [ngStyle]="{maxHeight: maxHeightAboutUs }"  [innerHTML]="aboutUs?.description"></span>
+      <span
+        class="fs-6 color-text"
+        class="descriptionSectionAboutUs"
+        [ngStyle]="{ maxHeight: maxHeightAboutUs }"
+        [innerHTML]="aboutUs?.description"
+      ></span>
 
       <div
         class="containerCardsWeAre d-flex align-items-center justify-content-between flex-wrap row-gap-custom column-gap-custom"
@@ -38,23 +49,33 @@
         class="buttonSeeMore generalShadow"
         *ngIf="aboutUs?.features?.buttons?.length > 0"
         (click)="seeMore()"
-        >Leer más</div>
+      >
+        Leer más
+      </div>
     </div>
-    <div class="contentRight" style="min-height: 526px;"
-      #rightContentAboutUs 
-      [ngClass]="{'order-1': aboutUs?.design.layout === 'right'}"
+    <div
+      class="contentRight"
+      style="min-height: 526px"
+      #rightContentAboutUs
+      [ngClass]="{ 'order-1': aboutUs?.design.layout === 'right' }"
     >
       <img class="imgRight" [src]="aboutUs?.imgUrl" alt="" />
     </div>
   </div>
 </div>
 
-<br /><br /><br />
 <div
+  class="py-4"
   [ngStyle]="{ 'background-color': whyChooseUsData?.design?.backgroundColor }"
+  *ngIf="whyChooseUsData?.enabled"
 >
-  <div class="container py-4 d-flex justify-content-between"
-  [ngStyle]=" whyChooseUsData?.design.layout === 'right' ? {'flex-direction': 'row-reverse' } : {}"
+  <div
+    class="container py-4 d-flex justify-content-between"
+    [ngStyle]="
+      whyChooseUsData?.design.layout === 'right'
+        ? { 'flex-direction': 'row-reverse' }
+        : {}
+    "
   >
     <div
       class="contentLeft d-flex flex-column row-gap-custom column-gap-custom"

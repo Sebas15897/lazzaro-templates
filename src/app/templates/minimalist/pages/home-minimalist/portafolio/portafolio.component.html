@@ -1,21 +1,36 @@
-<div class="container d-flex flex-column justify-content-center align-items-center row-gap-custom" id="portafolioMini">
-  <h2 class="color-text fw-bold fs-3 margin-bottom-0">{{ sectionProjects?.properties?.title || 'NUESTRO PORTAFOLIO' }}</h2>
-  <p class="color-text margin-bottom-0">{{ sectionProjects?.properties?.subtitle || 'Lorem Ipsum' }}</p>
+<div
+  class="py-4 container d-flex flex-column justify-content-center align-items-center row-gap-custom"
+  id="portafolioMini"
+  *ngIf="sectionProjects?.active"
+>
+  <h2 class="color-text fw-bold fs-3 margin-bottom-0">
+    {{ sectionProjects?.properties?.title || "NUESTRO PORTAFOLIO" }}
+  </h2>
+  <p class="color-text margin-bottom-0">
+    {{ sectionProjects?.properties?.subtitle || "Lorem Ipsum" }}
+  </p>
 
-  <div 
+  <div
     class="containerCards d-flex justify-content-center align-items-center flex-wrap"
-    [ngStyle]="sectionProjects?.properties?.layout === 'grid' ?  { 'column-gap': '0', 'row-gap' : '0' } : { 'column-gap': '25px', 'row-gap' : '25px' }"
+    [ngStyle]="
+      sectionProjects?.properties?.layout === 'grid'
+        ? { 'column-gap': '0', 'row-gap': '0' }
+        : { 'column-gap': '25px', 'row-gap': '25px' }
+    "
   >
     <div
       *ngFor="let project of listProjects"
       class="cardImage"
       (click)="onSelectProject(project)"
-      style="cursor: pointer;"
+      style="cursor: pointer"
     >
-      <img [src]="project.image_url || 'assets/images/portafolio1.jpeg'" alt="{{ project.title }}">
+      <img
+        [src]="project.image_url || 'assets/images/portafolio1.jpeg'"
+        alt="{{ project.title }}"
+      />
       <div class="hoverContent">
         <p class="margin-bottom-0 fw-bold text-center">{{ project.title }}</p>
-        <img src="assets/images/report-search.svg" alt="Search Icon">
+        <img src="assets/images/report-search.svg" alt="Search Icon" />
       </div>
     </div>
   </div>
