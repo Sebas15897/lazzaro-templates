@@ -28,6 +28,10 @@
     <div [innerHTML]="sanitizeHtml(event?.description)"></div>
 
     <p class="fw-bold fs-5 margin-bottom-0">
+      Precio: € {{ event?.tickets[0]?.price }}
+    </p>
+
+    <p class="fw-bold fs-5 margin-bottom-0">
       Entradas disponibles: {{ event?.tickets[0]?.amount }}
     </p>
 

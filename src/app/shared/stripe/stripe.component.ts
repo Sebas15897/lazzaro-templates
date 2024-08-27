@@ -233,7 +233,7 @@ export class StripeComponent implements OnInit, OnDestroy {
 
                         <h3>Detalles del Producto:</h3>
                         <p><strong>Nombre del Producto:</strong> ${this.product?.title}</p>
-                        <p><strong>Precio Total:</strong> $${this.product?.price}</p>
+                        <p><strong>Precio Total:</strong> €${this.product?.price}</p>
 
                         <p>Gracias por confiar en nosotros. ¡Esperamos que tengas un excelente día!</p>
                       </div>
@@ -330,7 +330,7 @@ export class StripeComponent implements OnInit, OnDestroy {
 
                     <h3>Detalles del Producto:</h3>
                     <p><strong>Producto:</strong> ${this.product?.title}</p>
-                    <p><strong>Precio Total:</strong> $${
+                    <p><strong>Precio Total:</strong> €${
                       this.product?.price
                     }</p>
 
@@ -461,7 +461,7 @@ export class StripeComponent implements OnInit, OnDestroy {
                     }</p>
 
                     <h3>Detalles del Pago:</h3>
-                    <p><strong>Importe Pagado:</strong> $${
+                    <p><strong>Importe Pagado:</strong> €${
                       this.payloadPayment?.amount
                     }</p>
 
