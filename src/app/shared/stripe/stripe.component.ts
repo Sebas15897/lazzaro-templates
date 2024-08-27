@@ -319,8 +319,8 @@ export class StripeComponent implements OnInit, OnDestroy {
                     <p><strong>Dirección:</strong> ${
                       this.payloadPayment?.client_info?.address ?? 'N/A'
                     }, ${this.payloadPayment?.client_info?.city ?? 'City'}, ${
-                              this.payloadPayment?.client_info?.postal_code ?? 'Postal Code'
-                            }, ${this.payloadPayment?.client_info?.country ?? 'Country'}</p>
+                this.payloadPayment?.client_info?.postal_code ?? 'Postal Code'
+              }, ${this.payloadPayment?.client_info?.country ?? 'Country'}</p>
                     <p><strong>DNI:</strong> ${
                       this.payloadPayment?.client_info?.dni ?? 'N/A'
                     }</p>
@@ -330,7 +330,9 @@ export class StripeComponent implements OnInit, OnDestroy {
 
                     <h3>Detalles del Producto:</h3>
                     <p><strong>Producto:</strong> ${this.product?.title}</p>
-                    <p><strong>Precio Total:</strong> $${this.product?.price}</p>
+                    <p><strong>Precio Total:</strong> $${
+                      this.product?.price
+                    }</p>
 
                     <h3>Mensaje del Cliente:</h3>
                     <p>${this.payloadPayment?.client_info?.message}</p>
@@ -367,8 +369,12 @@ export class StripeComponent implements OnInit, OnDestroy {
                 message: emailOrganizer,
                 from: this.payloadPayment?.client_info?.email,
               };
-              this.store.dispatch(new PostSendMailNoMessageAction(sendBuyerProduct));
-              this.store.dispatch(new PostSendMailNoMessageAction(sendOrganizerProduct));
+              this.store.dispatch(
+                new PostSendMailNoMessageAction(sendBuyerProduct)
+              );
+              this.store.dispatch(
+                new PostSendMailNoMessageAction(sendOrganizerProduct)
+              );
               this.store.dispatch(new PostCreateOrderAction(payload));
             } else if (this.payloadPayment.entityType === 'Event') {
               let emailTemplateBuyer = `
@@ -458,6 +464,18 @@ export class StripeComponent implements OnInit, OnDestroy {
                     <p><strong>Importe Pagado:</strong> $${
                       this.payloadPayment?.amount
                     }</p>
+
+                    ${
+                      this.event?.location === 'online'
+                        ? `<h3>Detalles del Evento:</h3>
+                          <p><strong>Ubicación:</strong> Online</p>
+                          <p>Puedes acceder al evento en el siguiente enlace:</p>
+                          <p><a href="${this.event?.url}" target="_blank">${this.event?.name}</a></p>`
+                        : `<h3>Detalles del Evento:</h3>
+                          <p><strong>Ubicación:</strong> presencial</p>
+                          <p>Puedes acceder al evento en el siguiente enlace:</p>
+                          <p><a href="${this.event?.url}" target="_blank">${this.event?.name}</a></p>`
+                    }
 
                     <h3>Mensaje del Cliente:</h3>
                     <p>${this.payloadPayment?.client_info.message}</p>
