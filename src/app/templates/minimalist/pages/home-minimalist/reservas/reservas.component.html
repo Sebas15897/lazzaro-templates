@@ -1,3 +1,4 @@
+
 <div
   *ngIf="reservas?.enabled"
   class="py-4"
@@ -6,12 +7,29 @@
   <div 
     class="container containerReservas d-flex justify-content-between "
     [ngStyle]="
-      reservas?.design?.layout === 'left'
+      isSmallScreen == false ?
+        reservas?.design?.layout === 'center'
         ? {
-            'flex-direction': 'row',
+            'background-image': 'url(' + reservas?.imgUrl + ')',
+            'background-size': 'cover',
+            'background-position': 'center',
+            'background-repeat': 'no-repeat',
+            'width': '100%',
+            'padding-left': '0',
+            'text-align': 'center',
+            'align-items' : 'center'
           }
-        : reservas?.design?.layout === 'right' ? {'flex-direction': 'row-reverse',} : {}
-      "
+        : 
+          reservas?.design?.layout === 'left'
+            ? {
+                'flex-direction': 'row',
+              }
+            : reservas?.design?.layout === 'right' ? {'flex-direction': 'row-reverse',} 
+        : {} 
+      :  {
+        'background-color': reservas?.design?.bannerColor,
+      }
+        "
   >
     <div
       class="imgReservas"
@@ -30,18 +48,7 @@
     </div>
     <div class="infoReservas"
       [ngStyle]="
-      reservas?.design?.layout === 'center'
-        ? {
-            'background-image': 'url(' + reservas?.imgUrl + ')',
-            'background-size': 'cover',
-            'background-position': 'center',
-            'background-repeat': 'no-repeat',
-            'width': '100%',
-            'padding-left': '0',
-            'text-align': 'center',
-            'align-items' : 'center'
-          }
-        : reservas?.design?.layout === 'left'
+      reservas?.design?.layout === 'left'
         ? {
             'background-color': reservas?.design?.bannerColor,
             'margin-right': '-5%',
@@ -52,7 +59,9 @@
           'padding-right': '12%',
           'align-items': 'end',
           'text-align' : 'right'
-        } : {}
+        } : {
+          'background-color': 'transparent'
+        }
       "
     >
       

@@ -3,6 +3,7 @@ import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { IBookings } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-reservas',
@@ -16,12 +17,22 @@ export class ReservasComponent implements OnInit, OnDestroy {
 
   reservas: IBookings;
 
-  constructor(private store: Store) {
+  isSmallScreen: boolean = false; 
+
+  constructor(private store: Store, private  breakpointObserver: BreakpointObserver) {
     this.reservas$ = this.store.select(WebState.bookings);
   }
 
   ngOnInit() {
     this.subscribeState();
+    this.test()
+  }
+
+  test(){
+    this.breakpointObserver.observe(['(max-width: 700px)']).subscribe(result => {
+      this.isSmallScreen = result.matches; // Si el media query coincide, isSmallScreen será true
+      console.log(this.isSmallScreen);
+    });
   }
 
   subscribeState() {

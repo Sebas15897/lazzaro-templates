@@ -72,15 +72,15 @@
 @media (max-width: 700px) {
     .containerReservas{
         flex-direction: column !important;
-        /* background-color: #2C3E50; */
+        background-color: #2C3E50;
         row-gap: 30px;
-        /* padding-top: 0; */
+        margin-top: 30px;
+        padding-top: 0;
     }
     .imgReservas{
         width: 100%;
         margin-right: 0 !important;
         margin-left: 0 !important;
-        
         top: -29px;
         max-width: 100%;
     }
