@@ -24,7 +24,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'events',
+        path: 'events/:eventId',
         loadChildren: () =>
           import('./pages/event-clasic/event-clasic.module').then(
             (module) => module.EventClasicModule

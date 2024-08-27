@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { ContactService } from '../../services/contact/contact.service';
-import { PostSendMailAction } from './contact.actions';
+import { PostSendMailAction, PostSendMailNoMessageAction } from './contact.actions';
 import { SweetAlertHelper } from '../../config/sweet-alert/sweet-alert.helper';
 
 export interface ContactStateModel {
@@ -41,6 +41,24 @@ export class ContactState {
               text: 'Tu mensaje ha sido enviado exitosamente!',
               icon: 'success',
             });
+            ctx.patchState({
+              isSendMail: true,
+            });
+          }
+        },
+      })
+    );
+  }
+
+  @Action(PostSendMailNoMessageAction)
+  PostSendMailNoMessageAction(
+    ctx: StateContext<ContactStateModel>,
+    { payload }: PostSendMailNoMessageAction
+  ) {
+    return this.contactService.postSendMail(payload).pipe(
+      tap({
+        next: (resp) => {
+          if (resp) {
             ctx.patchState({
               isSendMail: true,
             });

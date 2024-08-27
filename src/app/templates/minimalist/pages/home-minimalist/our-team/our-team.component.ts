@@ -9,9 +9,8 @@ import { SwiperOptions } from 'swiper/types';
 @Component({
   selector: 'app-our-team',
   templateUrl: './our-team.component.html',
-  styleUrls: ['./our-team.component.scss']
+  styleUrls: ['./our-team.component.scss'],
 })
-
 export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   teamData$: Observable<ITeam> = new Observable();
@@ -39,7 +38,6 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
 
   swiperInstanceMinimalist: Swiper;
 
-  
   configTeam: SwiperOptions = {
     loop: true,
     slidesPerView: 3,
@@ -49,7 +47,12 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   ngAfterViewInit() {
-    this.swiperInstanceMinimalist = new Swiper('.swiper-container-clasic-minimalist', this.configTeam);
+    setTimeout(() => {
+      this.swiperInstanceMinimalist = new Swiper(
+        '.swiper-container-clasic-minimalist',
+        this.configTeam
+      );
+    }, 100);
   }
 
   slideNextTeamMinimalist() {

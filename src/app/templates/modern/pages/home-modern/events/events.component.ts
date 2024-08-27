@@ -17,7 +17,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
-
 export class EventsComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listEvents$: Observable<IEvent[]> = new Observable();
@@ -87,10 +86,12 @@ export class EventsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.swiperInstance = new Swiper(
-      '.swiper-container-modern-event',
-      this.config
-    );
+    setTimeout(() => {
+      this.swiperInstance = new Swiper(
+        '.swiper-container-modern-event',
+        this.config
+      );
+    }, 100);
   }
 
   slideNext() {

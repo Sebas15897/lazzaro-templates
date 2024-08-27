@@ -11,7 +11,6 @@ import { SwiperOptions } from 'swiper/types';
   templateUrl: './our-team.component.html',
   styleUrls: ['./our-team.component.scss'],
 })
-
 export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   teamData$: Observable<ITeam> = new Observable();
@@ -38,7 +37,6 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
     this.destroy.unsubscribe();
   }
 
-
   config: SwiperOptions = {
     loop: true,
     slidesPerView: 3,
@@ -48,22 +46,26 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
     breakpoints: {
       320: {
         slidesPerView: 2,
-        spaceBetween: 10
+        spaceBetween: 10,
       },
       700: {
         slidesPerView: 3,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
       1025: {
         slidesPerView: 3,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
-    }
-
+    },
   };
 
   ngAfterViewInit() {
-    this.swiperInstanceTeamModern = new Swiper('.swiper-container-modern-team', this.config);
+    setTimeout(() => {
+      this.swiperInstanceTeamModern = new Swiper(
+        '.swiper-container-modern-team',
+        this.config
+      );
+    }, 100);
   }
 
   slideNextTeam() {

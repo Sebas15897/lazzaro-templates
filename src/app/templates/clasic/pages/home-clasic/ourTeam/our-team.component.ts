@@ -38,7 +38,7 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
     this.destroy.next(true);
     this.destroy.unsubscribe();
   }
-  
+
 
   configTeam: SwiperOptions = {
     loop: true,
@@ -49,10 +49,12 @@ export class OurTeamComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   ngAfterViewInit() {
-    this.swiperTeamClasic = new Swiper('.swiper-container-two', this.configTeam);
+    setTimeout(() => {
+      this.swiperTeamClasic = new Swiper('.swiper-container-two', this.configTeam);
+    }, 100);
   }
 
-  
+
   slideNextTeamClasic() {
     if (this.swiperTeamClasic) {
       this.swiperTeamClasic.slideNext();

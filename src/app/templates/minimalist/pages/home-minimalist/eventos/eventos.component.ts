@@ -57,7 +57,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   swiperInstance: Swiper;
 
-  
+
   config: SwiperOptions = {
     loop: true,
     slidesPerView: 3,
@@ -82,7 +82,9 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   ngAfterViewInit() {
-    this.swiperInstance = new Swiper('.swiper-container-e-minimalist', this.config);
+    setTimeout(() => {
+      this.swiperInstance = new Swiper('.swiper-container-e-minimalist', this.config);
+    }, 100);
   }
 
   slideNext() {

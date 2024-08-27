@@ -5,6 +5,9 @@ import { IEvent } from '../../../../core/interfaces/events.interface';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { FormBuyEventComponent } from '../../../../shared/form-buy-event/form-buy-event.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event-selected',
@@ -14,14 +17,21 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export class EventSelectedComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
-  getEvent$: Observable<IEvent> = new Observable();
+  getListEvent$: Observable<IEvent[]> = new Observable();
 
   activeIndex = 0;
 
+  eventId: string;
   event: IEvent;
 
-  constructor(private store: Store, private sanitizer: DomSanitizer) {
-    this.getEvent$ = this.store.select(EventsState.SelectEvent);
+  constructor(
+    private store: Store,
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog
+  ) {
+    this.eventId = this.activatedRoute.snapshot.params['eventId'];
+    this.getListEvent$ = this.store.select(EventsState.ListAllEvents);
   }
 
   ngOnInit() {
@@ -29,8 +39,10 @@ export class EventSelectedComponent implements OnInit, OnDestroy {
   }
 
   subscribeState() {
-    this.getEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
-      this.event = resp;
+    this.getListEvent$.pipe(takeUntil(this.destroy)).subscribe((resp) => {
+      if (resp) {
+        this.event = resp.find((product) => product.id === this.eventId);
+      }
     });
   }
 
@@ -40,6 +52,13 @@ export class EventSelectedComponent implements OnInit, OnDestroy {
 
   sanitizeHtml(content: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+
+  buyEvent() {
+    this.dialog.open(FormBuyEventComponent, {
+      width: '600px',
+      data: this.event.id,
+    });
   }
 
   ngOnDestroy() {

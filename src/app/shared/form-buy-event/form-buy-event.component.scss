@@ -1,0 +1,17 @@
+p {
+  margin: 0;
+  color: black;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.container {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+app-stripe {
+  width: 100%;
+}

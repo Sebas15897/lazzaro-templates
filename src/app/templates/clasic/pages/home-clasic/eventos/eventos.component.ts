@@ -79,7 +79,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
       .dispatch(new SelectEventAction(event))
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
-        this.router.navigate(['/classic/events']);
+        this.router.navigate([`/classic/events/${event.id}`]);
       });
   }
 
@@ -88,7 +88,9 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.swiperEvents = new Swiper('.swiper-container-one', this.config);
+    setTimeout(() => {
+      this.swiperEvents = new Swiper('.swiper-clasic-events', this.config);
+    }, 400);
   }
 
   slideNext() {
