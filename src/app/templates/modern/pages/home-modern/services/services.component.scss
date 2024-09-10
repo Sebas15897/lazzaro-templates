@@ -46,6 +46,9 @@
 }
 
 .descriptionCard {
-  max-height: 100px;
-  text-align: center;
+  flex-grow: 1;
+  min-height: 58px;
+  max-height: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

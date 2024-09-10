@@ -39,6 +39,7 @@
             />
           </div>
           <div
+            *ngIf="service.payment_in_advance"
             class="titleCard fw-bold"
             [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
           >
