@@ -3,8 +3,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IFooter, IStyle } from '../../../../../core/interfaces/web.interface';
+import { IFooter, IStyle, ITeam } from '../../../../../core/interfaces/web.interface';
 import { WebState } from '../../../../../core/store/web/web.state';
+import { IEventsSection } from '../../../../../core/interfaces/events.interface';
+import { IPortfolioSection } from '../../../../../core/interfaces/portfolio.iterface';
+import { IServiceSection } from '../../../../../core/interfaces/services.interface';
+import { IShopSection } from '../../../../../core/interfaces/shop.interface';
+import { EventsState } from '../../../../../core/store/events/events.state';
+import { PortfolioState } from '../../../../../core/store/portfolio/portfolio.state';
+import { ShopState } from '../../../../../core/store/shop/shop.store';
 
 @Component({
   selector: 'app-footer',
@@ -16,6 +23,12 @@ export class FooterComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   footer$: Observable<IFooter> = new Observable();
   styles$: Observable<IStyle> = new Observable();
+
+  sectionEvents$: Observable<IEventsSection> = new Observable();
+  teamData$: Observable<ITeam> = new Observable();
+  sectionProjects$: Observable<IPortfolioSection> = new Observable();
+  sectionServices$: Observable<IServiceSection> = new Observable();
+  sectionShop$: Observable<IShopSection> = new Observable();
 
   footer: IFooter;
 
@@ -37,6 +50,11 @@ export class FooterComponent implements OnInit, OnDestroy {
         }
       }
     });
+
+    this.sectionEvents$ = this.store.select(EventsState.EventsSection);
+    this.teamData$ = this.store.select(WebState.teamData);
+    this.sectionProjects$ = this.store.select(PortfolioState.PortfolioSection);
+    this.sectionShop$ = this.store.select(ShopState.ShopSection);
   }
 
   ngOnInit() {

@@ -90,7 +90,7 @@ export class EventosComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.swiperEvents = new Swiper('.swiper-clasic-events', this.config);
-    }, 400);
+    }, 600);
   }
 
   slideNext() {

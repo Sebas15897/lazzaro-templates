@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
 })
-
 export class ServicesComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject<boolean>();
   listServices$: Observable<IService[]> = new Observable();
@@ -52,6 +51,11 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   payService(service: IService) {
     this.router.navigate([`/classic/pay-service/${service.id}`]);
+  }
+
+  viewMore(event: Event, service: IService) {
+    event.stopPropagation();
+    this.router.navigate([`/classic/service/${service.id}`]);
   }
 
   ngOnDestroy() {

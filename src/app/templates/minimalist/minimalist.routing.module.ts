@@ -81,6 +81,13 @@ export const routes: Routes = [
             (module) => module.ContactMinimalistModule
           ),
       },
+      {
+        path: 'service/:serviceid',
+        loadChildren: () =>
+          import('./pages/service-minimalist/service-minimalist.module').then(
+            (module) => module.ServiceMinimalistModule
+          ),
+      },
     ],
   },
 ];

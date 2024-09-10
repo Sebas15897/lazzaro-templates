@@ -59,6 +59,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'service/:serviceid',
+        loadChildren: () =>
+          import('./pages/service-clasic/service-clasic.module').then(
+            (module) => module.ServiceClasicModule
+          ),
+      },
+      {
         path: 'contact',
         loadChildren: () =>
           import('./pages/contact-clasic/contact-clasic.module').then(

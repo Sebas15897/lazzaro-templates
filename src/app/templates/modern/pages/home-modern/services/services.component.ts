@@ -53,6 +53,11 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.router.navigate([`/modern/pay-service/${service.id}`]);
   }
 
+  viewMore(event: Event, service: IService) {
+    event.stopPropagation();
+    this.router.navigate([`/modern/service/${service.id}`]);
+  }
+
   ngOnDestroy() {
     this.destroy.next(true);
     this.destroy.unsubscribe();

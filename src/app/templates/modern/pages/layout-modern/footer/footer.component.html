@@ -51,7 +51,7 @@
             Inicio
           </a>
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionServices$ | async)?.active">
           <a
             href="#"
             [ngStyle]="{ color: styles?.menuTextColor }"
@@ -61,7 +61,7 @@
             Servicios
           </a>
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionProjects$ | async)?.active">
           <a
             href="#"
             [ngStyle]="{ color: styles?.menuTextColor }"
@@ -71,7 +71,7 @@
             Portfolio
           </a>
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionEvents$ | async)?.active">
           <a
             routerLink="/modern"
             fragment="eventos"
@@ -88,7 +88,7 @@
             Blog
           </a>
         </li> -->
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionShop$ | async)?.active">
           <a
             routerLink="/modern/store"
             [ngStyle]="{ color: styles?.menuTextColor }"

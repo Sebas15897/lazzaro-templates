@@ -31,7 +31,7 @@
         }"
         (click)="payService(service)"
       >
-        <img [src]="service.image_url" [alt]="service?.service_name" />
+        <img [src]="service?.image_url" [alt]="service?.service_name" />
         <div
           class="titleCard fw-bold"
           [ngStyle]="{ color: sectionServices?.properties?.titleColor }"
@@ -48,6 +48,7 @@
           class="descriptionCard"
           [innerHTML]="sanitizeHtml(service?.description)"
         ></div>
+        <button class="btn btn-primary" (click)="viewMore($event, service)">Leer más</button>
       </div>
     </div>
   </div>

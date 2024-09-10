@@ -2,9 +2,16 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, Observable, takeUntil } from 'rxjs';
-import { IStyle } from '../../../../../core/interfaces/web.interface';
+import { IStyle, ITeam } from '../../../../../core/interfaces/web.interface';
 import { Store } from '@ngxs/store';
 import { WebState } from '../../../../../core/store/web/web.state';
+import { IEventsSection } from '../../../../../core/interfaces/events.interface';
+import { EventsState } from '../../../../../core/store/events/events.state';
+import { IPortfolioSection } from '../../../../../core/interfaces/portfolio.iterface';
+import { PortfolioState } from '../../../../../core/store/portfolio/portfolio.state';
+import { IServiceSection } from '../../../../../core/interfaces/services.interface';
+import { IShopSection } from '../../../../../core/interfaces/shop.interface';
+import { ShopState } from '../../../../../core/store/shop/shop.store';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +24,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   styles$: Observable<IStyle> = new Observable();
 
   styles: IStyle;
+
+  sectionEvents$: Observable<IEventsSection> = new Observable();
+  teamData$: Observable<ITeam> = new Observable();
+  sectionProjects$: Observable<IPortfolioSection> = new Observable();
+  sectionServices$: Observable<IServiceSection> = new Observable();
+  sectionShop$: Observable<IShopSection> = new Observable();
 
   constructor(
     private viewportScroller: ViewportScroller,
@@ -33,6 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
 
     this.styles$ = this.store.select(WebState.styleData);
+    this.sectionEvents$ = this.store.select(EventsState.EventsSection);
+    this.teamData$ = this.store.select(WebState.teamData);
+    this.sectionProjects$ = this.store.select(PortfolioState.PortfolioSection);
+    this.sectionShop$ = this.store.select(ShopState.ShopSection);
   }
 
   ngOnInit() {

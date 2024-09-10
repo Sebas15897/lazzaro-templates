@@ -74,6 +74,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'service/:serviceid',
+        loadChildren: () =>
+          import('./pages/service-modern/service-modern.module').then(
+            (module) => module.ServiceModernModule
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full',

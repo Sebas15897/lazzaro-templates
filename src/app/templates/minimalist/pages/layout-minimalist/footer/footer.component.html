@@ -43,7 +43,7 @@
             >Inicio</a
           >
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionServices$ | async)?.active">
           <a
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/"
@@ -52,7 +52,7 @@
             Servicios
           </a>
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionProjects$ | async)?.active">
           <a
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/"
@@ -61,7 +61,7 @@
             Portafolio
           </a>
         </li>
-        <li class="optionList">
+        <li class="optionList" *ngIf="(sectionEvents$ | async)?.active">
           <a
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/"
@@ -70,15 +70,15 @@
             Eventos
           </a>
         </li>
-        <li class="optionList">
+<!--         <li class="optionList">
           <a
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/minimalist/blog"
           >
             Blog
           </a>
-        </li>
-        <li class="optionList">
+        </li> -->
+        <li class="optionList" *ngIf="(sectionShop$ | async)?.active">
           <a
             [ngStyle]="{ color: styles?.menuTextColor }"
             routerLink="/minimalist/store"

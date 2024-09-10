@@ -54,6 +54,7 @@
             class="descriptionCard"
             [innerHTML]="sanitizeHtml(service.description)"
           ></div>
+          <button class="btn btn-primary" (click)="viewMore($event, service)">Leer más</button>
         </div>
       </div>
     </div>

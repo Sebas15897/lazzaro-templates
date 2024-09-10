@@ -1,4 +1,7 @@
-<nav class="modern-header w-100 d-flex justify-content-center" [class.backgroundHeader]="!menuOpen">
+<nav
+  class="modern-header w-100 d-flex justify-content-center"
+  [class.backgroundHeader]="!menuOpen"
+>
   <div
     class="modern-header-items d-flex justify-content-between align-items-center"
   >
@@ -13,7 +16,7 @@
           >Inicio</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(sectionServices$ | async)?.active">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -23,7 +26,7 @@
           >Servicios</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(sectionProjects$ | async)?.active">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -33,7 +36,7 @@
           >Portafolio</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(sectionEvents$ | async)?.active">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -43,7 +46,7 @@
           >Eventos</a
         >
       </li>
-      <li class="nav-item">
+      <!--       <li class="nav-item">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -51,8 +54,8 @@
           (click)="closeMenu()"
           >Blog</a
         >
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <li class="nav-item" *ngIf="(sectionShop$ | async)?.active">
         <a
           class="nav-link"
           [ngStyle]="{ color: styles?.menuTextColor }"
@@ -71,6 +74,15 @@
         >
       </li>
     </ul>
-    <img class="menuHeader"  [src]="menuOpen ? 'assets/images/closeMenuWhite.svg' : 'assets/images/menuGreen.svg'"alt="Menu" (click)="toggleMenu()"/>
+    <img
+      class="menuHeader"
+      [src]="
+        menuOpen
+          ? 'assets/images/closeMenuWhite.svg'
+          : 'assets/images/menuGreen.svg'
+      "
+      alt="Menu"
+      (click)="toggleMenu()"
+    />
   </div>
 </nav>
