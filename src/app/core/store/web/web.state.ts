@@ -41,6 +41,7 @@ export interface WebStateModel {
     webConfig: null,
   },
 })
+
 @Injectable()
 export class WebState {
   @Selector() static webIsActive(state: WebStateModel): boolean {

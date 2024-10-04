@@ -13,7 +13,9 @@
     </div>
     <div class="infoSection row-gap-custom d-flex flex-column">
       <h2 class="fw-bold fs-3 margin-bottom-0">{{ service?.service_name }}</h2>
-      <p class="margin-bottom-0">{{ service?.price }}€</p>
+      <p class="margin-bottom-0" *ngIf="service.payment_in_advance">
+        {{ service?.price }}€
+      </p>
       <p class="margin-bottom-0" [innerHTML]="service?.description"></p>
       <div class="containerButtonSection d-flex justify-content-start">
         <button class="btn btn-primary" (click)="buy()">Reservar</button>
